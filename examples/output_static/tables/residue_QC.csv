@@ -1,0 +1,322 @@
+system,state,role,resid_ref,resid_used,resname,offset,offset_from
+ScTYR,global,HisA1,38.0,38,HD1,0,HD1-HD6
+ScTYR,global,HisA2,54.0,54,HD2,0,HD1-HD6
+ScTYR,global,HisA3,63.0,63,HD3,0,HD1-HD6
+ScTYR,global,HisB1,190.0,190,HD4,0,HD1-HD6
+ScTYR,global,HisB2,194.0,194,HD5,0,HD1-HD6
+ScTYR,global,HisB3,216.0,216,HD6,0,HD1-HD6
+ScTYR,global,Glu,182.0,182,GLU,0,HD1-HD6
+ScTYR,global,Asn,191.0,191,ASN,0,HD1-HD6
+ScTYR,global,anchor,55.0,55,ARG,0,HD1-HD6
+ScTYR,global,gatekeeper,204.0,204,GLY,0,HD1-HD6
+ScTYR,global,SerAla,206.0,206,SER,0,HD1-HD6
+ScTYR,global,ligand,,405,TY1,0,HD1-HD6
+ScTYR,local1,HisA1,38.0,38,HD1,0,HD1-HD6
+ScTYR,local1,HisA2,54.0,54,HD2,0,HD1-HD6
+ScTYR,local1,HisA3,63.0,63,HD3,0,HD1-HD6
+ScTYR,local1,HisB1,190.0,190,HD4,0,HD1-HD6
+ScTYR,local1,HisB2,194.0,194,HD5,0,HD1-HD6
+ScTYR,local1,HisB3,216.0,216,HD6,0,HD1-HD6
+ScTYR,local1,Glu,182.0,182,GLU,0,HD1-HD6
+ScTYR,local1,Asn,191.0,191,ASN,0,HD1-HD6
+ScTYR,local1,anchor,55.0,55,ARG,0,HD1-HD6
+ScTYR,local1,gatekeeper,204.0,204,GLY,0,HD1-HD6
+ScTYR,local1,SerAla,206.0,206,SER,0,HD1-HD6
+ScTYR,local1,ligand,,405,TY1,0,HD1-HD6
+ScTYR,local2,HisA1,38.0,38,HD1,0,HD1-HD6
+ScTYR,local2,HisA2,54.0,54,HD2,0,HD1-HD6
+ScTYR,local2,HisA3,63.0,63,HD3,0,HD1-HD6
+ScTYR,local2,HisB1,190.0,190,HD4,0,HD1-HD6
+ScTYR,local2,HisB2,194.0,194,HD5,0,HD1-HD6
+ScTYR,local2,HisB3,216.0,216,HD6,0,HD1-HD6
+ScTYR,local2,Glu,182.0,182,GLU,0,HD1-HD6
+ScTYR,local2,Asn,191.0,191,ASN,0,HD1-HD6
+ScTYR,local2,anchor,55.0,55,ARG,0,HD1-HD6
+ScTYR,local2,gatekeeper,204.0,204,GLY,0,HD1-HD6
+ScTYR,local2,SerAla,206.0,206,SER,0,HD1-HD6
+ScTYR,local2,ligand,,405,TY1,0,HD1-HD6
+ScTYR,local3,HisA1,38.0,38,HD1,0,HD1-HD6
+ScTYR,local3,HisA2,54.0,54,HD2,0,HD1-HD6
+ScTYR,local3,HisA3,63.0,63,HD3,0,HD1-HD6
+ScTYR,local3,HisB1,190.0,190,HD4,0,HD1-HD6
+ScTYR,local3,HisB2,194.0,194,HD5,0,HD1-HD6
+ScTYR,local3,HisB3,216.0,216,HD6,0,HD1-HD6
+ScTYR,local3,Glu,182.0,182,GLU,0,HD1-HD6
+ScTYR,local3,Asn,191.0,191,ASN,0,HD1-HD6
+ScTYR,local3,anchor,55.0,55,ARG,0,HD1-HD6
+ScTYR,local3,gatekeeper,204.0,204,GLY,0,HD1-HD6
+ScTYR,local3,SerAla,206.0,206,SER,0,HD1-HD6
+ScTYR,local3,ligand,,405,TY1,0,HD1-HD6
+ScTYR,docking,HisA1,38.0,38,HIS,0,none (resid_offset 0)
+ScTYR,docking,HisA2,54.0,54,HIS,0,none (resid_offset 0)
+ScTYR,docking,HisA3,63.0,63,HIS,0,none (resid_offset 0)
+ScTYR,docking,HisB1,190.0,190,HIS,0,none (resid_offset 0)
+ScTYR,docking,HisB2,194.0,194,HIS,0,none (resid_offset 0)
+ScTYR,docking,HisB3,216.0,216,HIS,0,none (resid_offset 0)
+ScTYR,docking,Glu,182.0,182,GLU,0,none (resid_offset 0)
+ScTYR,docking,Asn,191.0,191,ASN,0,none (resid_offset 0)
+ScTYR,docking,anchor,55.0,55,ARG,0,none (resid_offset 0)
+ScTYR,docking,gatekeeper,204.0,204,GLY,0,none (resid_offset 0)
+ScTYR,docking,SerAla,206.0,206,SER,0,none (resid_offset 0)
+VvTYR,global,HisA1,87.0,87,HD1,0,HD1-HD6
+VvTYR,global,HisA2,108.0,108,HD2,0,HD1-HD6
+VvTYR,global,HisA3,117.0,117,HD3,0,HD1-HD6
+VvTYR,global,HisB1,239.0,239,HD4,0,HD1-HD6
+VvTYR,global,HisB2,243.0,243,HD5,0,HD1-HD6
+VvTYR,global,HisB3,272.0,272,HD6,0,HD1-HD6
+VvTYR,global,Glu,235.0,235,GLU,0,HD1-HD6
+VvTYR,global,Asn,240.0,240,ASN,0,HD1-HD6
+VvTYR,global,anchor,244.0,244,LYS,0,HD1-HD6
+VvTYR,global,gatekeeper,259.0,259,PHE,0,HD1-HD6
+VvTYR,global,SerAla,262.0,262,ALA,0,HD1-HD6
+VvTYR,global,ligand,,405,TY1,0,HD1-HD6
+VvTYR,local1,HisA1,87.0,87,HD1,0,HD1-HD6
+VvTYR,local1,HisA2,108.0,108,HD2,0,HD1-HD6
+VvTYR,local1,HisA3,117.0,117,HD3,0,HD1-HD6
+VvTYR,local1,HisB1,239.0,239,HD4,0,HD1-HD6
+VvTYR,local1,HisB2,243.0,243,HD5,0,HD1-HD6
+VvTYR,local1,HisB3,272.0,272,HD6,0,HD1-HD6
+VvTYR,local1,Glu,235.0,235,GLU,0,HD1-HD6
+VvTYR,local1,Asn,240.0,240,ASN,0,HD1-HD6
+VvTYR,local1,anchor,244.0,244,LYS,0,HD1-HD6
+VvTYR,local1,gatekeeper,259.0,259,PHE,0,HD1-HD6
+VvTYR,local1,SerAla,262.0,262,ALA,0,HD1-HD6
+VvTYR,local1,ligand,,405,TY1,0,HD1-HD6
+VvTYR,local2,HisA1,87.0,87,HD1,0,HD1-HD6
+VvTYR,local2,HisA2,108.0,108,HD2,0,HD1-HD6
+VvTYR,local2,HisA3,117.0,117,HD3,0,HD1-HD6
+VvTYR,local2,HisB1,239.0,239,HD4,0,HD1-HD6
+VvTYR,local2,HisB2,243.0,243,HD5,0,HD1-HD6
+VvTYR,local2,HisB3,272.0,272,HD6,0,HD1-HD6
+VvTYR,local2,Glu,235.0,235,GLU,0,HD1-HD6
+VvTYR,local2,Asn,240.0,240,ASN,0,HD1-HD6
+VvTYR,local2,anchor,244.0,244,LYS,0,HD1-HD6
+VvTYR,local2,gatekeeper,259.0,259,PHE,0,HD1-HD6
+VvTYR,local2,SerAla,262.0,262,ALA,0,HD1-HD6
+VvTYR,local2,ligand,,405,TY1,0,HD1-HD6
+VvTYR,docking,HisA1,87.0,87,HIS,0,none (resid_offset 0)
+VvTYR,docking,HisA2,108.0,108,HIS,0,none (resid_offset 0)
+VvTYR,docking,HisA3,117.0,117,HIS,0,none (resid_offset 0)
+VvTYR,docking,HisB1,239.0,239,HIS,0,none (resid_offset 0)
+VvTYR,docking,HisB2,243.0,243,HIS,0,none (resid_offset 0)
+VvTYR,docking,HisB3,272.0,272,HIS,0,none (resid_offset 0)
+VvTYR,docking,Glu,235.0,235,GLU,0,none (resid_offset 0)
+VvTYR,docking,Asn,240.0,240,ASN,0,none (resid_offset 0)
+VvTYR,docking,anchor,244.0,244,LYS,0,none (resid_offset 0)
+VvTYR,docking,gatekeeper,259.0,259,PHE,0,none (resid_offset 0)
+VvTYR,docking,SerAla,262.0,262,ALA,0,none (resid_offset 0)
+AbTYR,global,HisA1,61.0,61,HD1,0,HD1-HD6
+AbTYR,global,HisA2,85.0,85,HD2,0,HD1-HD6
+AbTYR,global,HisA3,94.0,94,HD3,0,HD1-HD6
+AbTYR,global,HisB1,259.0,259,HD4,0,HD1-HD6
+AbTYR,global,HisB2,263.0,263,HD5,0,HD1-HD6
+AbTYR,global,HisB3,296.0,296,HD6,0,HD1-HD6
+AbTYR,global,Glu,256.0,256,GLU,0,HD1-HD6
+AbTYR,global,Asn,260.0,260,ASN,0,HD1-HD6
+AbTYR,global,anchor,268.0,268,ARG,0,HD1-HD6
+AbTYR,global,gatekeeper,283.0,283,VAL,0,HD1-HD6
+AbTYR,global,SerAla,286.0,286,ALA,0,HD1-HD6
+AbTYR,global,HisB2plus1,264.0,264,PHE,0,HD1-HD6
+AbTYR,global,ligand,,405,TY1,0,HD1-HD6
+AbTYR,local1,HisA1,61.0,61,HD1,0,HD1-HD6
+AbTYR,local1,HisA2,85.0,85,HD2,0,HD1-HD6
+AbTYR,local1,HisA3,94.0,94,HD3,0,HD1-HD6
+AbTYR,local1,HisB1,259.0,259,HD4,0,HD1-HD6
+AbTYR,local1,HisB2,263.0,263,HD5,0,HD1-HD6
+AbTYR,local1,HisB3,296.0,296,HD6,0,HD1-HD6
+AbTYR,local1,Glu,256.0,256,GLU,0,HD1-HD6
+AbTYR,local1,Asn,260.0,260,ASN,0,HD1-HD6
+AbTYR,local1,anchor,268.0,268,ARG,0,HD1-HD6
+AbTYR,local1,gatekeeper,283.0,283,VAL,0,HD1-HD6
+AbTYR,local1,SerAla,286.0,286,ALA,0,HD1-HD6
+AbTYR,local1,HisB2plus1,264.0,264,PHE,0,HD1-HD6
+AbTYR,local1,ligand,,405,TY1,0,HD1-HD6
+AbTYR,docking,HisA1,61.0,61,HIS,0,none (resid_offset 0)
+AbTYR,docking,HisA2,85.0,85,HIS,0,none (resid_offset 0)
+AbTYR,docking,HisA3,94.0,94,HIS,0,none (resid_offset 0)
+AbTYR,docking,HisB1,259.0,259,HIS,0,none (resid_offset 0)
+AbTYR,docking,HisB2,263.0,263,HIS,0,none (resid_offset 0)
+AbTYR,docking,HisB3,296.0,296,HIS,0,none (resid_offset 0)
+AbTYR,docking,Glu,256.0,256,GLU,0,none (resid_offset 0)
+AbTYR,docking,Asn,260.0,260,ASN,0,none (resid_offset 0)
+AbTYR,docking,anchor,268.0,268,ARG,0,none (resid_offset 0)
+AbTYR,docking,gatekeeper,283.0,283,VAL,0,none (resid_offset 0)
+AbTYR,docking,SerAla,286.0,286,ALA,0,none (resid_offset 0)
+AbTYR,docking,HisB2plus1,264.0,264,PHE,0,none (resid_offset 0)
+BmTYR,global,HisA1,42.0,42,HD1,0,HD1-HD6
+BmTYR,global,HisA2,60.0,60,HD2,0,HD1-HD6
+BmTYR,global,HisA3,69.0,69,HD3,0,HD1-HD6
+BmTYR,global,HisB1,204.0,204,HD4,0,HD1-HD6
+BmTYR,global,HisB2,208.0,208,HD5,0,HD1-HD6
+BmTYR,global,HisB3,231.0,231,HD6,0,HD1-HD6
+BmTYR,global,Glu,195.0,195,GLU,0,HD1-HD6
+BmTYR,global,Asn,205.0,205,ASN,0,HD1-HD6
+BmTYR,global,anchor,209.0,209,ARG,0,HD1-HD6
+BmTYR,global,gatekeeper,218.0,218,VAL,0,HD1-HD6
+BmTYR,global,SerAla,221.0,221,ALA,0,HD1-HD6
+BmTYR,global,ligand,,405,TY1,0,HD1-HD6
+BmTYR,local1,HisA1,42.0,42,HD1,0,HD1-HD6
+BmTYR,local1,HisA2,60.0,60,HD2,0,HD1-HD6
+BmTYR,local1,HisA3,69.0,69,HD3,0,HD1-HD6
+BmTYR,local1,HisB1,204.0,204,HD4,0,HD1-HD6
+BmTYR,local1,HisB2,208.0,208,HD5,0,HD1-HD6
+BmTYR,local1,HisB3,231.0,231,HD6,0,HD1-HD6
+BmTYR,local1,Glu,195.0,195,GLU,0,HD1-HD6
+BmTYR,local1,Asn,205.0,205,ASN,0,HD1-HD6
+BmTYR,local1,anchor,209.0,209,ARG,0,HD1-HD6
+BmTYR,local1,gatekeeper,218.0,218,VAL,0,HD1-HD6
+BmTYR,local1,SerAla,221.0,221,ALA,0,HD1-HD6
+BmTYR,local1,ligand,,405,TY1,0,HD1-HD6
+BmTYR,local2,HisA1,42.0,42,HD1,0,HD1-HD6
+BmTYR,local2,HisA2,60.0,60,HD2,0,HD1-HD6
+BmTYR,local2,HisA3,69.0,69,HD3,0,HD1-HD6
+BmTYR,local2,HisB1,204.0,204,HD4,0,HD1-HD6
+BmTYR,local2,HisB2,208.0,208,HD5,0,HD1-HD6
+BmTYR,local2,HisB3,231.0,231,HD6,0,HD1-HD6
+BmTYR,local2,Glu,195.0,195,GLU,0,HD1-HD6
+BmTYR,local2,Asn,205.0,205,ASN,0,HD1-HD6
+BmTYR,local2,anchor,209.0,209,ARG,0,HD1-HD6
+BmTYR,local2,gatekeeper,218.0,218,VAL,0,HD1-HD6
+BmTYR,local2,SerAla,221.0,221,ALA,0,HD1-HD6
+BmTYR,local2,ligand,,405,TY1,0,HD1-HD6
+BmTYR,docking,HisA1,42.0,42,HIS,0,none (resid_offset 0)
+BmTYR,docking,HisA2,60.0,60,HIS,0,none (resid_offset 0)
+BmTYR,docking,HisA3,69.0,69,HIS,0,none (resid_offset 0)
+BmTYR,docking,HisB1,204.0,204,HIS,0,none (resid_offset 0)
+BmTYR,docking,HisB2,208.0,208,HIS,0,none (resid_offset 0)
+BmTYR,docking,HisB3,231.0,231,HIS,0,none (resid_offset 0)
+BmTYR,docking,Glu,195.0,195,GLU,0,none (resid_offset 0)
+BmTYR,docking,Asn,205.0,205,ASN,0,none (resid_offset 0)
+BmTYR,docking,anchor,209.0,209,ARG,0,none (resid_offset 0)
+BmTYR,docking,gatekeeper,218.0,218,VAL,0,none (resid_offset 0)
+BmTYR,docking,SerAla,221.0,221,ALA,0,none (resid_offset 0)
+HsTYR,global,HisA1,192.0,192,HD1,0,HD1-HD6
+HsTYR,global,HisA2,215.0,215,HD2,0,HD1-HD6
+HsTYR,global,HisA3,224.0,224,HD3,0,HD1-HD6
+HsTYR,global,HisB1,377.0,377,HD4,0,HD1-HD6
+HsTYR,global,HisB2,381.0,381,HD5,0,HD1-HD6
+HsTYR,global,HisB3,404.0,404,HD6,0,HD1-HD6
+HsTYR,global,Glu,360.0,360,GLU,0,HD1-HD6
+HsTYR,global,Asn,378.0,378,ASN,0,HD1-HD6
+HsTYR,global,anchor,374.0,374,ARG,0,HD1-HD6
+HsTYR,global,gatekeeper,391.0,391,THR,0,HD1-HD6
+HsTYR,global,SerAla,394.0,394,SER,0,HD1-HD6
+HsTYR,global,ligand,,474,TY1,0,HD1-HD6
+HsTYR,local1,HisA1,192.0,192,HD1,0,HD1-HD6
+HsTYR,local1,HisA2,215.0,215,HD2,0,HD1-HD6
+HsTYR,local1,HisA3,224.0,224,HD3,0,HD1-HD6
+HsTYR,local1,HisB1,377.0,377,HD4,0,HD1-HD6
+HsTYR,local1,HisB2,381.0,381,HD5,0,HD1-HD6
+HsTYR,local1,HisB3,404.0,404,HD6,0,HD1-HD6
+HsTYR,local1,Glu,360.0,360,GLU,0,HD1-HD6
+HsTYR,local1,Asn,378.0,378,ASN,0,HD1-HD6
+HsTYR,local1,anchor,374.0,374,ARG,0,HD1-HD6
+HsTYR,local1,gatekeeper,391.0,391,THR,0,HD1-HD6
+HsTYR,local1,SerAla,394.0,394,SER,0,HD1-HD6
+HsTYR,local1,ligand,,474,TY1,0,HD1-HD6
+HsTYR,docking,HisA1,192.0,192,HIS,0,none (resid_offset 0)
+HsTYR,docking,HisA2,215.0,215,HIS,0,none (resid_offset 0)
+HsTYR,docking,HisA3,224.0,224,HIS,0,none (resid_offset 0)
+HsTYR,docking,HisB1,377.0,377,HIS,0,none (resid_offset 0)
+HsTYR,docking,HisB2,381.0,381,HIS,0,none (resid_offset 0)
+HsTYR,docking,HisB3,404.0,404,HIS,0,none (resid_offset 0)
+HsTYR,docking,Glu,360.0,360,GLU,0,none (resid_offset 0)
+HsTYR,docking,Asn,378.0,378,ASN,0,none (resid_offset 0)
+HsTYR,docking,anchor,374.0,374,ARG,0,none (resid_offset 0)
+HsTYR,docking,gatekeeper,391.0,391,THR,0,none (resid_offset 0)
+HsTYR,docking,SerAla,394.0,394,SER,0,none (resid_offset 0)
+VsTYR,global,HisA1,80.0,80,HD1,0,HD1-HD6
+VsTYR,global,HisA2,86.0,86,HD2,0,HD1-HD6
+VsTYR,global,HisA3,95.0,95,HD3,0,HD1-HD6
+VsTYR,global,HisB1,258.0,258,HD4,0,HD1-HD6
+VsTYR,global,HisB2,262.0,262,HD5,0,HD1-HD6
+VsTYR,global,HisB3,284.0,284,HD6,0,HD1-HD6
+VsTYR,global,Glu,254.0,254,GLU,0,HD1-HD6
+VsTYR,global,Asn,259.0,259,ASN,0,HD1-HD6
+VsTYR,global,anchor,263.0,263,ASN,0,HD1-HD6
+VsTYR,global,gatekeeper,272.0,272,LEU,0,HD1-HD6
+VsTYR,global,SerAla,274.0,274,SER,0,HD1-HD6
+VsTYR,global,ligand,,405,TY1,0,HD1-HD6
+VsTYR,local1,HisA1,80.0,80,HD1,0,HD1-HD6
+VsTYR,local1,HisA2,86.0,86,HD2,0,HD1-HD6
+VsTYR,local1,HisA3,95.0,95,HD3,0,HD1-HD6
+VsTYR,local1,HisB1,258.0,258,HD4,0,HD1-HD6
+VsTYR,local1,HisB2,262.0,262,HD5,0,HD1-HD6
+VsTYR,local1,HisB3,284.0,284,HD6,0,HD1-HD6
+VsTYR,local1,Glu,254.0,254,GLU,0,HD1-HD6
+VsTYR,local1,Asn,259.0,259,ASN,0,HD1-HD6
+VsTYR,local1,anchor,263.0,263,ASN,0,HD1-HD6
+VsTYR,local1,gatekeeper,272.0,272,LEU,0,HD1-HD6
+VsTYR,local1,SerAla,274.0,274,SER,0,HD1-HD6
+VsTYR,local1,ligand,,405,TY1,0,HD1-HD6
+VsTYR,local2,HisA1,80.0,80,HD1,0,HD1-HD6
+VsTYR,local2,HisA2,86.0,86,HD2,0,HD1-HD6
+VsTYR,local2,HisA3,95.0,95,HD3,0,HD1-HD6
+VsTYR,local2,HisB1,258.0,258,HD4,0,HD1-HD6
+VsTYR,local2,HisB2,262.0,262,HD5,0,HD1-HD6
+VsTYR,local2,HisB3,284.0,284,HD6,0,HD1-HD6
+VsTYR,local2,Glu,254.0,254,GLU,0,HD1-HD6
+VsTYR,local2,Asn,259.0,259,ASN,0,HD1-HD6
+VsTYR,local2,anchor,263.0,263,ASN,0,HD1-HD6
+VsTYR,local2,gatekeeper,272.0,272,LEU,0,HD1-HD6
+VsTYR,local2,SerAla,274.0,274,SER,0,HD1-HD6
+VsTYR,local2,ligand,,405,TY1,0,HD1-HD6
+VsTYR,docking,HisA1,80.0,80,HIS,0,none (resid_offset 0)
+VsTYR,docking,HisA2,86.0,86,HIS,0,none (resid_offset 0)
+VsTYR,docking,HisA3,95.0,95,HIS,0,none (resid_offset 0)
+VsTYR,docking,HisB1,258.0,258,HIS,0,none (resid_offset 0)
+VsTYR,docking,HisB2,262.0,262,HIS,0,none (resid_offset 0)
+VsTYR,docking,HisB3,284.0,284,HIS,0,none (resid_offset 0)
+VsTYR,docking,Glu,254.0,254,GLU,0,none (resid_offset 0)
+VsTYR,docking,Asn,259.0,259,ASN,0,none (resid_offset 0)
+VsTYR,docking,anchor,263.0,263,ASN,0,none (resid_offset 0)
+VsTYR,docking,gatekeeper,272.0,272,LEU,0,none (resid_offset 0)
+VsTYR,docking,SerAla,274.0,274,SER,0,none (resid_offset 0)
+JrTYR,global,HisA1,87.0,87,HD1,0,HD1-HD6
+JrTYR,global,HisA2,108.0,108,HD2,0,HD1-HD6
+JrTYR,global,HisA3,117.0,117,HD3,0,HD1-HD6
+JrTYR,global,HisB1,239.0,239,HD4,0,HD1-HD6
+JrTYR,global,HisB2,243.0,243,HD5,0,HD1-HD6
+JrTYR,global,HisB3,273.0,273,HD6,0,HD1-HD6
+JrTYR,global,Glu,235.0,235,GLU,0,HD1-HD6
+JrTYR,global,Asn,240.0,240,ASN,0,HD1-HD6
+JrTYR,global,anchor,244.0,244,LEU,0,HD1-HD6
+JrTYR,global,gatekeeper,260.0,260,PHE,0,HD1-HD6
+JrTYR,global,SerAla,263.0,263,ALA,0,HD1-HD6
+JrTYR,global,ligand,,405,TY1,0,HD1-HD6
+JrTYR,local1,HisA1,87.0,87,HD1,0,HD1-HD6
+JrTYR,local1,HisA2,108.0,108,HD2,0,HD1-HD6
+JrTYR,local1,HisA3,117.0,117,HD3,0,HD1-HD6
+JrTYR,local1,HisB1,239.0,239,HD4,0,HD1-HD6
+JrTYR,local1,HisB2,243.0,243,HD5,0,HD1-HD6
+JrTYR,local1,HisB3,273.0,273,HD6,0,HD1-HD6
+JrTYR,local1,Glu,235.0,235,GLU,0,HD1-HD6
+JrTYR,local1,Asn,240.0,240,ASN,0,HD1-HD6
+JrTYR,local1,anchor,244.0,244,LEU,0,HD1-HD6
+JrTYR,local1,gatekeeper,260.0,260,PHE,0,HD1-HD6
+JrTYR,local1,SerAla,263.0,263,ALA,0,HD1-HD6
+JrTYR,local1,ligand,,405,TY1,0,HD1-HD6
+JrTYR,local2,HisA1,87.0,87,HD1,0,HD1-HD6
+JrTYR,local2,HisA2,108.0,108,HD2,0,HD1-HD6
+JrTYR,local2,HisA3,117.0,117,HD3,0,HD1-HD6
+JrTYR,local2,HisB1,239.0,239,HD4,0,HD1-HD6
+JrTYR,local2,HisB2,243.0,243,HD5,0,HD1-HD6
+JrTYR,local2,HisB3,273.0,273,HD6,0,HD1-HD6
+JrTYR,local2,Glu,235.0,235,GLU,0,HD1-HD6
+JrTYR,local2,Asn,240.0,240,ASN,0,HD1-HD6
+JrTYR,local2,anchor,244.0,244,LEU,0,HD1-HD6
+JrTYR,local2,gatekeeper,260.0,260,PHE,0,HD1-HD6
+JrTYR,local2,SerAla,263.0,263,ALA,0,HD1-HD6
+JrTYR,local2,ligand,,405,TY1,0,HD1-HD6
+JrTYR,docking,HisA1,87.0,87,HIS,0,none (resid_offset 0)
+JrTYR,docking,HisA2,108.0,108,HIS,0,none (resid_offset 0)
+JrTYR,docking,HisA3,117.0,117,HIS,0,none (resid_offset 0)
+JrTYR,docking,HisB1,239.0,239,HIS,0,none (resid_offset 0)
+JrTYR,docking,HisB2,243.0,243,HIS,0,none (resid_offset 0)
+JrTYR,docking,HisB3,273.0,273,HIS,0,none (resid_offset 0)
+JrTYR,docking,Glu,235.0,235,GLU,0,none (resid_offset 0)
+JrTYR,docking,Asn,240.0,240,ASN,0,none (resid_offset 0)
+JrTYR,docking,anchor,244.0,244,LEU,0,none (resid_offset 0)
+JrTYR,docking,gatekeeper,260.0,260,PHE,0,none (resid_offset 0)
+JrTYR,docking,SerAla,263.0,263,ALA,0,none (resid_offset 0)
+JrTYR,docking,ligand,,0,TY1,0,none (resid_offset 0)

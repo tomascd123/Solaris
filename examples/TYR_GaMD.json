@@ -1,0 +1,231 @@
+{
+  "output_dir": "SOLARIS_GaMD",
+  "dpi": 300,
+  "r_min_phi": 2.5,
+  "r_color": [
+    0,
+    12
+  ],
+  "points_per_trajectory": 400,
+  "ligand": {
+    "resname": "TY1",
+    "atoms": {
+      "N": "N1",
+      "CA": "C1",
+      "C": "C2",
+      "CB": "C3",
+      "CG": "C4",
+      "CD1": "C5",
+      "CD2": "C6",
+      "CE1": "C7",
+      "CE2": "C8",
+      "CZ": "C9",
+      "OH": "O2"
+    }
+  },
+  "peroxide": {
+    "resname": "OY1",
+    "atoms": [
+      "O1",
+      "O2"
+    ]
+  },
+  "landmarks": {
+    "Conserved_Glu": {
+      "role": "Glu",
+      "plot": "TIP"
+    },
+    "Conserved_Asn": {
+      "role": "Asn",
+      "plot": "TIP"
+    },
+    "Carboxylate_anchor": {
+      "role": "anchor",
+      "plot": "TIP"
+    },
+    "Gatekeeper": {
+      "role": "gatekeeper",
+      "plot": "SC"
+    },
+    "A/S_adj": {
+      "role": "SerAla",
+      "plot": "SC"
+    },
+    "HisB2+1_Phe264": {
+      "role": "HisB2plus1",
+      "plot": "SC",
+      "optional": true
+    }
+  },
+  "systems": {
+    "ScTYR": {
+      "roles": {
+        "HisA1": 38,
+        "HisA2": 54,
+        "HisA3": 63,
+        "HisB1": 190,
+        "HisB2": 194,
+        "HisB3": 216,
+        "Glu": 182,
+        "Asn": 191,
+        "anchor": 55,
+        "gatekeeper": 204,
+        "SerAla": 206
+      },
+      "structures": {
+        "GaMD": {
+          "top": "TODO/1wx2_centered.parm7",
+          "traj": [
+            "TODO/1wx2_prod_centered.nc"
+          ],
+          "stride": 10
+        }
+      }
+    },
+    "VvTYR": {
+      "roles": {
+        "HisA1": 87,
+        "HisA2": 108,
+        "HisA3": 117,
+        "HisB1": 239,
+        "HisB2": 243,
+        "HisB3": 272,
+        "Glu": 235,
+        "Asn": 240,
+        "anchor": 244,
+        "gatekeeper": 259,
+        "SerAla": 262
+      },
+      "structures": {
+        "GaMD": {
+          "top": "TODO/2p3x_centered.parm7",
+          "traj": [
+            "TODO/2p3x_prod_centered.nc"
+          ],
+          "stride": 10
+        }
+      }
+    },
+    "AbTYR": {
+      "roles": {
+        "HisA1": 61,
+        "HisA2": 85,
+        "HisA3": 94,
+        "HisB1": 259,
+        "HisB2": 263,
+        "HisB3": 296,
+        "Glu": 256,
+        "Asn": 260,
+        "anchor": 268,
+        "gatekeeper": 283,
+        "SerAla": 286,
+        "HisB2plus1": 264
+      },
+      "structures": {
+        "GaMD": {
+          "top": "TODO/2y9x_center.parm7",
+          "traj": [
+            "TODO/2y9x_prod_center.nc"
+          ],
+          "stride": 10
+        }
+      }
+    },
+    "BmTYR": {
+      "roles": {
+        "HisA1": 42,
+        "HisA2": 60,
+        "HisA3": 69,
+        "HisB1": 204,
+        "HisB2": 208,
+        "HisB3": 231,
+        "Glu": 195,
+        "Asn": 205,
+        "anchor": 209,
+        "gatekeeper": 218,
+        "SerAla": 221
+      },
+      "structures": {
+        "GaMD": {
+          "top": "TODO/3nq1_centered.parm7",
+          "traj": [
+            "TODO/3nq1_prod_centered.nc"
+          ],
+          "stride": 10
+        }
+      }
+    },
+    "HsTYR": {
+      "roles": {
+        "HisA1": 192,
+        "HisA2": 215,
+        "HisA3": 224,
+        "HisB1": 377,
+        "HisB2": 381,
+        "HisB3": 404,
+        "Glu": 360,
+        "Asn": 378,
+        "anchor": 374,
+        "gatekeeper": 391,
+        "SerAla": 394
+      },
+      "structures": {
+        "GaMD": {
+          "top": "TODO/5m8l_center.parm7",
+          "traj": [
+            "TODO/5m8l_prod_centered.nc"
+          ],
+          "stride": 10
+        }
+      }
+    },
+    "VsTYR": {
+      "roles": {
+        "HisA1": 80,
+        "HisA2": 86,
+        "HisA3": 95,
+        "HisB1": 258,
+        "HisB2": 262,
+        "HisB3": 284,
+        "Glu": 254,
+        "Asn": 259,
+        "anchor": 263,
+        "gatekeeper": 272,
+        "SerAla": 274
+      },
+      "structures": {
+        "GaMD": {
+          "top": "TODO/8bbq_centered.parm7",
+          "traj": [
+            "TODO/8bbq_prod_centered.nc"
+          ],
+          "stride": 10
+        }
+      }
+    },
+    "JrTYR": {
+      "roles": {
+        "HisA1": 87,
+        "HisA2": 108,
+        "HisA3": 117,
+        "HisB1": 239,
+        "HisB2": 243,
+        "HisB3": 273,
+        "Glu": 235,
+        "Asn": 240,
+        "anchor": 244,
+        "gatekeeper": 260,
+        "SerAla": 263
+      },
+      "structures": {
+        "GaMD": {
+          "top": "TODO/5ce9_center.parm7",
+          "traj": [
+            "TODO/5ce9_prod_center.nc"
+          ],
+          "stride": 10
+        }
+      }
+    }
+  }
+}

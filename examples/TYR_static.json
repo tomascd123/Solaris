@@ -1,0 +1,272 @@
+{
+  "output_dir": "output_static",
+  "dpi": 300,
+  "r_min_phi": 2.5,
+  "r_color": [
+    0,
+    12
+  ],
+  "points_per_trajectory": 400,
+  "ligand": {
+    "resname": "TY1",
+    "atoms": {
+      "N": "N1",
+      "CA": "C1",
+      "C": "C2",
+      "CB": "C3",
+      "CG": "C4",
+      "CD1": "C5",
+      "CD2": "C6",
+      "CE1": "C7",
+      "CE2": "C8",
+      "CZ": "C9",
+      "OH": "O2"
+    }
+  },
+  "peroxide": {
+    "resname": "OY1",
+    "atoms": [
+      "O1",
+      "O2"
+    ]
+  },
+  "landmarks": {
+    "Conserved_Glu": {
+      "role": "Glu",
+      "plot": "TIP"
+    },
+    "Conserved_Asn": {
+      "role": "Asn",
+      "plot": "TIP"
+    },
+    "Carboxylate_anchor": {
+      "role": "anchor",
+      "plot": "TIP"
+    },
+    "Gatekeeper": {
+      "role": "gatekeeper",
+      "plot": "SC"
+    },
+    "A/S_adj": {
+      "role": "SerAla",
+      "plot": "SC"
+    },
+    "HisB2+1_Phe264": {
+      "role": "HisB2plus1",
+      "plot": "SC",
+      "optional": true
+    }
+  },
+  "systems": {
+    "ScTYR": {
+      "roles": {
+        "HisA1": 38,
+        "HisA2": 54,
+        "HisA3": 63,
+        "HisB1": 190,
+        "HisB2": 194,
+        "HisB3": 216,
+        "Glu": 182,
+        "Asn": 191,
+        "anchor": 55,
+        "gatekeeper": 204,
+        "SerAla": 206
+      },
+      "structures": {
+        "global": "structures/ScTYR/ScTYR_global_renum.pdb",
+        "local1": "structures/ScTYR/ScTYR_local1_renum.pdb",
+        "local2": "structures/ScTYR/ScTYR_local2_renum.pdb",
+        "local3": "structures/ScTYR/ScTYR_local3_renum.pdb",
+        "docking": {
+          "pdb": "structures/ScTYR/ScTYR_dock_prepared.pdb",
+          "peroxide": {
+            "resname": "PER",
+            "atoms": [
+              "O1",
+              "O2"
+            ]
+          }
+        }
+      }
+    },
+    "VvTYR": {
+      "roles": {
+        "HisA1": 87,
+        "HisA2": 108,
+        "HisA3": 117,
+        "HisB1": 239,
+        "HisB2": 243,
+        "HisB3": 272,
+        "Glu": 235,
+        "Asn": 240,
+        "anchor": 244,
+        "gatekeeper": 259,
+        "SerAla": 262
+      },
+      "structures": {
+        "global": "structures/VvTYR/VvTYR_global_renum.pdb",
+        "local1": "structures/VvTYR/VvTYR_local1_renum.pdb",
+        "local2": "structures/VvTYR/VvTYR_local2_renum.pdb",
+        "docking": {
+          "pdb": "structures/VvTYR/VvTYR_Dock_prepared.pdb",
+          "peroxide": {
+            "resname": "PER",
+            "atoms": [
+              "O1",
+              "O2"
+            ]
+          }
+        }
+      }
+    },
+    "AbTYR": {
+      "roles": {
+        "HisA1": 61,
+        "HisA2": 85,
+        "HisA3": 94,
+        "HisB1": 259,
+        "HisB2": 263,
+        "HisB3": 296,
+        "Glu": 256,
+        "Asn": 260,
+        "anchor": 268,
+        "gatekeeper": 283,
+        "SerAla": 286,
+        "HisB2plus1": 264
+      },
+      "structures": {
+        "global": "structures/AbTYR/AbTYR_global_renum.pdb",
+        "local1": "structures/AbTYR/AbTYR_local1_renum.pdb",
+        "docking": {
+          "pdb": "structures/AbTYR/AbTYR_dock_prepared.pdb",
+          "peroxide": {
+            "resname": "PER",
+            "atoms": [
+              "O1",
+              "O2"
+            ]
+          }
+        }
+      }
+    },
+    "BmTYR": {
+      "roles": {
+        "HisA1": 42,
+        "HisA2": 60,
+        "HisA3": 69,
+        "HisB1": 204,
+        "HisB2": 208,
+        "HisB3": 231,
+        "Glu": 195,
+        "Asn": 205,
+        "anchor": 209,
+        "gatekeeper": 218,
+        "SerAla": 221
+      },
+      "structures": {
+        "global": "structures/BmTYR/BmTYR_global_renum.pdb",
+        "local1": "structures/BmTYR/BmTYR_local1_renum.pdb",
+        "local2": "structures/BmTYR/BmTYR_local2_renum.pdb",
+        "docking": {
+          "pdb": "structures/BmTYR/BmTYR_Dock_prepared.pdb",
+          "peroxide": {
+            "resname": "PER",
+            "atoms": [
+              "O1",
+              "O2"
+            ]
+          }
+        }
+      }
+    },
+    "HsTYR": {
+      "roles": {
+        "HisA1": 192,
+        "HisA2": 215,
+        "HisA3": 224,
+        "HisB1": 377,
+        "HisB2": 381,
+        "HisB3": 404,
+        "Glu": 360,
+        "Asn": 378,
+        "anchor": 374,
+        "gatekeeper": 391,
+        "SerAla": 394
+      },
+      "structures": {
+        "global": "structures/HsTYR/HsTYR_global_renum.pdb",
+        "local1": "structures/HsTYR/HsTYR_local1_renum.pdb",
+        "docking": {
+          "pdb": "structures/HsTYR/HsTYR_Dock_prepared.pdb",
+          "peroxide": {
+            "resname": "PER",
+            "atoms": [
+              "O1",
+              "O2"
+            ]
+          }
+        }
+      }
+    },
+    "VsTYR": {
+      "roles": {
+        "HisA1": 80,
+        "HisA2": 86,
+        "HisA3": 95,
+        "HisB1": 258,
+        "HisB2": 262,
+        "HisB3": 284,
+        "Glu": 254,
+        "Asn": 259,
+        "anchor": 263,
+        "gatekeeper": 272,
+        "SerAla": 274
+      },
+      "structures": {
+        "global": "structures/VsTYR/VsTYR_global_renum.pdb",
+        "local1": "structures/VsTYR/VsTYR_local1_renum.pdb",
+        "local2": "structures/VsTYR/VsTYR_local2_renum.pdb",
+        "docking": {
+          "pdb": "structures/VsTYR/VsTYR_Dock_prepared.pdb",
+          "peroxide": {
+            "resname": "PER",
+            "atoms": [
+              "O1",
+              "O2"
+            ]
+          }
+        }
+      }
+    },
+    "JrTYR": {
+      "roles": {
+        "HisA1": 87,
+        "HisA2": 108,
+        "HisA3": 117,
+        "HisB1": 239,
+        "HisB2": 243,
+        "HisB3": 273,
+        "Glu": 235,
+        "Asn": 240,
+        "anchor": 244,
+        "gatekeeper": 260,
+        "SerAla": 263
+      },
+      "structures": {
+        "global": "structures/JrTYR/JrTYR_global_renum.pdb",
+        "local1": "structures/JrTYR/JrTYR_local1_renum.pdb",
+        "local2": "structures/JrTYR/JrTYR_local2_renum.pdb",
+        "docking": {
+          "pdb": "structures/JrTYR/JrTYR_docking_fixed.pdb",
+          "peroxide": {
+            "resname": "OXY",
+            "atoms": [
+              "O1",
+              "O2"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

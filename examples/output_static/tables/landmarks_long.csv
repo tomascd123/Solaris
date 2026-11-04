@@ -1,0 +1,478 @@
+landmark,point,plot,resname,resid,x,y,h,r,phi,dCuA,dCuB,system,state,kind,category,frame
+Conserved_Glu,CA,False,GLU,182,-4.5611,7.0552,0.7982,8.4011,122.8823,9.4398,7.5651,ScTYR,global,structure,global,0
+Conserved_Glu,SC,False,GLU,182,-1.3818,7.4143,1.6579,7.5419,100.5574,8.1386,7.6032,ScTYR,global,structure,global,0
+Conserved_Glu,TIP,True,GLU,182,-0.5077,7.5237,1.9285,7.5409,93.8605,8.0048,7.8809,ScTYR,global,structure,global,0
+Conserved_Asn,CA,False,ASN,191,-6.0399,2.5939,4.3027,6.5733,156.7583,9.1739,6.5030,ScTYR,global,structure,global,0
+Conserved_Asn,SC,False,ASN,191,-4.0289,3.9895,4.8493,5.6700,135.2817,8.4173,6.6250,ScTYR,global,structure,global,0
+Conserved_Asn,TIP,True,ASN,191,-3.5723,4.1119,4.7212,5.4469,130.9831,8.0987,6.4749,ScTYR,global,structure,global,0
+Carboxylate_anchor,CA,False,ARG,55,2.6186,9.0625,3.4248,9.4333,73.8832,9.6337,10.6855,ScTYR,global,structure,global,0
+Carboxylate_anchor,SC,False,ARG,55,3.8643,8.8459,7.0482,9.6531,66.4024,11.3851,12.6952,ScTYR,global,structure,global,0
+Carboxylate_anchor,TIP,True,ARG,55,4.4438,9.8656,8.3011,10.8202,65.7514,13.0492,14.3703,ScTYR,global,structure,global,0
+Gatekeeper,CA,False,GLY,204,3.3353,-4.2097,6.2636,5.3708,308.3892,7.6263,9.2058,ScTYR,global,structure,global,0
+Gatekeeper,SC,True,GLY,204,3.3353,-4.2097,6.2636,5.3708,308.3892,7.6263,9.2058,ScTYR,global,structure,global,0
+Gatekeeper,TIP,False,GLY,204,3.3353,-4.2097,6.2636,5.3708,308.3892,7.6263,9.2058,ScTYR,global,structure,global,0
+A/S_adj,CA,False,SER,206,0.3345,-6.7391,2.7277,6.7473,272.8412,7.3958,7.6265,ScTYR,global,structure,global,0
+A/S_adj,SC,True,SER,206,0.1917,-4.8188,2.7157,4.8226,272.2784,5.7162,5.9351,ScTYR,global,structure,global,0
+A/S_adj,TIP,False,SER,206,0.4639,-4.3372,3.1409,4.3620,276.1052,5.4611,5.8753,ScTYR,global,structure,global,0
+L-Tyr OH,OH,True,LIG,-1,-0.0916,-1.7104,3.2652,1.7129,266.9335,4.0199,4.1256,ScTYR,global,structure,global,0
+L-Tyr ring,ring,True,LIG,-1,-1.5090,-0.4452,5.3690,1.5733,196.4366,6.1681,5.4140,ScTYR,global,structure,global,0
+L-Tyr CA,CA,True,LIG,-1,-2.6121,2.0278,8.2700,3.3068,142.1783,9.4243,8.5500,ScTYR,global,structure,global,0
+Conserved_Glu,CA,False,GLU,182,-4.2042,7.2014,0.5817,8.3388,120.2764,9.3136,7.7259,ScTYR,local1,structure,local,0
+Conserved_Glu,SC,False,GLU,182,-0.9710,7.4324,1.5972,7.4956,97.4434,8.0191,7.7630,ScTYR,local1,structure,local,0
+Conserved_Glu,TIP,True,GLU,182,-0.0594,7.5523,1.8212,7.5526,90.4505,7.9209,8.0751,ScTYR,local1,structure,local,0
+Conserved_Asn,CA,False,ASN,191,-6.1560,2.8226,4.3475,6.7722,155.3677,9.4233,6.8026,ScTYR,local1,structure,local,0
+Conserved_Asn,SC,False,ASN,191,-4.4024,4.4590,5.0767,6.2661,134.6345,9.0983,7.2983,ScTYR,local1,structure,local,0
+Conserved_Asn,TIP,True,ASN,191,-3.9737,4.6482,4.9953,6.1152,130.5266,8.8646,7.2235,ScTYR,local1,structure,local,0
+Carboxylate_anchor,CA,False,ARG,55,2.9370,9.1983,2.8848,9.6558,72.2917,9.6599,10.8448,ScTYR,local1,structure,local,0
+Carboxylate_anchor,SC,False,ARG,55,2.5408,7.6718,7.1951,8.0816,71.6761,10.5012,11.4515,ScTYR,local1,structure,local,0
+Carboxylate_anchor,TIP,True,ARG,55,2.0578,7.3911,8.9951,7.6722,74.4418,11.6032,12.3262,ScTYR,local1,structure,local,0
+Gatekeeper,CA,False,GLY,204,3.1636,-4.0547,6.7102,5.1428,307.9624,7.9855,9.2157,ScTYR,local1,structure,local,0
+Gatekeeper,SC,True,GLY,204,3.1636,-4.0547,6.7102,5.1428,307.9624,7.9855,9.2157,ScTYR,local1,structure,local,0
+Gatekeeper,TIP,False,GLY,204,3.1636,-4.0547,6.7102,5.1428,307.9624,7.9855,9.2157,ScTYR,local1,structure,local,0
+A/S_adj,CA,False,SER,206,0.3067,-6.5287,3.0654,6.5359,272.6894,7.3960,7.4013,ScTYR,local1,structure,local,0
+A/S_adj,SC,True,SER,206,0.1850,-4.7060,3.0989,4.7096,272.2517,5.8819,5.8698,ScTYR,local1,structure,local,0
+A/S_adj,TIP,False,SER,206,0.4054,-4.2794,3.5978,4.2985,275.4118,5.7802,5.9138,ScTYR,local1,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,-0.4299,-1.7367,3.3627,1.7891,256.0958,4.3746,3.9586,ScTYR,local1,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-2.0031,-0.4415,5.2581,2.0511,192.4294,6.4631,5.2496,ScTYR,local1,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-3.0869,1.9116,8.1945,3.6309,148.2319,9.6797,8.5183,ScTYR,local1,structure,local,0
+Conserved_Glu,CA,False,GLU,182,-4.6709,7.2265,0.1461,8.6046,122.8771,9.7997,7.9410,ScTYR,local2,structure,local,0
+Conserved_Glu,SC,False,GLU,182,-1.4124,7.4427,0.8969,7.5755,100.7449,8.1739,7.6302,ScTYR,local2,structure,local,0
+Conserved_Glu,TIP,True,GLU,182,-0.4826,7.4663,1.0698,7.4819,93.6986,7.8709,7.7645,ScTYR,local2,structure,local,0
+Conserved_Asn,CA,False,ASN,191,-5.8781,2.7893,4.2192,6.5063,154.6148,9.2789,6.6101,ScTYR,local2,structure,local,0
+Conserved_Asn,SC,False,ASN,191,-4.2320,4.8118,4.5488,6.4081,131.3321,8.9878,7.1690,ScTYR,local2,structure,local,0
+Conserved_Asn,TIP,True,ASN,191,-3.8503,5.0880,4.3668,6.3807,127.1162,8.7923,7.1268,ScTYR,local2,structure,local,0
+Carboxylate_anchor,CA,False,ARG,55,2.3603,9.4277,2.2063,9.7186,75.9445,9.5992,10.6090,ScTYR,local2,structure,local,0
+Carboxylate_anchor,SC,False,ARG,55,3.8155,9.5761,6.6509,10.3082,68.2757,11.6619,12.9798,ScTYR,local2,structure,local,0
+Carboxylate_anchor,TIP,True,ARG,55,4.8354,9.8854,8.3120,11.0046,63.9348,13.0775,14.5471,ScTYR,local2,structure,local,0
+Gatekeeper,CA,False,GLY,204,3.3343,-4.5263,6.0252,5.6219,306.3774,7.5561,8.9757,ScTYR,local2,structure,local,0
+Gatekeeper,SC,True,GLY,204,3.3343,-4.5263,6.0252,5.6219,306.3774,7.5561,8.9757,ScTYR,local2,structure,local,0
+Gatekeeper,TIP,False,GLY,204,3.3343,-4.5263,6.0252,5.6219,306.3774,7.5561,8.9757,ScTYR,local2,structure,local,0
+A/S_adj,CA,False,SER,206,0.5104,-7.0993,2.6210,7.1176,274.1120,7.7107,7.7540,ScTYR,local2,structure,local,0
+A/S_adj,SC,True,SER,206,0.3293,-5.1570,2.5503,5.1675,273.6537,5.9724,5.9755,ScTYR,local2,structure,local,0
+A/S_adj,TIP,False,SER,206,0.5530,-4.6009,2.9363,4.6340,276.8537,5.6100,5.7863,ScTYR,local2,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,-0.0137,-1.1508,3.2495,1.1508,269.3158,3.8800,3.7752,ScTYR,local2,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.7018,-0.3967,5.3169,1.7475,193.1217,6.3646,5.3004,ScTYR,local2,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-3.3394,1.1051,8.4869,3.5175,161.6892,9.9475,8.7116,ScTYR,local2,structure,local,0
+Conserved_Glu,CA,False,GLU,182,-4.4159,7.3242,0.1468,8.5524,121.0867,9.5677,7.8256,ScTYR,local3,structure,local,0
+Conserved_Glu,SC,False,GLU,182,-1.1574,7.5358,1.0477,7.6242,98.7318,8.1584,7.6914,ScTYR,local3,structure,local,0
+Conserved_Glu,TIP,True,GLU,182,-0.2354,7.5763,1.2974,7.5799,91.7796,7.9590,7.9010,ScTYR,local3,structure,local,0
+Conserved_Asn,CA,False,ASN,191,-6.0407,3.0176,4.2123,6.7525,153.4556,9.2713,6.6210,ScTYR,local3,structure,local,0
+Conserved_Asn,SC,False,ASN,191,-4.2064,4.6275,4.9748,6.2536,132.2706,8.9653,7.1534,ScTYR,local3,structure,local,0
+Conserved_Asn,TIP,True,ASN,191,-3.7488,4.7835,4.9344,6.0775,128.0857,8.7348,7.0937,ScTYR,local3,structure,local,0
+Carboxylate_anchor,CA,False,ARG,55,2.3289,9.2944,2.9826,9.5817,75.9329,9.8092,10.6443,ScTYR,local3,structure,local,0
+Carboxylate_anchor,SC,False,ARG,55,3.7670,10.0321,7.1824,10.7160,69.4193,12.5083,13.5432,ScTYR,local3,structure,local,0
+Carboxylate_anchor,TIP,True,ARG,55,4.8324,10.6042,8.6015,11.6533,65.5011,14.0025,15.1809,ScTYR,local3,structure,local,0
+Gatekeeper,CA,False,GLY,204,3.2292,-3.8452,6.6096,5.0213,310.0235,7.7009,9.0639,ScTYR,local3,structure,local,0
+Gatekeeper,SC,True,GLY,204,3.2292,-3.8452,6.6096,5.0213,310.0235,7.7009,9.0639,ScTYR,local3,structure,local,0
+Gatekeeper,TIP,False,GLY,204,3.2292,-3.8452,6.6096,5.0213,310.0235,7.7009,9.0639,ScTYR,local3,structure,local,0
+A/S_adj,CA,False,SER,206,0.4536,-6.9540,3.0690,6.9688,273.7317,7.6133,7.8362,ScTYR,local3,structure,local,0
+A/S_adj,SC,True,SER,206,0.0245,-5.0139,3.1267,5.0140,270.2797,6.0446,6.0831,ScTYR,local3,structure,local,0
+A/S_adj,TIP,False,SER,206,0.2118,-4.4661,3.5101,4.4711,272.7157,5.7703,5.9223,ScTYR,local3,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,-0.2110,-1.5470,3.3939,1.5613,262.2325,4.0867,3.9474,ScTYR,local3,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.6689,-0.3226,5.3123,1.6998,190.9414,6.2072,5.2009,ScTYR,local3,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-2.9394,1.9245,8.0511,3.5134,146.7864,9.4126,8.2493,ScTYR,local3,structure,local,0
+Conserved_Glu,CA,False,GLU,182,-4.5983,7.1346,0.3677,8.4881,122.8021,9.4651,7.7545,ScTYR,docking,structure,docking,0
+Conserved_Glu,SC,False,GLU,182,-1.3490,7.3336,1.2493,7.4566,100.4231,7.9844,7.5244,ScTYR,docking,structure,docking,0
+Conserved_Glu,TIP,True,GLU,182,-0.4350,7.3854,1.4468,7.3982,93.3707,7.7706,7.7161,ScTYR,docking,structure,docking,0
+Conserved_Asn,CA,False,ASN,191,-6.4336,2.6626,4.1337,6.9628,157.5176,9.4039,6.6493,ScTYR,docking,structure,docking,0
+Conserved_Asn,SC,False,ASN,191,-4.6517,4.4036,4.8107,6.4055,136.5698,9.0003,7.0274,ScTYR,docking,structure,docking,0
+Conserved_Asn,TIP,True,ASN,191,-4.2113,4.5955,4.7323,6.2333,132.5024,8.7548,6.9383,ScTYR,docking,structure,docking,0
+Carboxylate_anchor,CA,False,ARG,55,2.2867,9.0005,3.0505,9.2864,75.7451,9.4772,10.3833,ScTYR,docking,structure,docking,0
+Carboxylate_anchor,SC,False,ARG,55,3.0499,7.6276,7.0456,8.2148,68.2057,10.4011,11.4070,ScTYR,docking,structure,docking,0
+Carboxylate_anchor,TIP,True,ARG,55,2.5231,6.9038,8.6640,7.3504,69.9247,11.0271,11.8024,ScTYR,docking,structure,docking,0
+Gatekeeper,CA,False,GLY,204,3.0454,-3.8578,6.5078,4.9150,308.2883,7.6240,8.7927,ScTYR,docking,structure,docking,0
+Gatekeeper,SC,True,GLY,204,3.0454,-3.8578,6.5078,4.9150,308.2883,7.6240,8.7927,ScTYR,docking,structure,docking,0
+Gatekeeper,TIP,False,GLY,204,3.0454,-3.8578,6.5078,4.9150,308.2883,7.6240,8.7927,ScTYR,docking,structure,docking,0
+A/S_adj,CA,False,SER,206,0.1305,-6.6859,2.8737,6.6872,271.1186,7.4124,7.3594,ScTYR,docking,structure,docking,0
+A/S_adj,SC,True,SER,206,-0.2145,-4.8279,2.5329,4.8327,267.4562,5.7325,5.4989,ScTYR,docking,structure,docking,0
+A/S_adj,TIP,False,SER,206,0.1605,-4.3348,2.1965,4.3378,272.1207,5.0547,5.0724,ScTYR,docking,structure,docking,0
+Conserved_Glu,CA,False,GLU,235,-4.4107,6.9785,-0.1753,8.2555,122.2946,9.3624,7.5864,VvTYR,global,structure,global,0
+Conserved_Glu,SC,False,GLU,235,-1.1157,7.3065,0.6799,7.3912,98.6819,7.8203,7.4675,VvTYR,global,structure,global,0
+Conserved_Glu,TIP,True,GLU,235,-0.2000,7.3793,0.9616,7.3820,91.5528,7.5989,7.6967,VvTYR,global,structure,global,0
+Conserved_Asn,CA,False,ASN,240,-5.8094,3.2721,4.4780,6.6675,150.6097,9.3906,7.0438,VvTYR,global,structure,global,0
+Conserved_Asn,SC,False,ASN,240,-4.0324,5.0305,4.7323,6.4472,128.7148,8.9497,7.4444,VvTYR,global,structure,global,0
+Conserved_Asn,TIP,True,ASN,240,-3.5946,5.1801,4.5790,6.3051,124.7579,8.6705,7.3237,VvTYR,global,structure,global,0
+Carboxylate_anchor,CA,False,LYS,244,-6.8022,-1.3056,8.2078,6.9264,190.8654,11.9290,9.8565,VvTYR,global,structure,global,0
+Carboxylate_anchor,SC,False,LYS,244,-5.5680,0.5693,11.2180,5.5970,174.1617,13.3177,12.0087,VvTYR,global,structure,global,0
+Carboxylate_anchor,TIP,True,LYS,244,-4.9201,1.6321,13.4692,5.1837,161.6485,14.9862,14.0803,VvTYR,global,structure,global,0
+Gatekeeper,CA,False,PHE,259,2.6438,-1.9542,6.7228,3.2876,323.5305,6.8435,8.3034,VvTYR,global,structure,global,0
+Gatekeeper,SC,True,PHE,259,2.2981,1.3636,6.1522,2.6722,30.6833,6.0489,7.5681,VvTYR,global,structure,global,0
+Gatekeeper,TIP,False,PHE,259,2.0904,1.7049,6.0478,2.6975,39.1997,6.0189,7.4488,VvTYR,global,structure,global,0
+A/S_adj,CA,False,ALA,262,0.1439,-6.0588,4.3036,6.0605,271.3605,7.6223,7.6444,VvTYR,global,structure,global,0
+A/S_adj,SC,True,ALA,262,0.2310,-4.5434,3.7928,4.5493,272.9107,6.1190,6.2232,VvTYR,global,structure,global,0
+A/S_adj,TIP,False,ALA,262,0.2310,-4.5434,3.7928,4.5493,272.9107,6.1190,6.2232,VvTYR,global,structure,global,0
+L-Tyr OH,OH,True,LIG,-1,0.2130,-1.4625,3.1138,1.4779,278.2881,3.7202,3.9871,VvTYR,global,structure,global,0
+L-Tyr ring,ring,True,LIG,-1,-1.3472,-0.1047,4.8715,1.3512,184.4450,5.6951,5.0043,VvTYR,global,structure,global,0
+L-Tyr CA,CA,True,LIG,-1,-2.8213,2.5136,7.4237,3.7786,138.3012,8.9520,8.0667,VvTYR,global,structure,global,0
+Conserved_Glu,CA,False,GLU,235,-4.0989,7.3736,0.3703,8.4363,119.0693,9.3075,7.8882,VvTYR,local1,structure,local,0
+Conserved_Glu,SC,False,GLU,235,-0.7476,7.1266,1.0023,7.1657,95.9885,7.4657,7.4475,VvTYR,local1,structure,local,0
+Conserved_Glu,TIP,True,GLU,235,0.1726,7.0775,1.1877,7.0796,88.6028,7.1853,7.6156,VvTYR,local1,structure,local,0
+Conserved_Asn,CA,False,ASN,240,-5.5029,3.1732,4.3374,6.3523,150.0301,8.8917,6.4645,VvTYR,local1,structure,local,0
+Conserved_Asn,SC,False,ASN,240,-3.7255,4.9127,4.6579,6.1655,127.1742,8.5300,7.0372,VvTYR,local1,structure,local,0
+Conserved_Asn,TIP,True,ASN,240,-3.3228,5.1001,4.5010,6.0871,123.0848,8.3040,6.9826,VvTYR,local1,structure,local,0
+Carboxylate_anchor,CA,False,LYS,244,-7.0998,-1.7276,8.1133,7.3070,193.6763,12.0265,9.6247,VvTYR,local1,structure,local,0
+Carboxylate_anchor,SC,False,LYS,244,-6.5843,-0.2187,11.3277,6.5879,181.9024,13.9166,12.1023,VvTYR,local1,structure,local,0
+Carboxylate_anchor,TIP,True,LYS,244,-5.4593,0.2119,13.4194,5.4634,177.7771,15.0668,13.7215,VvTYR,local1,structure,local,0
+Gatekeeper,CA,False,PHE,259,2.8075,-2.5578,6.2963,3.7980,317.6648,6.7560,8.0530,VvTYR,local1,structure,local,0
+Gatekeeper,SC,True,PHE,259,2.3352,0.8699,6.1789,2.4920,20.4302,6.0588,7.3996,VvTYR,local1,structure,local,0
+Gatekeeper,TIP,False,PHE,259,2.1304,1.2206,6.0953,2.4553,29.8100,6.0129,7.2763,VvTYR,local1,structure,local,0
+A/S_adj,CA,False,ALA,262,0.1631,-6.2864,3.5436,6.2886,271.4862,7.4203,7.2518,VvTYR,local1,structure,local,0
+A/S_adj,SC,True,ALA,262,0.0046,-4.7923,3.4946,4.7923,270.0556,6.1882,5.9715,VvTYR,local1,structure,local,0
+A/S_adj,TIP,False,ALA,262,0.0046,-4.7923,3.4946,4.7923,270.0556,6.1882,5.9715,VvTYR,local1,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,-0.4747,-1.4584,3.3955,1.5337,251.9684,4.2174,3.7249,VvTYR,local1,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.6278,0.2088,5.2669,1.6412,172.6916,6.0992,5.1060,VvTYR,local1,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-2.8935,1.6491,8.6950,3.3305,150.3201,9.8074,8.7695,VvTYR,local1,structure,local,0
+Conserved_Glu,CA,False,GLU,235,-4.2093,7.3081,0.2002,8.4336,119.9411,9.3838,7.8224,VvTYR,local2,structure,local,0
+Conserved_Glu,SC,False,GLU,235,-0.9875,7.3372,0.7896,7.4034,97.6650,7.7666,7.5513,VvTYR,local2,structure,local,0
+Conserved_Glu,TIP,True,GLU,235,-0.0775,7.3172,0.9284,7.3176,90.6069,7.4783,7.6977,VvTYR,local2,structure,local,0
+Conserved_Asn,CA,False,ASN,240,-5.5014,3.0880,4.2963,6.3088,150.6944,8.9080,6.5601,VvTYR,local2,structure,local,0
+Conserved_Asn,SC,False,ASN,240,-3.6141,4.8519,4.6951,6.0501,126.6819,8.5005,7.1160,VvTYR,local2,structure,local,0
+Conserved_Asn,TIP,True,ASN,240,-3.1973,5.0661,4.5328,5.9906,122.2566,8.2783,7.0675,VvTYR,local2,structure,local,0
+Carboxylate_anchor,CA,False,LYS,244,-6.9244,-1.7765,8.3031,7.1486,194.3891,12.0835,9.9466,VvTYR,local2,structure,local,0
+Carboxylate_anchor,SC,False,LYS,244,-5.1516,0.2802,10.4799,5.1592,176.8870,12.4339,11.0633,VvTYR,local2,structure,local,0
+Carboxylate_anchor,TIP,True,LYS,244,-4.1237,0.7201,12.6261,4.1861,170.0940,13.7992,12.9186,VvTYR,local2,structure,local,0
+Gatekeeper,CA,False,PHE,259,3.3655,-2.5026,6.2672,4.1940,323.3655,6.7966,8.4908,VvTYR,local2,structure,local,0
+Gatekeeper,SC,True,PHE,259,2.9105,0.9171,5.7880,3.0516,17.4906,5.7567,7.5643,VvTYR,local2,structure,local,0
+Gatekeeper,TIP,False,PHE,259,2.7053,1.2680,5.7211,2.9877,25.1136,5.7160,7.4439,VvTYR,local2,structure,local,0
+A/S_adj,CA,False,ALA,262,0.3443,-6.2016,3.9294,6.2111,273.1777,7.4955,7.5698,VvTYR,local2,structure,local,0
+A/S_adj,SC,True,ALA,262,0.1245,-4.6673,3.8309,4.6689,271.5281,6.2531,6.2726,VvTYR,local2,structure,local,0
+A/S_adj,TIP,False,ALA,262,0.1245,-4.6673,3.8309,4.6689,271.5281,6.2531,6.2726,VvTYR,local2,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,0.0318,-1.6186,3.0710,1.6189,271.1265,3.8151,3.9084,VvTYR,local2,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.2895,-0.2563,5.0797,1.3147,191.2404,5.8105,5.1559,VvTYR,local2,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-1.4672,2.6255,7.4242,3.0077,119.1973,8.3332,7.9712,VvTYR,local2,structure,local,0
+Conserved_Glu,CA,False,GLU,235,-4.2401,7.1779,0.4294,8.3367,120.5711,9.4854,7.6386,VvTYR,docking,structure,docking,0
+Conserved_Glu,SC,False,GLU,235,-0.9621,7.2310,1.3559,7.2947,97.5792,7.9556,7.3591,VvTYR,docking,structure,docking,0
+Conserved_Glu,TIP,True,GLU,235,-0.0421,7.2315,1.5771,7.2316,90.3339,7.7232,7.5391,VvTYR,docking,structure,docking,0
+Conserved_Asn,CA,False,ASN,240,-6.0321,2.7089,4.2695,6.6124,155.8162,9.3186,6.5388,VvTYR,docking,structure,docking,0
+Conserved_Asn,SC,False,ASN,240,-4.1170,4.3607,4.7932,5.9971,133.3537,8.7852,6.7736,VvTYR,docking,structure,docking,0
+Conserved_Asn,TIP,True,ASN,240,-3.6711,4.5248,4.6838,5.8267,129.0529,8.5193,6.6608,VvTYR,docking,structure,docking,0
+Carboxylate_anchor,CA,False,LYS,244,-7.9490,-2.4721,7.8589,8.3245,197.2758,12.6836,10.1830,VvTYR,docking,structure,docking,0
+Carboxylate_anchor,SC,False,LYS,244,-8.8521,-0.5078,11.0496,8.8667,183.2830,15.2838,12.9947,VvTYR,docking,structure,docking,0
+Carboxylate_anchor,TIP,True,LYS,244,-9.4453,0.7082,13.1780,9.4718,175.7119,17.2699,15.1184,VvTYR,docking,structure,docking,0
+Gatekeeper,CA,False,PHE,259,2.6916,-2.7317,5.5535,3.8350,314.5757,6.1053,7.3891,VvTYR,docking,structure,docking,0
+Gatekeeper,SC,True,PHE,259,2.4928,0.8432,5.2686,2.6315,18.6891,5.2964,6.5784,VvTYR,docking,structure,docking,0
+Gatekeeper,TIP,False,PHE,259,2.3232,1.2202,5.2018,2.6242,27.7101,5.2945,6.4818,VvTYR,docking,structure,docking,0
+A/S_adj,CA,False,ALA,262,0.0820,-6.9732,3.1380,6.9737,270.6737,7.6902,7.7421,VvTYR,docking,structure,docking,0
+A/S_adj,SC,True,ALA,262,-0.2513,-5.4793,3.1128,5.4851,267.3742,6.4812,6.3379,VvTYR,docking,structure,docking,0
+A/S_adj,TIP,False,ALA,262,-0.2513,-5.4793,3.1128,5.4851,267.3742,6.4812,6.3379,VvTYR,docking,structure,docking,0
+Conserved_Glu,CA,False,GLU,256,-4.3284,7.0096,0.9214,8.2383,121.6951,9.2675,7.4872,AbTYR,global,structure,global,0
+Conserved_Glu,SC,False,GLU,256,-1.2430,7.1604,2.2907,7.2675,99.8478,7.9250,7.5049,AbTYR,global,structure,global,0
+Conserved_Glu,TIP,True,GLU,256,-0.3889,7.2559,2.6962,7.2663,93.0683,7.8320,7.8327,AbTYR,global,structure,global,0
+Conserved_Asn,CA,False,ASN,260,-5.8755,2.6002,4.4937,6.4251,156.1284,9.2325,6.6937,AbTYR,global,structure,global,0
+Conserved_Asn,SC,False,ASN,260,-3.8698,4.1872,5.2190,5.7016,132.7442,8.6520,7.0674,AbTYR,global,structure,global,0
+Conserved_Asn,TIP,True,ASN,260,-3.4211,4.3534,5.1359,5.5368,128.1619,8.3890,6.9818,AbTYR,global,structure,global,0
+Carboxylate_anchor,CA,False,ARG,268,-8.4636,-6.5416,10.9407,10.6970,217.7005,16.4167,14.5285,AbTYR,global,structure,global,0
+Carboxylate_anchor,SC,False,ARG,268,-7.6301,-2.3540,12.2007,7.9850,197.1459,15.5748,13.8626,AbTYR,global,structure,global,0
+Carboxylate_anchor,TIP,True,ARG,268,-7.5899,-0.4272,12.3411,7.6019,183.2219,15.4606,13.7683,AbTYR,global,structure,global,0
+Gatekeeper,CA,False,VAL,283,2.5134,-2.9491,6.1485,3.8748,310.4405,6.7856,8.1349,AbTYR,global,structure,global,0
+Gatekeeper,SC,True,VAL,283,3.0151,-1.0530,6.0762,3.1937,340.7492,6.1344,7.8707,AbTYR,global,structure,global,0
+Gatekeeper,TIP,False,VAL,283,3.0151,-1.0530,6.0762,3.1937,340.7492,6.1344,7.8707,AbTYR,global,structure,global,0
+A/S_adj,CA,False,ALA,286,0.7940,-6.7926,2.7936,6.8388,276.6668,7.5642,7.8603,AbTYR,global,structure,global,0
+A/S_adj,SC,True,ALA,286,0.7763,-5.2956,2.6227,5.3522,278.3395,6.1367,6.5148,AbTYR,global,structure,global,0
+A/S_adj,TIP,False,ALA,286,0.7763,-5.2956,2.6227,5.3522,278.3395,6.1367,6.5148,AbTYR,global,structure,global,0
+HisB2+1_Phe264,CA,False,PHE,264,-7.8784,-2.7668,7.4428,8.3501,199.3505,12.5641,10.1420,AbTYR,global,structure,global,0
+HisB2+1_Phe264,SC,True,PHE,264,-5.8505,-0.7173,9.4625,5.8943,186.9896,12.1506,10.4491,AbTYR,global,structure,global,0
+HisB2+1_Phe264,TIP,False,PHE,264,-5.4955,-0.5497,9.6022,5.5229,185.7123,12.0239,10.4327,AbTYR,global,structure,global,0
+L-Tyr OH,OH,True,LIG,-1,0.0518,-1.7390,3.1190,1.7398,271.7063,4.0000,4.1007,AbTYR,global,structure,global,0
+L-Tyr ring,ring,True,LIG,-1,-1.5623,-0.7158,5.0054,1.7185,204.6163,6.0319,5.1735,AbTYR,global,structure,global,0
+L-Tyr CA,CA,True,LIG,-1,-2.0373,1.8481,7.6068,2.7506,137.7876,8.5817,7.9225,AbTYR,global,structure,global,0
+Conserved_Glu,CA,False,GLU,256,-4.0690,7.0192,0.5304,8.1133,120.1005,9.0782,7.5542,AbTYR,local1,structure,local,0
+Conserved_Glu,SC,False,GLU,256,-1.1173,7.3741,2.0655,7.4582,98.6157,8.0667,7.8042,AbTYR,local1,structure,local,0
+Conserved_Glu,TIP,True,GLU,256,-0.2709,7.5013,2.4631,7.5062,92.0683,8.0256,8.1440,AbTYR,local1,structure,local,0
+Conserved_Asn,CA,False,ASN,260,-5.5043,2.6531,4.4435,6.1104,154.2658,8.8259,6.4017,AbTYR,local1,structure,local,0
+Conserved_Asn,SC,False,ASN,260,-3.7219,4.4082,4.8836,5.7693,130.1753,8.4339,6.9044,AbTYR,local1,structure,local,0
+Conserved_Asn,TIP,True,ASN,260,-3.2944,4.5993,4.7551,5.6575,125.6133,8.1916,6.8352,AbTYR,local1,structure,local,0
+Carboxylate_anchor,CA,False,ARG,268,-9.3381,-6.7471,11.3203,11.5206,215.8493,17.1636,15.0763,AbTYR,local1,structure,local,0
+Carboxylate_anchor,SC,False,ARG,268,-7.2153,-2.5689,12.4384,7.6590,199.5976,15.4400,13.7194,AbTYR,local1,structure,local,0
+Carboxylate_anchor,TIP,True,ARG,268,-6.3902,-0.7521,12.7923,6.4343,186.7125,15.0558,13.5365,AbTYR,local1,structure,local,0
+Gatekeeper,CA,False,VAL,283,2.0468,-3.1207,5.9247,3.7321,303.2604,6.5888,7.5559,AbTYR,local1,structure,local,0
+Gatekeeper,SC,True,VAL,283,2.5379,-1.2333,6.2459,2.8217,334.0822,6.2578,7.5665,AbTYR,local1,structure,local,0
+Gatekeeper,TIP,False,VAL,283,2.5379,-1.2333,6.2459,2.8217,334.0822,6.2578,7.5665,AbTYR,local1,structure,local,0
+A/S_adj,CA,False,ALA,286,-0.1503,-7.0091,2.4738,7.0107,268.7712,7.7061,7.4286,AbTYR,local1,structure,local,0
+A/S_adj,SC,True,ALA,286,-0.4038,-5.5073,2.5149,5.5221,265.8061,6.4465,6.0251,AbTYR,local1,structure,local,0
+A/S_adj,TIP,False,ALA,286,-0.4038,-5.5073,2.5149,5.5221,265.8061,6.4465,6.0251,AbTYR,local1,structure,local,0
+HisB2+1_Phe264,CA,False,PHE,264,-8.1437,-2.4665,7.7581,8.5091,196.8500,12.7496,10.2539,AbTYR,local1,structure,local,0
+HisB2+1_Phe264,SC,True,PHE,264,-6.1681,-0.0962,9.3434,6.1689,180.8939,12.1365,10.2556,AbTYR,local1,structure,local,0
+HisB2+1_Phe264,TIP,False,PHE,264,-5.8142,0.0944,9.4627,5.8150,179.0700,11.9983,10.2198,AbTYR,local1,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,0.1242,-1.9172,3.0516,1.9212,273.7069,3.8782,3.9127,AbTYR,local1,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.4218,-0.5437,4.8379,1.5222,200.9271,5.6924,4.7687,AbTYR,local1,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-1.8948,2.2701,7.3431,2.9569,129.8507,8.3460,7.6432,AbTYR,local1,structure,local,0
+Conserved_Glu,CA,False,GLU,256,-3.9161,7.1794,0.4933,8.1780,118.6104,9.6388,7.8101,AbTYR,docking,structure,docking,0
+Conserved_Glu,SC,False,GLU,256,-0.7015,7.2251,1.5374,7.2591,95.5458,8.1740,7.4456,AbTYR,docking,structure,docking,0
+Conserved_Glu,TIP,True,GLU,256,0.2023,7.2335,1.7913,7.2363,88.3983,7.9575,7.6004,AbTYR,docking,structure,docking,0
+Conserved_Asn,CA,False,ASN,260,-5.6146,3.0278,4.5477,6.3790,151.6636,10.1186,7.2852,AbTYR,docking,structure,docking,0
+Conserved_Asn,SC,False,ASN,260,-3.7467,4.7458,4.9287,6.0465,128.2903,9.6529,7.5055,AbTYR,docking,structure,docking,0
+Conserved_Asn,TIP,True,ASN,260,-3.3277,4.9359,4.7745,5.9529,123.9867,9.3939,7.3809,AbTYR,docking,structure,docking,0
+Carboxylate_anchor,CA,False,ARG,268,-7.9453,-5.1306,11.4200,9.4578,212.8519,16.8563,14.4531,AbTYR,docking,structure,docking,0
+Carboxylate_anchor,SC,False,ARG,268,-6.0542,-1.4155,12.7653,6.2175,193.1598,16.0754,13.9586,AbTYR,docking,structure,docking,0
+Carboxylate_anchor,TIP,True,ARG,268,-5.6390,0.4609,12.8648,5.6578,175.3272,15.8827,13.8439,AbTYR,docking,structure,docking,0
+Gatekeeper,CA,False,VAL,283,2.4351,-2.3808,6.0804,3.4056,315.6469,7.3000,7.4827,AbTYR,docking,structure,docking,0
+Gatekeeper,SC,True,VAL,283,3.1472,-0.5037,6.1289,3.1872,350.9067,6.9892,7.5236,AbTYR,docking,structure,docking,0
+Gatekeeper,TIP,False,VAL,283,3.1472,-0.5037,6.1289,3.1872,350.9067,6.9892,7.5236,AbTYR,docking,structure,docking,0
+A/S_adj,CA,False,ALA,286,0.1303,-6.4920,3.2994,6.4933,271.1501,8.0615,7.4166,AbTYR,docking,structure,docking,0
+A/S_adj,SC,True,ALA,286,-0.1266,-4.9859,3.1556,4.9875,268.5450,6.9022,6.0261,AbTYR,docking,structure,docking,0
+A/S_adj,TIP,False,ALA,286,-0.1266,-4.9859,3.1556,4.9875,268.5450,6.9022,6.0261,AbTYR,docking,structure,docking,0
+HisB2+1_Phe264,CA,False,PHE,264,-8.2328,-2.1720,7.9134,8.5144,194.7790,13.9591,11.0735,AbTYR,docking,structure,docking,0
+HisB2+1_Phe264,SC,True,PHE,264,-6.0204,0.1673,9.2458,6.0227,178.4079,13.1373,10.6782,AbTYR,docking,structure,docking,0
+HisB2+1_Phe264,TIP,False,PHE,264,-5.6511,0.3553,9.3082,5.6623,176.4023,12.9542,10.5691,AbTYR,docking,structure,docking,0
+Conserved_Glu,CA,False,GLU,195,-4.4549,7.1524,-0.0402,8.4263,121.9172,9.4405,7.6270,BmTYR,global,structure,global,0
+Conserved_Glu,SC,False,GLU,195,-1.4203,7.6006,0.9729,7.7321,100.5848,8.3730,7.6400,BmTYR,global,structure,global,0
+Conserved_Glu,TIP,True,GLU,195,-0.5376,7.6704,1.1913,7.6892,94.0091,8.2062,7.8245,BmTYR,global,structure,global,0
+Conserved_Asn,CA,False,ASN,205,-6.1670,2.9932,3.9738,6.8550,154.1101,9.2273,6.6926,BmTYR,global,structure,global,0
+Conserved_Asn,SC,False,ASN,205,-4.4331,4.8964,4.4792,6.6051,132.1566,9.0351,7.1804,BmTYR,global,structure,global,0
+Conserved_Asn,TIP,True,ASN,205,-3.9928,5.0989,4.4104,6.4762,128.0632,8.8365,7.1238,BmTYR,global,structure,global,0
+Carboxylate_anchor,CA,False,ARG,209,-7.4042,-1.6674,8.0201,7.5896,192.6908,12.1218,10.0221,BmTYR,global,structure,global,0
+Carboxylate_anchor,SC,False,ARG,209,-6.5728,2.1015,9.9811,6.9006,162.2693,13.0928,11.3377,BmTYR,global,structure,global,0
+Carboxylate_anchor,TIP,True,ARG,209,-5.8555,3.1849,11.2968,6.6656,151.4580,13.9527,12.4847,BmTYR,global,structure,global,0
+Gatekeeper,CA,False,VAL,218,2.2307,-1.8266,6.4397,2.8831,320.6877,6.7623,7.8204,BmTYR,global,structure,global,0
+Gatekeeper,SC,True,VAL,218,2.4939,0.1192,6.2697,2.4967,2.7370,6.4322,7.5938,BmTYR,global,structure,global,0
+Gatekeeper,TIP,False,VAL,218,2.4939,0.1192,6.2697,2.4967,2.7370,6.4322,7.5938,BmTYR,global,structure,global,0
+A/S_adj,CA,False,ALA,221,0.6943,-6.0226,3.5435,6.0625,276.5760,6.9207,7.4444,BmTYR,global,structure,global,0
+A/S_adj,SC,True,ALA,221,0.6044,-4.5366,3.3077,4.5767,277.5886,5.5890,6.1285,BmTYR,global,structure,global,0
+A/S_adj,TIP,False,ALA,221,0.6044,-4.5366,3.3077,4.5767,277.5886,5.5890,6.1285,BmTYR,global,structure,global,0
+L-Tyr OH,OH,True,LIG,-1,-0.1300,-1.2567,3.5228,1.2634,264.0930,4.0933,4.1173,BmTYR,global,structure,global,0
+L-Tyr ring,ring,True,LIG,-1,-1.7268,0.2166,5.2843,1.7403,172.8490,6.2664,5.3392,BmTYR,global,structure,global,0
+L-Tyr CA,CA,True,LIG,-1,-2.5555,3.3506,7.3434,4.2139,127.3331,9.1602,8.1479,BmTYR,global,structure,global,0
+Conserved_Glu,CA,False,GLU,195,-4.5098,7.5196,-0.0675,8.7683,120.9530,9.9084,8.1857,BmTYR,local1,structure,local,0
+Conserved_Glu,SC,False,GLU,195,-1.2877,7.7641,0.7632,7.8701,99.4170,8.5772,7.8873,BmTYR,local1,structure,local,0
+Conserved_Glu,TIP,True,GLU,195,-0.3704,7.7976,0.9663,7.8064,92.7194,8.3658,8.0173,BmTYR,local1,structure,local,0
+Conserved_Asn,CA,False,ASN,205,-6.0715,3.3996,4.3107,6.9585,150.7540,9.5321,7.2447,BmTYR,local1,structure,local,0
+Conserved_Asn,SC,False,ASN,205,-4.6833,5.5298,4.5948,7.2465,130.2618,9.7053,7.9709,BmTYR,local1,structure,local,0
+Conserved_Asn,TIP,True,ASN,205,-4.2807,5.7758,4.4991,7.1891,126.5439,9.5572,7.9398,BmTYR,local1,structure,local,0
+Carboxylate_anchor,CA,False,ARG,209,-7.4885,-1.3701,8.1773,7.6128,190.3679,12.2657,10.2920,BmTYR,local1,structure,local,0
+Carboxylate_anchor,SC,False,ARG,209,-6.5430,2.3791,10.4556,6.9621,160.0178,13.5041,11.9389,BmTYR,local1,structure,local,0
+Carboxylate_anchor,TIP,True,ARG,209,-6.4410,3.8699,11.7264,7.5141,149.0016,14.7982,13.3945,BmTYR,local1,structure,local,0
+Gatekeeper,CA,False,VAL,218,2.1071,-1.4102,6.1659,2.5355,326.2071,6.2704,7.3037,BmTYR,local1,structure,local,0
+Gatekeeper,SC,True,VAL,218,2.1585,0.5481,6.3456,2.2270,14.2476,6.4036,7.3893,BmTYR,local1,structure,local,0
+Gatekeeper,TIP,False,VAL,218,2.1585,0.5481,6.3456,2.2270,14.2476,6.4036,7.3893,BmTYR,local1,structure,local,0
+A/S_adj,CA,False,ALA,221,0.3916,-5.8800,3.6973,5.8930,273.8101,6.8120,7.1597,BmTYR,local1,structure,local,0
+A/S_adj,SC,True,ALA,221,0.0027,-4.4250,3.6988,4.4250,270.0351,5.7723,5.9341,BmTYR,local1,structure,local,0
+A/S_adj,TIP,False,ALA,221,0.0027,-4.4250,3.6988,4.4250,270.0351,5.7723,5.9341,BmTYR,local1,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,-0.5250,-1.0061,3.6498,1.1349,242.4448,4.2721,3.9424,BmTYR,local1,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-2.0003,0.7368,5.2423,2.1317,159.7783,6.4270,5.3966,BmTYR,local1,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-2.6593,4.0280,7.3502,4.8267,123.4335,9.5107,8.5603,BmTYR,local1,structure,local,0
+Conserved_Glu,CA,False,GLU,195,-4.4850,7.3129,-0.1333,8.5787,121.5208,9.6203,7.7800,BmTYR,local2,structure,local,0
+Conserved_Glu,SC,False,GLU,195,-1.2000,7.5014,0.7565,7.5968,99.0884,8.2116,7.4572,BmTYR,local2,structure,local,0
+Conserved_Glu,TIP,True,GLU,195,-0.2289,7.5138,0.9306,7.5173,91.7447,7.9771,7.6000,BmTYR,local2,structure,local,0
+Conserved_Asn,CA,False,ASN,205,-5.7749,3.2396,4.2746,6.6216,150.7087,9.0342,6.8878,BmTYR,local2,structure,local,0
+Conserved_Asn,SC,False,ASN,205,-4.1863,5.0618,4.5306,6.5686,129.5923,8.9063,7.3207,BmTYR,local2,structure,local,0
+Conserved_Asn,TIP,True,ASN,205,-3.7573,5.2565,4.4002,6.4613,125.5570,8.6967,7.2296,BmTYR,local2,structure,local,0
+Carboxylate_anchor,CA,False,ARG,209,-6.9557,-1.3018,8.3820,7.0765,190.6009,11.8294,10.2179,BmTYR,local2,structure,local,0
+Carboxylate_anchor,SC,False,ARG,209,-5.8957,0.4614,11.1271,5.9137,175.5248,13.2419,12.1110,BmTYR,local2,structure,local,0
+Carboxylate_anchor,TIP,True,ARG,209,-6.0737,0.6630,12.7626,6.1097,173.7699,14.7285,13.7136,BmTYR,local2,structure,local,0
+Gatekeeper,CA,False,VAL,218,2.5478,-2.2031,5.9140,3.3682,319.1503,6.1914,7.6885,BmTYR,local2,structure,local,0
+Gatekeeper,SC,True,VAL,218,3.1204,-0.3005,5.4381,3.1348,354.4991,5.5488,7.3064,BmTYR,local2,structure,local,0
+Gatekeeper,TIP,False,VAL,218,3.1204,-0.3005,5.4381,3.1348,354.4991,5.5488,7.3064,BmTYR,local2,structure,local,0
+A/S_adj,CA,False,ALA,221,0.0627,-6.0663,3.5724,6.0666,270.5921,6.9040,7.3984,BmTYR,local2,structure,local,0
+A/S_adj,SC,True,ALA,221,0.0505,-4.5762,3.1558,4.5764,270.6318,5.4658,5.9637,BmTYR,local2,structure,local,0
+A/S_adj,TIP,False,ALA,221,0.0505,-4.5762,3.1558,4.5764,270.6318,5.4658,5.9637,BmTYR,local2,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,-0.5812,-1.3524,3.6169,1.4720,246.7429,4.1830,4.1722,BmTYR,local2,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.5946,0.5204,5.3314,1.6773,161.9258,6.0722,5.5169,BmTYR,local2,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-1.9321,3.6542,7.5287,4.1336,117.8674,9.0154,8.4841,BmTYR,local2,structure,local,0
+Conserved_Glu,CA,False,GLU,195,-4.4359,7.2306,0.1676,8.4829,121.5288,9.5640,7.7931,BmTYR,docking,structure,docking,0
+Conserved_Glu,SC,False,GLU,195,-1.2021,7.4713,1.0840,7.5674,99.1399,8.0923,7.5225,BmTYR,docking,structure,docking,0
+Conserved_Glu,TIP,True,GLU,195,-0.2861,7.5173,1.2782,7.5228,92.1792,7.8562,7.6839,BmTYR,docking,structure,docking,0
+Conserved_Asn,CA,False,ASN,205,-6.2681,2.8684,4.0780,6.8933,155.4102,9.7195,6.8836,BmTYR,docking,structure,docking,0
+Conserved_Asn,SC,False,ASN,205,-4.6144,4.7086,4.7269,6.5927,134.4214,9.4508,7.3312,BmTYR,docking,structure,docking,0
+Conserved_Asn,TIP,True,ASN,205,-4.1779,4.9100,4.6555,6.4470,130.3940,9.2145,7.2426,BmTYR,docking,structure,docking,0
+Carboxylate_anchor,CA,False,ARG,209,-7.9414,-1.8581,7.7172,8.1559,193.1691,12.9062,10.2133,BmTYR,docking,structure,docking,0
+Carboxylate_anchor,SC,False,ARG,209,-6.1816,-0.7583,10.1951,6.2279,186.9934,13.3129,11.2184,BmTYR,docking,structure,docking,0
+Carboxylate_anchor,TIP,True,ARG,209,-5.3229,-1.6385,11.6120,5.5694,197.1090,14.0716,12.3053,BmTYR,docking,structure,docking,0
+Gatekeeper,CA,False,VAL,218,2.4479,-2.1457,5.9471,3.2552,318.7639,6.6518,7.4085,BmTYR,docking,structure,docking,0
+Gatekeeper,SC,True,VAL,218,3.2149,-0.2861,5.7736,3.2276,354.9136,6.1880,7.4058,BmTYR,docking,structure,docking,0
+Gatekeeper,TIP,False,VAL,218,3.2149,-0.2861,5.7736,3.2276,354.9136,6.1880,7.4058,BmTYR,docking,structure,docking,0
+A/S_adj,CA,False,ALA,221,0.3378,-6.3837,3.3461,6.3927,273.0287,7.6592,7.4323,BmTYR,docking,structure,docking,0
+A/S_adj,SC,True,ALA,221,-0.0093,-4.8973,3.1754,4.8973,269.8911,6.4404,6.0136,BmTYR,docking,structure,docking,0
+A/S_adj,TIP,False,ALA,221,-0.0093,-4.8973,3.1754,4.8973,269.8911,6.4404,6.0136,BmTYR,docking,structure,docking,0
+Conserved_Glu,CA,False,GLU,360,-4.5601,7.2301,0.0061,8.5481,122.2402,9.5801,7.7802,HsTYR,global,structure,global,0
+Conserved_Glu,SC,False,GLU,360,-1.4886,7.4090,1.3448,7.5571,101.3606,8.2974,7.4906,HsTYR,global,structure,global,0
+Conserved_Glu,TIP,True,GLU,360,-0.5851,7.4352,1.6194,7.4582,94.4998,8.0961,7.6412,HsTYR,global,structure,global,0
+Conserved_Asn,CA,False,ASN,378,-6.4658,2.8528,3.9727,7.0672,156.1923,9.4716,6.5920,HsTYR,global,structure,global,0
+Conserved_Asn,SC,False,ASN,378,-5.0590,4.9776,4.4548,7.0972,135.4651,9.5339,7.2494,HsTYR,global,structure,global,0
+Conserved_Asn,TIP,True,ASN,378,-4.6361,5.2360,4.3605,6.9935,131.5225,9.3487,7.1982,HsTYR,global,structure,global,0
+Carboxylate_anchor,CA,False,ARG,374,-10.1851,6.3242,7.1086,11.9888,148.1626,15.2196,12.5205,HsTYR,global,structure,global,0
+Carboxylate_anchor,SC,False,ARG,374,-6.5867,6.4464,8.8324,9.2163,135.6172,13.7859,11.6932,HsTYR,global,structure,global,0
+Carboxylate_anchor,TIP,True,ARG,374,-5.3286,7.1019,10.1054,8.8787,126.8811,14.3137,12.5773,HsTYR,global,structure,global,0
+Gatekeeper,CA,False,THR,391,1.8442,-1.9427,6.6800,2.6787,313.5092,7.0573,7.5089,HsTYR,global,structure,global,0
+Gatekeeper,SC,True,THR,391,2.0891,-0.5033,7.8351,2.1489,346.4553,8.0092,8.4039,HsTYR,global,structure,global,0
+Gatekeeper,TIP,False,THR,391,2.0891,-0.5033,7.8351,2.1489,346.4553,8.0092,8.4039,HsTYR,global,structure,global,0
+A/S_adj,CA,False,SER,394,0.0712,-6.3321,3.3047,6.3325,270.6441,7.1939,7.1983,HsTYR,global,structure,global,0
+A/S_adj,SC,True,SER,394,-0.0686,-4.4608,3.0553,4.4613,269.1186,5.5684,5.4572,HsTYR,global,structure,global,0
+A/S_adj,TIP,False,SER,394,0.4744,-3.9794,2.8826,4.0076,276.7980,4.9632,5.1915,HsTYR,global,structure,global,0
+L-Tyr OH,OH,True,LIG,-1,-0.1390,-1.2948,3.5254,1.3022,263.8732,4.1729,3.7629,HsTYR,global,structure,global,0
+L-Tyr ring,ring,True,LIG,-1,-1.8094,0.1764,5.0597,1.8180,174.4332,6.1816,4.6908,HsTYR,global,structure,global,0
+L-Tyr CA,CA,True,LIG,-1,-2.4376,3.1140,7.3712,3.9546,128.0541,9.1068,7.6965,HsTYR,global,structure,global,0
+Conserved_Glu,CA,False,GLU,360,-4.4283,7.4582,-0.0479,8.6738,120.6997,9.7499,8.1016,HsTYR,local1,structure,local,0
+Conserved_Glu,SC,False,GLU,360,-1.3172,7.8658,1.0283,7.9754,99.5066,8.6471,8.1052,HsTYR,local1,structure,local,0
+Conserved_Glu,TIP,True,GLU,360,-0.3893,7.8724,1.2459,7.8820,92.8313,8.4149,8.2381,HsTYR,local1,structure,local,0
+Conserved_Asn,CA,False,ASN,378,-6.0506,3.1947,4.2217,6.8422,152.1663,9.4921,6.8350,HsTYR,local1,structure,local,0
+Conserved_Asn,SC,False,ASN,378,-4.3833,5.1153,4.5539,6.7364,130.5934,9.3183,7.3873,HsTYR,local1,structure,local,0
+Conserved_Asn,TIP,True,ASN,378,-3.9881,5.3489,4.4097,6.6720,126.7081,9.1319,7.3422,HsTYR,local1,structure,local,0
+Carboxylate_anchor,CA,False,ARG,374,-9.1426,7.6332,7.6529,11.9102,140.1414,15.4558,13.1316,HsTYR,local1,structure,local,0
+Carboxylate_anchor,SC,False,ARG,374,-5.7999,7.2833,9.1696,9.3105,128.5315,14.0952,12.4027,HsTYR,local1,structure,local,0
+Carboxylate_anchor,TIP,True,ARG,374,-4.4067,8.2727,9.9877,9.3732,118.0431,14.5452,13.2525,HsTYR,local1,structure,local,0
+Gatekeeper,CA,False,THR,391,1.7289,-1.5645,6.3654,2.3317,317.8568,6.7098,7.2590,HsTYR,local1,structure,local,0
+Gatekeeper,SC,True,THR,391,1.9053,0.3507,6.6687,1.9373,10.4280,6.8886,7.4952,HsTYR,local1,structure,local,0
+Gatekeeper,TIP,False,THR,391,1.9053,0.3507,6.6687,1.9373,10.4280,6.8886,7.4952,HsTYR,local1,structure,local,0
+A/S_adj,CA,False,SER,394,-0.1845,-6.4769,3.5348,6.4795,268.3682,7.5597,7.3212,HsTYR,local1,structure,local,0
+A/S_adj,SC,True,SER,394,-0.6157,-4.6757,3.3412,4.7160,262.4985,6.1653,5.6330,HsTYR,local1,structure,local,0
+A/S_adj,TIP,False,SER,394,-0.2274,-4.1286,3.1412,4.1348,266.8479,5.5126,5.1853,HsTYR,local1,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,-0.2621,-1.4204,3.5403,1.4444,259.5470,4.3817,3.9097,HsTYR,local1,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.8106,0.1457,5.0473,1.8165,175.3995,6.2903,4.9218,HsTYR,local1,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-2.1957,2.9418,7.7444,3.6708,126.7368,9.3533,8.2360,HsTYR,local1,structure,local,0
+Conserved_Glu,CA,False,GLU,360,-4.1787,7.3453,0.2601,8.4507,119.6353,9.6973,7.8964,HsTYR,docking,structure,docking,0
+Conserved_Glu,SC,False,GLU,360,-0.9191,7.6381,1.1967,7.6932,96.8611,8.3994,7.8398,HsTYR,docking,structure,docking,0
+Conserved_Glu,TIP,True,GLU,360,-0.0049,7.7216,1.4018,7.7216,90.0360,8.2461,8.0800,HsTYR,docking,structure,docking,0
+Conserved_Asn,CA,False,ASN,378,-6.1762,3.0245,4.2095,6.8770,153.9091,9.6004,6.6563,HsTYR,docking,structure,docking,0
+Conserved_Asn,SC,False,ASN,378,-4.3697,4.7485,4.7983,6.4531,132.6210,9.2432,7.0597,HsTYR,docking,structure,docking,0
+Conserved_Asn,TIP,True,ASN,378,-3.9251,4.9234,4.7089,6.2965,128.5625,8.9996,6.9713,HsTYR,docking,structure,docking,0
+Carboxylate_anchor,CA,False,ARG,374,-8.9922,6.9544,7.7158,11.3676,142.2823,15.0706,12.5060,HsTYR,docking,structure,docking,0
+Carboxylate_anchor,SC,False,ARG,374,-5.6183,6.5541,9.5610,8.6325,130.6039,13.8083,11.9528,HsTYR,docking,structure,docking,0
+Carboxylate_anchor,TIP,True,ARG,374,-4.2758,7.3287,10.5741,8.4848,120.2608,14.2620,12.8226,HsTYR,docking,structure,docking,0
+Gatekeeper,CA,False,THR,391,2.3552,-2.2514,6.3244,3.2582,316.2899,6.5104,7.3972,HsTYR,docking,structure,docking,0
+Gatekeeper,SC,True,THR,391,2.7734,-0.3280,6.5739,2.7927,353.2541,6.4724,7.5353,HsTYR,docking,structure,docking,0
+Gatekeeper,TIP,False,THR,391,2.7734,-0.3280,6.5739,2.7927,353.2541,6.4724,7.5353,HsTYR,docking,structure,docking,0
+A/S_adj,CA,False,SER,394,0.0451,-6.3882,3.3148,6.3884,270.4049,7.1886,7.0737,HsTYR,docking,structure,docking,0
+A/S_adj,SC,True,SER,394,-0.0317,-4.5274,2.9123,4.5276,269.5992,5.4804,5.2774,HsTYR,docking,structure,docking,0
+A/S_adj,TIP,False,SER,394,0.3695,-4.1285,2.4936,4.1450,275.1149,4.8186,4.9101,HsTYR,docking,structure,docking,0
+Conserved_Glu,CA,False,GLU,254,-4.4196,7.7240,0.9189,8.8990,119.7776,9.8573,8.1408,VsTYR,global,structure,global,0
+Conserved_Glu,SC,False,GLU,254,-1.2506,7.3812,1.5085,7.4864,99.6162,8.0472,7.4949,VsTYR,global,structure,global,0
+Conserved_Glu,TIP,True,GLU,254,-0.3538,7.2800,1.7113,7.2886,92.7822,7.7114,7.5634,VsTYR,global,structure,global,0
+Conserved_Asn,CA,False,ASN,259,-5.4968,3.0034,4.4230,6.2639,151.3481,8.9761,6.5954,VsTYR,global,structure,global,0
+Conserved_Asn,SC,False,ASN,259,-3.8735,4.8691,5.0330,6.2219,128.5031,8.9510,7.3754,VsTYR,global,structure,global,0
+Conserved_Asn,TIP,True,ASN,259,-3.4361,5.0820,4.9681,6.1346,124.0635,8.7674,7.3595,VsTYR,global,structure,global,0
+Carboxylate_anchor,CA,False,ASN,263,-7.4158,-2.4962,7.6670,7.8246,198.6038,12.2211,10.0111,VsTYR,global,structure,global,0
+Carboxylate_anchor,SC,False,ASN,263,-6.2931,-0.6326,9.1153,6.3249,185.7401,12.1880,10.3681,VsTYR,global,structure,global,0
+Carboxylate_anchor,TIP,True,ASN,263,-5.8779,-0.4117,9.2737,5.8923,184.0067,12.0312,10.3259,VsTYR,global,structure,global,0
+Gatekeeper,CA,False,LEU,272,3.2662,-4.3053,5.0760,5.4040,307.1853,6.9168,8.5266,VsTYR,global,structure,global,0
+Gatekeeper,SC,True,LEU,272,4.3834,-2.0626,5.6148,4.8444,334.8011,6.6214,8.7448,VsTYR,global,structure,global,0
+Gatekeeper,TIP,False,LEU,272,4.3593,-1.5818,5.6549,4.6374,340.0561,6.5085,8.6482,VsTYR,global,structure,global,0
+A/S_adj,CA,False,SER,274,-0.0636,-7.1122,2.2837,7.1125,269.4879,7.7497,7.8191,VsTYR,global,structure,global,0
+A/S_adj,SC,True,SER,274,-0.4929,-5.1896,2.3568,5.2130,264.5740,6.1823,6.0141,VsTYR,global,structure,global,0
+A/S_adj,TIP,False,SER,274,-0.1397,-4.6047,2.2672,4.6068,268.2626,5.5288,5.5598,VsTYR,global,structure,global,0
+L-Tyr OH,OH,True,LIG,-1,0.8531,-0.2407,2.6787,0.8864,344.2453,2.8797,3.9149,VsTYR,global,structure,global,0
+L-Tyr ring,ring,True,LIG,-1,-0.9898,0.1774,4.7526,1.0056,169.8359,5.5127,5.0096,VsTYR,global,structure,global,0
+L-Tyr CA,CA,True,LIG,-1,-2.3437,0.9490,8.1557,2.5285,157.9567,9.1978,8.4100,VsTYR,global,structure,global,0
+Conserved_Glu,CA,False,GLU,254,-4.9296,7.2540,0.4067,8.7705,124.1990,9.9182,7.8618,VsTYR,local1,structure,local,0
+Conserved_Glu,SC,False,GLU,254,-1.6619,7.4478,1.1379,7.6309,102.5786,8.2579,7.4659,VsTYR,local1,structure,local,0
+Conserved_Glu,TIP,True,GLU,254,-0.7362,7.5071,1.3074,7.5431,95.6007,7.9821,7.6209,VsTYR,local1,structure,local,0
+Conserved_Asn,CA,False,ASN,259,-5.9761,2.5989,4.6050,6.5168,156.4970,9.3701,6.7234,VsTYR,local1,structure,local,0
+Conserved_Asn,SC,False,ASN,259,-4.5609,4.7034,5.0278,6.5516,134.1187,9.3068,7.3780,VsTYR,local1,structure,local,0
+Conserved_Asn,TIP,True,ASN,259,-4.1593,4.9614,4.8945,6.4742,129.9743,9.0991,7.3138,VsTYR,local1,structure,local,0
+Carboxylate_anchor,CA,False,ASN,263,-6.6280,-2.1503,8.4018,6.9681,197.9743,12.0325,9.9450,VsTYR,local1,structure,local,0
+Carboxylate_anchor,SC,False,ASN,263,-5.4106,0.2253,8.7269,5.4153,177.6157,11.2324,9.4453,VsTYR,local1,structure,local,0
+Carboxylate_anchor,TIP,True,ASN,263,-5.0336,0.5486,8.6150,5.0634,173.7805,10.9145,9.2128,VsTYR,local1,structure,local,0
+Gatekeeper,CA,False,LEU,272,4.1132,-3.6271,5.2150,5.4840,318.5937,6.6152,8.6752,VsTYR,local1,structure,local,0
+Gatekeeper,SC,True,LEU,272,5.4712,-1.3741,5.2954,5.6411,345.9014,6.4010,9.0742,VsTYR,local1,structure,local,0
+Gatekeeper,TIP,False,LEU,272,5.5287,-0.9184,5.1543,5.6044,350.5680,6.2350,8.9778,VsTYR,local1,structure,local,0
+A/S_adj,CA,False,SER,274,0.6079,-7.1504,2.9056,7.1762,274.8595,7.8024,8.1297,VsTYR,local1,structure,local,0
+A/S_adj,SC,True,SER,274,0.1944,-5.3359,2.5798,5.3395,272.0861,6.1318,6.2945,VsTYR,local1,structure,local,0
+A/S_adj,TIP,False,SER,274,0.5624,-4.8180,2.2696,4.8507,276.6579,5.4581,5.8630,VsTYR,local1,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,0.3075,-1.9413,2.6984,1.9655,278.9996,3.5721,3.9417,VsTYR,local1,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-0.8928,-0.1135,4.3469,0.9000,187.2449,5.0038,4.4231,VsTYR,local1,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-1.4703,2.0281,7.4798,2.5050,125.9416,8.2664,7.7240,VsTYR,local1,structure,local,0
+Conserved_Glu,CA,False,GLU,254,-4.4330,7.5282,0.3633,8.7364,120.4919,9.7502,7.8834,VsTYR,local2,structure,local,0
+Conserved_Glu,SC,False,GLU,254,-1.2161,7.4548,1.0930,7.5534,99.2652,8.1211,7.4572,VsTYR,local2,structure,local,0
+Conserved_Glu,TIP,True,GLU,254,-0.3141,7.4151,1.3348,7.4217,92.4259,7.8440,7.5832,VsTYR,local2,structure,local,0
+Conserved_Asn,CA,False,ASN,259,-5.7968,3.3031,4.2463,6.6718,150.3251,9.3758,6.6687,VsTYR,local2,structure,local,0
+Conserved_Asn,SC,False,ASN,259,-3.8216,4.8599,4.8769,6.1825,128.1802,8.9843,7.1254,VsTYR,local2,structure,local,0
+Conserved_Asn,TIP,True,ASN,259,-3.3596,4.9971,4.8100,6.0215,123.9130,8.7437,7.0563,VsTYR,local2,structure,local,0
+Carboxylate_anchor,CA,False,ASN,263,-7.2805,-1.7413,7.8040,7.4858,193.4508,12.2204,9.7378,VsTYR,local2,structure,local,0
+Carboxylate_anchor,SC,False,ASN,263,-7.3645,-0.4609,10.0015,7.3789,183.5808,13.7184,11.4862,VsTYR,local2,structure,local,0
+Carboxylate_anchor,TIP,True,ASN,263,-7.3943,-0.4945,10.4654,7.4108,183.8263,14.0886,11.9092,VsTYR,local2,structure,local,0
+Gatekeeper,CA,False,LEU,272,3.4891,-3.7329,5.1454,5.1097,313.0669,6.7872,8.3412,VsTYR,local2,structure,local,0
+Gatekeeper,SC,True,LEU,272,4.9464,-1.5709,5.4447,5.1898,342.3807,6.7118,8.8537,VsTYR,local2,structure,local,0
+Gatekeeper,TIP,False,LEU,272,4.9995,-1.0842,5.3766,5.1157,347.7644,6.5814,8.7732,VsTYR,local2,structure,local,0
+A/S_adj,CA,False,SER,274,-0.1029,-6.7893,2.5302,6.7901,269.1321,7.5752,7.5510,VsTYR,local2,structure,local,0
+A/S_adj,SC,True,SER,274,-0.0882,-4.9267,2.2882,4.9275,268.9749,5.8459,5.8023,VsTYR,local2,structure,local,0
+A/S_adj,TIP,False,SER,274,0.4393,-4.4717,2.1808,4.4932,275.6102,5.2625,5.5582,VsTYR,local2,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,0.8838,-0.5882,2.8806,1.0616,326.3564,3.2943,4.0245,VsTYR,local2,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.1754,0.1679,4.5500,1.1874,171.8686,5.6151,4.6264,VsTYR,local2,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-2.6806,1.5784,7.7443,3.1108,149.5098,9.2647,7.9637,VsTYR,local2,structure,local,0
+Conserved_Glu,CA,False,GLU,254,-4.4584,7.6012,0.5204,8.8122,120.3934,9.8790,7.8750,VsTYR,docking,structure,docking,0
+Conserved_Glu,SC,False,GLU,254,-1.1177,7.6021,1.0404,7.6838,98.3637,8.1178,7.3801,VsTYR,docking,structure,docking,0
+Conserved_Glu,TIP,True,GLU,254,-0.1837,7.5958,1.1574,7.5980,91.3854,7.8076,7.5019,VsTYR,docking,structure,docking,0
+Conserved_Asn,CA,False,ASN,259,-5.5252,3.1958,4.5342,6.3829,149.9547,9.3905,6.7354,VsTYR,docking,structure,docking,0
+Conserved_Asn,SC,False,ASN,259,-3.7370,5.0324,4.7144,6.2682,126.5969,8.9493,7.0639,VsTYR,docking,structure,docking,0
+Conserved_Asn,TIP,True,ASN,259,-3.3173,5.2153,4.5485,6.1809,122.4592,8.6947,6.9587,VsTYR,docking,structure,docking,0
+Carboxylate_anchor,CA,False,ASN,263,-6.4932,-1.6370,8.7374,6.6964,194.1500,12.4538,10.2868,VsTYR,docking,structure,docking,0
+Carboxylate_anchor,SC,False,ASN,263,-5.1621,0.4698,9.2147,5.1835,174.7997,11.7994,9.9598,VsTYR,docking,structure,docking,0
+Carboxylate_anchor,TIP,True,ASN,263,-4.7450,0.7108,9.1458,4.7980,171.4807,11.4998,9.7570,VsTYR,docking,structure,docking,0
+Gatekeeper,CA,False,LEU,272,4.2229,-3.6572,5.2055,5.5864,319.1062,6.9052,8.7475,VsTYR,docking,structure,docking,0
+Gatekeeper,SC,True,LEU,272,5.6707,-1.5010,5.7126,5.8659,345.1741,7.0320,9.4006,VsTYR,docking,structure,docking,0
+Gatekeeper,TIP,False,LEU,272,5.7017,-1.0176,5.8020,5.7918,349.8806,7.0196,9.3987,VsTYR,docking,structure,docking,0
+A/S_adj,CA,False,SER,274,0.3638,-6.5439,2.9486,6.5540,273.1817,7.6237,7.7233,VsTYR,docking,structure,docking,0
+A/S_adj,SC,True,SER,274,0.1718,-4.6560,2.6281,4.6591,272.1126,5.9125,5.8994,VsTYR,docking,structure,docking,0
+A/S_adj,TIP,False,SER,274,0.5730,-4.1928,2.2790,4.2317,277.7815,5.2431,5.4939,VsTYR,docking,structure,docking,0
+Conserved_Glu,CA,False,GLU,235,-4.5269,6.8935,0.0221,8.2470,123.2925,9.2101,7.4521,JrTYR,global,structure,global,0
+Conserved_Glu,SC,False,GLU,235,-1.2859,6.9230,0.6735,7.0414,100.5227,7.4894,6.9318,JrTYR,global,structure,global,0
+Conserved_Glu,TIP,True,GLU,235,-0.3734,6.9003,0.8566,6.9104,93.0975,7.1777,7.0327,JrTYR,global,structure,global,0
+Conserved_Asn,CA,False,ASN,240,-5.9234,2.7555,4.3020,6.5330,155.0528,9.0643,6.7318,JrTYR,global,structure,global,0
+Conserved_Asn,SC,False,ASN,240,-3.9834,4.4044,4.5674,5.9385,132.1269,8.3975,6.8107,JrTYR,global,structure,global,0
+Conserved_Asn,TIP,True,ASN,240,-3.5570,4.5687,4.3875,5.7900,127.9029,8.1108,6.6599,JrTYR,global,structure,global,0
+Carboxylate_anchor,CA,False,LEU,244,-7.4610,-1.8265,8.2021,7.6813,193.7557,12.3288,10.3216,JrTYR,global,structure,global,0
+Carboxylate_anchor,SC,False,LEU,244,-6.5718,0.2840,9.6334,6.5780,177.5254,12.5846,10.9205,JrTYR,global,structure,global,0
+Carboxylate_anchor,TIP,True,LEU,244,-6.2179,0.5530,9.8534,6.2424,174.9179,12.5350,10.9724,JrTYR,global,structure,global,0
+Gatekeeper,CA,False,PHE,260,2.9971,-2.3526,6.4482,3.8101,321.8697,6.9237,8.3421,JrTYR,global,structure,global,0
+Gatekeeper,SC,True,PHE,260,3.0393,1.1220,6.9529,3.2398,20.2622,7.0766,8.5015,JrTYR,global,structure,global,0
+Gatekeeper,TIP,False,PHE,260,2.8829,1.5039,6.9772,3.2516,27.5496,7.1387,8.4949,JrTYR,global,structure,global,0
+A/S_adj,CA,False,ALA,263,0.5763,-6.2286,3.8980,6.2552,275.2862,7.4168,7.7412,JrTYR,global,structure,global,0
+A/S_adj,SC,True,ALA,263,0.5579,-4.7122,3.7717,4.7451,276.7519,6.1120,6.4918,JrTYR,global,structure,global,0
+A/S_adj,TIP,False,ALA,263,0.5579,-4.7122,3.7717,4.7451,276.7519,6.1120,6.4918,JrTYR,global,structure,global,0
+L-Tyr OH,OH,True,LIG,-1,0.1983,-1.1703,3.3219,1.1869,279.6155,3.7358,4.0409,JrTYR,global,structure,global,0
+L-Tyr ring,ring,True,LIG,-1,-1.2048,0.1011,5.3026,1.2091,175.2021,5.9300,5.4050,JrTYR,global,structure,global,0
+L-Tyr CA,CA,True,LIG,-1,-1.9359,2.7279,7.9642,3.3450,125.3610,9.0442,8.4950,JrTYR,global,structure,global,0
+Conserved_Glu,CA,False,GLU,235,-4.4820,6.9153,-0.0583,8.2408,122.9485,9.1509,7.3901,JrTYR,local1,structure,local,0
+Conserved_Glu,SC,False,GLU,235,-1.3430,7.4068,1.1012,7.5276,100.2768,7.9502,7.4431,JrTYR,local1,structure,local,0
+Conserved_Glu,TIP,True,GLU,235,-0.4774,7.5986,1.4568,7.6136,93.5951,7.9059,7.7845,JrTYR,local1,structure,local,0
+Conserved_Asn,CA,False,ASN,240,-6.1052,2.9927,4.0530,6.7992,153.8866,9.1386,6.7667,JrTYR,local1,structure,local,0
+Conserved_Asn,SC,False,ASN,240,-4.3053,4.6888,4.4277,6.3656,132.5586,8.6468,7.0108,JrTYR,local1,structure,local,0
+Conserved_Asn,TIP,True,ASN,240,-3.8747,4.8633,4.3040,6.2182,128.5454,8.3926,6.8991,JrTYR,local1,structure,local,0
+Carboxylate_anchor,CA,False,LEU,244,-7.9318,-1.6132,7.8714,8.0942,191.4960,12.4185,10.3136,JrTYR,local1,structure,local,0
+Carboxylate_anchor,SC,False,LEU,244,-6.9750,0.4261,9.1314,6.9880,176.5042,12.4578,10.6955,JrTYR,local1,structure,local,0
+Carboxylate_anchor,TIP,True,LEU,244,-6.5890,0.6866,9.2824,6.6247,174.0507,12.3168,10.6551,JrTYR,local1,structure,local,0
+Gatekeeper,CA,False,PHE,260,2.6454,-3.0836,5.8436,4.0629,310.6262,6.6314,8.0419,JrTYR,local1,structure,local,0
+Gatekeeper,SC,True,PHE,260,5.0945,-1.3940,7.5079,5.2818,344.6974,8.3053,10.3324,JrTYR,local1,structure,local,0
+Gatekeeper,TIP,False,PHE,260,5.3666,-1.3252,7.8104,5.5278,346.1288,8.6781,10.7260,JrTYR,local1,structure,local,0
+A/S_adj,CA,False,ALA,263,-0.1860,-6.5820,3.4927,6.5846,268.3817,7.6953,7.7386,JrTYR,local1,structure,local,0
+A/S_adj,SC,True,ALA,263,-0.4695,-5.0764,3.7301,5.0981,264.7155,6.6442,6.5666,JrTYR,local1,structure,local,0
+A/S_adj,TIP,False,ALA,263,-0.4695,-5.0764,3.7301,5.0981,264.7155,6.6442,6.5666,JrTYR,local1,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,0.1572,-0.8080,3.5562,0.8231,281.0076,3.8446,4.2338,JrTYR,local1,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.6710,0.3234,5.3409,1.7020,169.0463,6.1776,5.5008,JrTYR,local1,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-2.9519,3.0601,7.6321,4.2519,133.9693,9.2826,8.4346,JrTYR,local1,structure,local,0
+Conserved_Glu,CA,False,GLU,235,-4.2729,7.0000,0.2235,8.2011,121.4003,9.1427,7.4379,JrTYR,local2,structure,local,0
+Conserved_Glu,SC,False,GLU,235,-1.0256,7.1886,1.3565,7.2614,98.1198,7.7437,7.3038,JrTYR,local2,structure,local,0
+Conserved_Glu,TIP,True,GLU,235,-0.1082,7.2082,1.6506,7.2090,90.8600,7.5514,7.5174,JrTYR,local2,structure,local,0
+Conserved_Asn,CA,False,ASN,240,-5.9452,3.0336,4.3874,6.6745,152.9665,9.2410,6.9309,JrTYR,local2,structure,local,0
+Conserved_Asn,SC,False,ASN,240,-3.9173,4.5399,4.6398,5.9963,130.7902,8.4990,6.9389,JrTYR,local2,structure,local,0
+Conserved_Asn,TIP,True,ASN,240,-3.4634,4.6681,4.4869,5.8126,126.5724,8.1962,6.7816,JrTYR,local2,structure,local,0
+Carboxylate_anchor,CA,False,LEU,244,-7.5651,-1.6754,7.6959,7.7484,192.4877,12.0901,9.9881,JrTYR,local2,structure,local,0
+Carboxylate_anchor,SC,False,LEU,244,-7.3764,-0.2994,10.0327,7.3825,182.3241,13.4551,11.6927,JrTYR,local2,structure,local,0
+Carboxylate_anchor,TIP,True,LEU,244,-7.3240,-0.2520,10.5301,7.3283,181.9705,13.7925,12.1016,JrTYR,local2,structure,local,0
+Gatekeeper,CA,False,PHE,260,3.0718,-3.0101,5.9287,4.3008,315.5806,6.7624,8.2564,JrTYR,local2,structure,local,0
+Gatekeeper,SC,True,PHE,260,3.5611,0.4606,6.2139,3.5907,7.3703,6.4551,8.2004,JrTYR,local2,structure,local,0
+Gatekeeper,TIP,False,PHE,260,3.4506,0.8597,6.2214,3.5561,13.9892,6.4690,8.1663,JrTYR,local2,structure,local,0
+A/S_adj,CA,False,ALA,263,0.0737,-6.3825,3.2130,6.3830,270.6615,7.3248,7.4566,JrTYR,local2,structure,local,0
+A/S_adj,SC,True,ALA,263,0.2521,-4.8937,2.7934,4.9002,272.9485,5.8094,6.0519,JrTYR,local2,structure,local,0
+A/S_adj,TIP,False,ALA,263,0.2521,-4.8937,2.7934,4.9002,272.9485,5.8094,6.0519,JrTYR,local2,structure,local,0
+L-Tyr OH,OH,True,LIG,-1,0.3525,-1.2839,3.5030,1.3314,285.3510,3.9088,4.3492,JrTYR,local2,structure,local,0
+L-Tyr ring,ring,True,LIG,-1,-1.4691,-0.1452,5.2036,1.4762,185.6459,6.0175,5.3446,JrTYR,local2,structure,local,0
+L-Tyr CA,CA,True,LIG,-1,-2.9409,2.1835,7.8492,3.6629,143.4071,9.2917,8.3669,JrTYR,local2,structure,local,0
+Conserved_Glu,CA,False,GLU,235,-3.9322,7.1537,0.3249,8.1631,118.7964,9.8107,8.0484,JrTYR,docking,structure,docking,0
+Conserved_Glu,SC,False,GLU,235,-0.5919,7.4029,0.8541,7.4265,94.5713,8.5255,8.0183,JrTYR,docking,structure,docking,0
+Conserved_Glu,TIP,True,GLU,235,0.3367,7.4714,0.9684,7.4790,87.4197,8.3735,8.2562,JrTYR,docking,structure,docking,0
+Conserved_Asn,CA,False,ASN,240,-5.5891,2.7436,4.6012,6.2262,153.8540,9.6839,6.9914,JrTYR,docking,structure,docking,0
+Conserved_Asn,SC,False,ASN,240,-3.7018,4.4329,5.0142,5.7753,129.8647,9.3367,7.4093,JrTYR,docking,structure,docking,0
+Conserved_Asn,TIP,True,ASN,240,-3.2677,4.6057,4.8768,5.6472,125.3553,9.0952,7.3176,JrTYR,docking,structure,docking,0
+Carboxylate_anchor,CA,False,LEU,244,-7.3976,-2.4980,8.1122,7.8079,198.6588,12.8043,10.2588,JrTYR,docking,structure,docking,0
+Carboxylate_anchor,SC,False,LEU,244,-6.3991,-0.4222,9.4356,6.4131,183.7746,12.9190,10.6720,JrTYR,docking,structure,docking,0
+Carboxylate_anchor,TIP,True,LEU,244,-6.0142,-0.1568,9.5927,6.0163,181.4939,12.8008,10.6488,JrTYR,docking,structure,docking,0
+Gatekeeper,CA,False,PHE,260,3.0177,-2.8566,5.4270,4.1553,316.5707,6.2957,7.4805,JrTYR,docking,structure,docking,0
+Gatekeeper,SC,True,PHE,260,3.1097,0.6938,5.8678,3.1861,12.5766,6.4719,7.6010,JrTYR,docking,structure,docking,0
+Gatekeeper,TIP,False,PHE,260,2.9669,1.0856,5.9018,3.1593,20.0979,6.5728,7.6144,JrTYR,docking,structure,docking,0
+A/S_adj,CA,False,ALA,263,0.1302,-6.8975,3.0211,6.8987,271.0817,7.3756,7.2722,JrTYR,docking,structure,docking,0
+A/S_adj,SC,True,ALA,263,-0.1220,-5.3891,2.9227,5.3905,268.7035,6.1725,5.8769,JrTYR,docking,structure,docking,0
+A/S_adj,TIP,False,ALA,263,-0.1220,-5.3891,2.9227,5.3905,268.7035,6.1725,5.8769,JrTYR,docking,structure,docking,0
+L-Tyr OH,OH,True,LIG,-1,0.2752,-2.0731,2.9319,2.0913,277.5619,4.0023,3.8079,JrTYR,docking,structure,docking,0
+L-Tyr ring,ring,True,LIG,-1,-1.3262,-0.6971,4.7221,1.4983,207.7296,6.0884,4.7779,JrTYR,docking,structure,docking,0
+L-Tyr CA,CA,True,LIG,-1,-2.0121,1.2319,7.9747,2.3592,148.5233,9.4481,8.2262,JrTYR,docking,structure,docking,0

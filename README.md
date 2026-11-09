@@ -31,6 +31,7 @@ comparable across enzymes.
 |---|---|
 | Landmarks | For CA, side-chain centroid (SC) and functional group (TIP): *x*, *y*, *h*, *r*, φ; d(TIP–CuA), d(TIP–CuB); side-chain orientation *dr* = *r*(TIP) − *r*(CA) and *dh* = *h*(TIP) − *h*(CA) |
 | Substrate (L-Tyr) | Position of OH, ring and CA; d(OH–CuA), d(OH–CuB), d(C*ortho*–O peroxide); ring tilt to *z*; CA→OH and C–OH angles to −*z*; d(ring–HisB2), d(carboxylate–anchor), d(ring–gatekeeper) |
+| π-stacking with HisB2 | angle between the L-Tyr and HisB2 ring planes, offset of the L-Tyr ring centre from the HisB2 normal, height above the HisB2 plane, stacking yes/no (d ≤ 5.5 Å, offset ≤ 2 Å, angle ≤ 30° or ≥ 60°) |
 | Cu2O2 core | d(Cu–Cu), d(O–O), CuA–O1–O2–CuB dihedral, Cu2O2 plane tilt, max d(Cu–NE2), core RMSD |
 
 ## Installation
@@ -107,11 +108,13 @@ A reference output for the example structures is in `examples/output_static/`.
 | `tables/state_summary.csv` | mean, SD, p10, median, p90 per state (circular mean/SD for φ) |
 | `tables/percentile_in_trajectory.csv` | percentile of each static structure within its trajectory |
 | `tables/residue_QC.csv` | residue used for each role in each state |
+| `tables/pistack_geometry.csv` | L-Tyr ring and HisB2 seen down the HisB2 normal (input of F4) |
 | `figures/F1_landmark_summary.png` | *r*, *h* and φ of every landmark across the family |
 | `figures/F1_per_landmark/` | one top view (down the pseudo-C2 axis) per pocket landmark shared by ≥ 2 enzymes |
 | `figures/F2_unrolled_cylinder.png` | φ vs *h* per landmark, colour = *r* |
 | `figures/*_GaMD*` | the same figures for trajectories (50/90 % density and subsampled frames) |
 | `figures/F3_GaMD_<enzyme>.png` | all landmarks of one enzyme along its trajectory |
+| `figures/F4_pistacking_HisB2.png` | L-Tyr ring over HisB2, one panel per enzyme (GaMD: % of frames stacked) |
 | `SUMMARY.md` | checks, residues used and key values per state |
 
 ## Citation

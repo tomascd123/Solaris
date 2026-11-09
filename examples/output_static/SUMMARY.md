@@ -52,37 +52,37 @@
 
 ## Key values per state
 
-| Enzyme | State | n | core RMSD | Cu–Cu | OH–CuA | OH–CuB | C ortho–O | ring tilt |
-|---|---|---|---|---|---|---|---|---|
-| ScTYR | global | 1 | 0.34 | 3.65 | 4.02 | 4.13 | 4.16 | 56.95 |
-| ScTYR | local1 | 1 | 0.46 | 3.55 | 4.37 | 3.96 | 4.35 | 56.65 |
-| ScTYR | local2 | 1 | 0.38 | 3.70 | 3.88 | 3.78 | 4.37 | 49.82 |
-| ScTYR | local3 | 1 | 0.39 | 3.52 | 4.09 | 3.95 | 4.37 | 50.43 |
-| ScTYR | docking | 1 | 0.45 | 3.47 | — | — | — | — |
-| VvTYR | global | 1 | 0.26 | 3.66 | 3.72 | 3.99 | 3.61 | 71.05 |
-| VvTYR | local1 | 1 | 0.35 | 3.64 | 4.22 | 3.72 | 3.66 | 73.29 |
-| VvTYR | local2 | 1 | 0.28 | 3.63 | 3.82 | 3.91 | 3.98 | 87.60 |
-| VvTYR | docking | 1 | 0.42 | 3.47 | — | — | — | — |
-| AbTYR | global | 1 | 0.25 | 3.67 | 4.00 | 4.10 | 3.94 | 65.65 |
-| AbTYR | local1 | 1 | 0.25 | 3.53 | 3.88 | 3.91 | 3.59 | 63.99 |
-| AbTYR | docking | 1 | 0.43 | 3.46 | — | — | — | — |
-| BmTYR | global | 1 | 0.23 | 3.21 | 4.09 | 4.12 | 3.44 | 63.42 |
-| BmTYR | local1 | 1 | 0.33 | 3.08 | 4.27 | 3.94 | 3.41 | 67.60 |
-| BmTYR | local2 | 1 | 0.28 | 3.05 | 4.18 | 4.17 | 3.19 | 71.10 |
-| BmTYR | docking | 1 | 0.45 | 3.47 | — | — | — | — |
-| HsTYR | global | 1 | 0.35 | 3.30 | 4.17 | 3.76 | 3.60 | 54.59 |
-| HsTYR | local1 | 1 | 0.37 | 3.40 | 4.38 | 3.91 | 3.69 | 51.44 |
-| HsTYR | docking | 1 | 0.31 | 3.58 | — | — | — | — |
-| VsTYR | global | 1 | 0.69 | 3.49 | 2.88 | 3.91 | 4.58 | 44.50 |
-| VsTYR | local1 | 1 | 0.28 | 3.66 | 3.57 | 3.94 | 3.22 | 51.27 |
-| VsTYR | local2 | 1 | 0.69 | 3.56 | 3.29 | 4.02 | 4.43 | 39.57 |
-| VsTYR | docking | 1 | 0.52 | 3.62 | — | — | — | — |
-| JrTYR | global | 1 | 0.29 | 3.25 | 3.74 | 4.04 | 3.44 | 62.27 |
-| JrTYR | local1 | 1 | 0.34 | 3.31 | 3.84 | 4.23 | 3.66 | 62.64 |
-| JrTYR | local2 | 1 | 0.26 | 3.27 | 3.91 | 4.35 | 3.39 | 54.29 |
-| JrTYR | docking | 1 | 0.41 | 3.53 | 4.00 | 3.81 | 3.47 | 62.78 |
+| Enzyme | State | n | core RMSD | Cu–Cu | OH–CuA | OH–CuB | C ortho–O | ring tilt | π-stack HisB2 |
+|---|---|---|---|---|---|---|---|---|---|
+| ScTYR | global | 1 | 0.34 | 3.65 | 4.02 | 4.13 | 4.16 | 56.95 | yes |
+| ScTYR | local1 | 1 | 0.46 | 3.55 | 4.37 | 3.96 | 4.35 | 56.65 | yes |
+| ScTYR | local2 | 1 | 0.38 | 3.70 | 3.88 | 3.78 | 4.37 | 49.82 | yes |
+| ScTYR | local3 | 1 | 0.39 | 3.52 | 4.09 | 3.95 | 4.37 | 50.43 | no |
+| ScTYR | docking | 1 | 0.45 | 3.47 | — | — | — | — | — |
+| VvTYR | global | 1 | 0.26 | 3.66 | 3.72 | 3.99 | 3.61 | 71.05 | yes |
+| VvTYR | local1 | 1 | 0.35 | 3.64 | 4.22 | 3.72 | 3.66 | 73.29 | yes |
+| VvTYR | local2 | 1 | 0.28 | 3.63 | 3.82 | 3.91 | 3.98 | 87.60 | yes |
+| VvTYR | docking | 1 | 0.42 | 3.47 | — | — | — | — | — |
+| AbTYR | global | 1 | 0.25 | 3.67 | 4.00 | 4.10 | 3.94 | 65.65 | yes |
+| AbTYR | local1 | 1 | 0.25 | 3.53 | 3.88 | 3.91 | 3.59 | 63.99 | yes |
+| AbTYR | docking | 1 | 0.43 | 3.46 | — | — | — | — | — |
+| BmTYR | global | 1 | 0.23 | 3.21 | 4.09 | 4.12 | 3.44 | 63.42 | yes |
+| BmTYR | local1 | 1 | 0.33 | 3.08 | 4.27 | 3.94 | 3.41 | 67.60 | yes |
+| BmTYR | local2 | 1 | 0.28 | 3.05 | 4.18 | 4.17 | 3.19 | 71.10 | no |
+| BmTYR | docking | 1 | 0.45 | 3.47 | — | — | — | — | — |
+| HsTYR | global | 1 | 0.35 | 3.30 | 4.17 | 3.76 | 3.60 | 54.59 | yes |
+| HsTYR | local1 | 1 | 0.37 | 3.40 | 4.38 | 3.91 | 3.69 | 51.44 | yes |
+| HsTYR | docking | 1 | 0.31 | 3.58 | — | — | — | — | — |
+| VsTYR | global | 1 | 0.69 | 3.49 | 2.88 | 3.91 | 4.58 | 44.50 | yes |
+| VsTYR | local1 | 1 | 0.28 | 3.66 | 3.57 | 3.94 | 3.22 | 51.27 | yes |
+| VsTYR | local2 | 1 | 0.69 | 3.56 | 3.29 | 4.02 | 4.43 | 39.57 | yes |
+| VsTYR | docking | 1 | 0.52 | 3.62 | — | — | — | — | — |
+| JrTYR | global | 1 | 0.29 | 3.25 | 3.74 | 4.04 | 3.44 | 62.27 | yes |
+| JrTYR | local1 | 1 | 0.34 | 3.31 | 3.84 | 4.23 | 3.66 | 62.64 | yes |
+| JrTYR | local2 | 1 | 0.26 | 3.27 | 3.91 | 4.35 | 3.39 | 54.29 | yes |
+| JrTYR | docking | 1 | 0.41 | 3.53 | 4.00 | 3.81 | 3.47 | 62.78 | yes |
 
-Trajectories: median [p10–p90]. Distances in Å, angles in degrees.
+Trajectories: median [p10–p90]; π-stack: % of frames. Distances in Å, angles in degrees.
 
 ## Landmarks (plotted point): h / r / φ
 

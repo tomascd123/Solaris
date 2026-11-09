@@ -91,7 +91,7 @@ RESNAME_ALIASES = {"HID": "HIS", "HIE": "HIS", "HIP": "HIS", "HSD": "HIS", "HSE"
 KEY_DESCRIPTORS = ["Cu.d_CuA_CuB", "Cu.max_d_Cu_NE2", "Px.d_O_O", "Px.Cu2O2_tilt",
                    "L.d_OH_CuA", "L.d_OH_CuB", "L.d_Cortho_Operox", "L.ring_tilt",
                    "L.angle_CA_OH_vs_minus_z", "L.d_ring_HisB2", "L.d_carboxylate_anchor",
-                   "L.d_ring_gatekeeper", "L.OH.h", "L.ring.h"]
+                   "L.d_ring_gatekeeper", "L.OH.h", "L.ring.h", "L.HisB2_angle", "L.HisB2_offset"]
 META_COLS = ["system", "state", "kind", "category", "frame"]
 QC_COLS = ["system", "state", "role", "resid_ref", "resid_used", "resname", "offset", "offset_from"]
 
@@ -117,6 +117,12 @@ RES3 = {"ALA": "Ala", "ARG": "Arg", "ASN": "Asn", "ASP": "Asp", "CYS": "Cys", "G
 R_COLOR = (0.0, 12.0)
 SITE_HALF = 5.5  # half-width (Å) of the top view needed to show the Cu and the six His rings
 N_POINTS = 400
+# pi-stacking of the L-Tyr ring on HisB2 (same criteria as PLIP): centroid distance, offset of the L-Tyr ring centre
+# from the HisB2 normal, and angle between the ring planes (parallel or T-shaped)
+STACK_D, STACK_OFFSET, STACK_PARALLEL, STACK_T = 5.5, 2.0, 30.0, 60.0
+HIS_POLY = ["CG", "ND1", "CE1", "NE2", "CD2"]          # ring atoms in drawing order
+TYR_POLY = ["CG", "CD1", "CE1", "CZ", "CE2", "CD2"]
+OH_COLOR = "#d62728"
 TAIL_PCT = 2.5  # a static structure is "in the tail" of its trajectory below this percentile or above 100 - it
 
 
@@ -510,6 +516,7 @@ def resolve_site(system, state, topo, sys_cfg, cfg, entry, landmark_defs):
     site.ligands = res.ligands(merged("ligand", LIGAND_DEFAULT, cfg, sys_cfg, entry))
     site.peroxide = res.peroxide(merged("peroxide", PEROXIDE_DEFAULT, cfg, sys_cfg, entry))
     site.warnings = res.warnings
+    site.hisB2_resid = next((used for role, _, used, _ in res.qc if role == "HisB2"), None)
     site.qc = [(system, state, role, ref, used, rn, res.offset, res.offset_from) for role, ref, used, rn in res.qc]
     return site
 
@@ -548,7 +555,8 @@ class FrameAnalyzer:
 
         self.i_cuA, self.i_cuB = pos[cuA], pos[cuB]
         self.i_ne2 = {r: pos[s.his[r]["NE2"]] for r in HIS_ROLES}
-        self.i_hisB2_ring = loc([s.his["HisB2"][a] for a in HIS_RING if a in s.his["HisB2"]])
+        self.hisB2_names = [a for a in HIS_POLY if a in s.his["HisB2"]]
+        self.i_hisB2_ring = loc([s.his["HisB2"][a] for a in self.hisB2_names])
         rows, trows = [self.i_cuA, self.i_cuB], [0, 1]
         for r in HIS_ROLES:
             for a in HIS_RING:
@@ -564,7 +572,7 @@ class FrameAnalyzer:
         self.ready = True
 
     def run(self, source, start=0, stop=None, stride=1):
-        rows, long_rows = [], []
+        rows, long_rows, geo = [], [], []
         for fi, X, box in source.frames(start, stop, stride):
             if not self.ready:
                 self._prepare(X)
@@ -572,11 +580,27 @@ class FrameAnalyzer:
             if usable_box(box):
                 ref = P[self.i_cuA].copy()
                 P = ref + minimum_image(P - ref, box)
-            row, lr = self.frame(P)
+            row, lr, gm = self.frame(P)
             tag = {**self.meta, "frame": int(fi)}
             rows.append({**row, **tag})
             long_rows += [{**d, **tag} for d in lr]
-        return rows, long_rows
+            if gm:
+                geo.append((int(fi), gm))
+        return rows, long_rows, self._geo_rows(geo)
+
+    def _geo_rows(self, geo):
+        """L-Tyr ring centre over HisB2 for every frame, plus the whole geometry of one representative frame
+        (the frame whose ring centre is closest to the median; the only frame for a structure)."""
+        if not geo:
+            return []
+        tag = {**self.meta, "his_resid": self.site.hisB2_resid}
+        centres = np.array([g["L:centre"] for _, g in geo])
+        rep = int(np.argmin(np.linalg.norm(centres - np.median(centres, 0), axis=1)))
+        out = []
+        for k, (fi, g) in enumerate(geo):
+            items = g.items() if k == rep else [("L:centre", g["L:centre"])]
+            out += [{**tag, "frame": fi, "atom": a, "u": uv[0], "v": uv[1]} for a, uv in items]
+        return out
 
     def frame(self, P):
         R, t = kabsch(P[self.i_core], self.t_core)
@@ -586,11 +610,12 @@ class FrameAnalyzer:
         out.update(self._core(L, cuA, cuB))
         lm_out, long_rows, centroids = self._landmarks(L, cuA, cuB)
         out.update(lm_out)
+        geo = None
         if self.i_lig is not None:
-            lig_out, lig_rows = self._ligand(L, cuA, cuB, centroids)
+            lig_out, lig_rows, geo = self._ligand(L, cuA, cuB, centroids)
             out.update(lig_out)
             long_rows += lig_rows
-        return out, long_rows
+        return out, long_rows, geo
 
     def _core(self, L, cuA, cuB):
         out = {"Cu.d_CuA_CuB": float(np.linalg.norm(cuA - cuB)),
@@ -649,11 +674,36 @@ class FrameAnalyzer:
         if self.i_px is not None:
             out["L.d_Cortho_Operox"] = float(min(np.linalg.norm(g[c] - L[k]) for c in ("CE1", "CE2") for k in self.i_px))
         out["L.d_ring_HisB2"] = float(np.linalg.norm(rc - L[self.i_hisB2_ring].mean(0)))
+        stack, geo = self._stacking(L, g, rc, nrm)
+        out.update(stack)
         if self.anchor and "C" in g:
             out["L.d_carboxylate_anchor"] = float(np.linalg.norm(g["C"] - centroids[self.anchor]["TIP"]))
         if self.gatekeeper:
             out["L.d_ring_gatekeeper"] = float(np.linalg.norm(rc - centroids[self.gatekeeper]["SC"]))
-        return out, rows
+        return out, rows, geo
+
+    def _stacking(self, L, g, rc, nrm):
+        """pi-stacking of the L-Tyr ring on HisB2, and the geometry seen down the HisB2 normal
+        (origin at the HisB2 ring centre, u towards its NE2, the N bound to CuB)."""
+        H = L[self.i_hisB2_ring]
+        ch, nh = H.mean(0), plane_normal(H)
+        v = rc - ch
+        if np.dot(v, nh) < 0:
+            nh = -nh
+        h = float(np.dot(v, nh))
+        offset = float(np.linalg.norm(v - h * nh))
+        angle = axis_tilt(nrm, nh)
+        stack = (np.linalg.norm(v) <= STACK_D and offset <= STACK_OFFSET
+                 and (angle <= STACK_PARALLEL or angle >= STACK_T))
+        out = {"L.HisB2_angle": angle, "L.HisB2_offset": offset, "L.HisB2_h": h, "L.HisB2_stack": float(stack)}
+        ne = H[self.hisB2_names.index("NE2")] - ch
+        u = ne - np.dot(ne, nh) * nh
+        u /= np.linalg.norm(u)
+        w = np.cross(nh, u)
+        pts = {f"L:{a}": g[a] for a in TYR_POLY}
+        pts.update({"L:OH": g["OH"], "L:centre": rc, "CuB": L[self.i_cuB]})
+        pts.update({f"H:{a}": H[k] for k, a in enumerate(self.hisB2_names)})
+        return out, {k: (float(np.dot(p - ch, u)), float(np.dot(p - ch, w))) for k, p in pts.items()}
 
 
 # ============================================================================ statistics
@@ -705,7 +755,7 @@ def percentile_in_trajectory(df, desc_cols, key_cols=()):
         for st, gs in g[g["kind"] == "structure"].groupby("state", sort=False):
             for tst, gt in traj.groupby("state", sort=False):
                 for c in desc_cols:
-                    if is_angle(c) or c not in gs or gs[c].isna().all():
+                    if is_angle(c) or c.endswith("_stack") or c not in gs or gs[c].isna().all():
                         continue
                     ref = gt[c].dropna().to_numpy(float)
                     if len(ref) < 20:
@@ -1230,7 +1280,105 @@ def fig_traj_enzyme(system, long_df, landmark_order, path, dpi, systems, n_point
     plt.close(fig)
 
 
-def make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi):
+def fig_pistacking(geo, df, path, dpi, traj=False):
+    """L-Tyr ring on HisB2 seen down the HisB2 normal, one panel per enzyme. Static: global minimum filled, other
+    states as outlines. Trajectory: regions holding 50/90 % of the L-Tyr ring centres and a representative frame."""
+    if geo is None or geo.empty:
+        return
+    systems = list(dict.fromkeys(geo["system"]))
+    ncol = 4
+    nrow = math.ceil((len(systems) + 1) / ncol)
+    H = 3.4 * nrow
+    fig, axes = plt.subplots(nrow, ncol, figsize=(12.5, H), squeeze=False)
+    fig.subplots_adjust(left=0.01, right=0.99, top=1 - 0.95 / H, bottom=0.02, wspace=0.08, hspace=0.32)
+
+    def shape(gs, st):
+        g = gs[gs["state"] == st]
+        g = g[g["frame"] == g.loc[g["atom"] == "H:NE2", "frame"].iloc[0]]
+        return {a: np.array([u, v]) for a, u, v in zip(g["atom"], g["u"], g["v"])}
+
+    tyr = lambda gm: np.array([gm[f"L:{a}"] for a in TYR_POLY])
+    for ax, sy in zip(axes.flat, systems):
+        col = color_for(sy, systems)
+        gs, ds = geo[geo["system"] == sy], df[df["system"] == sy]
+        states = list(dict.fromkeys(gs["state"]))
+        cats = gs.drop_duplicates("state").set_index("state")["category"]
+        ref = next((st for st in states if cats[st] == "global"), states[0])
+        g0, m = shape(gs, ref), ds[ds["state"] == ref]
+        his = np.array([g0[f"H:{a}"] for a in HIS_POLY if f"H:{a}" in g0])
+        body = gs.loc[(gs["atom"] != "L:centre") & gs["state"].isin(states), ["u", "v"]].abs().to_numpy(float)
+        lim = max(4.0, float(np.nanmax(body)) + 0.5)
+        ax.add_patch(plt.Circle((0, 0), STACK_OFFSET, fill=False, ls=(0, (2, 2)), lw=0.7, ec="0.75", zorder=1))
+        ax.add_patch(Polygon(his, closed=True, fc=HIS_FC, ec="none", zorder=2))
+        if traj:
+            c = gs[(gs["state"] == ref) & (gs["atom"] == "L:centre")]
+            density_fill(ax, c["u"], c["v"], [[-lim, lim], [-lim, lim]], nb=80, color=col, zorder=2.5)
+            centre = np.array([c["u"].median(), c["v"].median()])
+        else:
+            for st in states:
+                if st != ref:
+                    ax.add_patch(Polygon(tyr(shape(gs, st)), closed=True, fill=False, ec=col, lw=0.8, alpha=0.45,
+                                         ls=":" if cats[st] == "docking" else "-", zorder=3))
+            centre = g0["L:centre"]
+        ring = tyr(g0)
+        ax.add_patch(Polygon(ring, closed=True, fc=col, ec="none", alpha=0.15 if traj else 0.30, zorder=4))
+        ax.add_patch(Polygon(ring, closed=True, fill=False, ec=col, lw=1.8, zorder=4.1))
+        cz, oh = g0["L:CZ"], g0["L:OH"]
+        ax.plot([cz[0], oh[0]], [cz[1], oh[1]], color=col, lw=1.8, zorder=4.1, solid_capstyle="round")
+        ax.scatter([oh[0]], [oh[1]], s=22, color=OH_COLOR, zorder=6)
+        ax.add_patch(Polygon(his, closed=True, fill=False, ec="0.3", lw=1.1, zorder=5))
+        ax.annotate("", xy=centre, xytext=(0, 0), zorder=7,
+                    arrowprops=dict(arrowstyle="-|>", color=INK, lw=1.1, shrinkA=0, shrinkB=0, mutation_scale=9))
+        ax.scatter([0], [0], s=12, color=INK, zorder=7)
+        cub = g0["CuB"]
+        ax.scatter([cub[0]], [cub[1]], s=40, color=CU_COLOR, edgecolors="white", linewidths=0.6, zorder=6)
+        ax.text(cub[0], cub[1] - 0.3, "CuB", fontsize=7, color=darker(CU_COLOR), ha="center", va="top")
+
+        med = lambda c: float(m[c].median())
+        resid = gs["his_resid"].dropna()
+        ax.set_title(f"{sy} · {res_label('HIS', resid.iloc[0]) if len(resid) else 'HisB2'}", fontsize=10,
+                     fontweight="bold", color=col, loc="left", pad=16)
+        ax.text(0, 1.015, f"d {med('L.d_ring_HisB2'):.1f} Å · θ {med('L.HisB2_angle'):.0f}° · "
+                          f"offset {med('L.HisB2_offset'):.1f} Å · h⊥ {med('L.HisB2_h'):.1f} Å",
+                transform=ax.transAxes, fontsize=7.5, color="0.35", va="bottom")
+        frac = float(m["L.HisB2_stack"].mean())
+        ok = frac >= 0.5
+        if traj:
+            status = f"π-stacking in {100 * frac:.0f} % of frames"
+        else:
+            status = ("π-stacking ✓" + (" (T-shaped)" if med("L.HisB2_angle") >= STACK_T else "")) if ok \
+                else "no π-stacking"
+        ax.text(0.98, 0.02, status, transform=ax.transAxes, fontsize=8, color="#1a7f37" if ok else "0.45",
+                ha="right", va="bottom", fontweight="bold")
+        ax.set_xlim(-lim, lim)
+        ax.set_ylim(-lim, lim)
+        ax.set_aspect("equal")
+        ax.axis("off")
+    a0, lim0 = axes.flat[0], axes.flat[0].get_xlim()[1]
+    a0.plot([-lim0 + 0.2, -lim0 + 1.2], [-lim0 + 0.25] * 2, color=INK, lw=1.4)
+    a0.text(-lim0 + 0.7, -lim0 + 0.35, "1 Å", fontsize=7, ha="center", va="bottom", color=INK)
+    for ax in axes.flat[len(systems):]:
+        ax.axis("off")
+    grey = "#7f7f7f"
+    if traj:
+        h = [Patch(fc=lighten(grey, 0.75), ec=grey, lw=1.8, label="L-Tyr, representative frame"),
+             Patch(fc=lighten(grey, 0.35), ec="none", label="L-Tyr centre, 50 % of frames"),
+             Patch(fc=lighten(grey, 0.72), ec="none", label="L-Tyr centre, 90 % of frames")]
+    else:
+        h = [Patch(fc=lighten(grey, 0.7), ec=grey, lw=1.8, label="L-Tyr, global min."),
+             Line2D([0], [0], color=grey, lw=0.8, alpha=0.6, label="L-Tyr, local min. / docking (dotted)")]
+    h += [Line2D([0], [0], marker="o", ls="None", ms=5, mfc=OH_COLOR, mec="none", label="OH"),
+          Patch(fc=HIS_FC, ec="0.3", lw=1.1, label="HisB2"),
+          Line2D([0], [0], color=INK, lw=1.1, marker=">", ms=5, label="offset" + (" (median)" if traj else "")),
+          Line2D([0], [0], color="0.75", lw=0.7, ls=(0, (2, 2)), label=f"offset limit ({STACK_OFFSET:g} Å)")]
+    axes.flat[len(systems)].legend(handles=h, loc="center left", frameon=False, fontsize=8.5)
+    fig.suptitle("L-Tyr ring stacked on HisB2 (view perpendicular to HisB2)" + (" · GaMD" if traj else ""),
+                 x=0.01, ha="left", fontsize=12, fontweight="bold", color=INK)
+    fig.savefig(path, dpi=dpi)
+    plt.close(fig)
+
+
+def make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi, geo_df=None):
     figdir = out / "figures"
     figdir.mkdir(parents=True, exist_ok=True)
     n_pts = int(cfg.get("points_per_trajectory", N_POINTS))
@@ -1250,6 +1398,9 @@ def make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi):
                               traj=traj, n_points=n_pts, r_color=r_color, seam=seam)
         fig_landmark_summary(part, landmark_order, figdir / f"F1_landmark_summary{sfx}.png", dpi, r_min_phi, seam,
                              traj=traj, n_points=n_pts)
+        if geo_df is not None and not geo_df.empty:
+            fig_pistacking(geo_df[geo_df["kind"] == kind], df[df["kind"] == kind],
+                           figdir / f"F4_pistacking_HisB2{sfx}.png", dpi, traj=traj)
         lm_dir = figdir / f"F1_per_landmark{sfx}"
         lm_dir.mkdir(exist_ok=True)
         for old in lm_dir.glob("F1_*.png"):
@@ -1292,6 +1443,14 @@ def fmt_cell(v):
     return f"{np.median(v):.2f} [{np.percentile(v, 10):.2f}–{np.percentile(v, 90):.2f}]"
 
 
+def fmt_stack(v):
+    """0/1 flag: yes/no for a structure, % of frames for a trajectory."""
+    v = v.dropna()
+    if v.empty:
+        return "—"
+    return ("yes" if v.iloc[0] else "no") if len(v) == 1 else f"{100 * v.mean():.0f} %"
+
+
 def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs):
     L = ["# SOLARIS summary\n",
          "- Frame: Kabsch fit of the core (2 Cu + 6 His rings) onto the family template; z = pseudo-C2 axis",
@@ -1309,13 +1468,14 @@ def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs):
         roles = ", ".join(f"{r}={rn}{u}" for r, u, rn in zip(g["role"], g["resid_used"], g["resname"]))
         L.append(f"- **{sy} / {st}** (offset {int(g['offset'].iloc[0]):+d}, {g['offset_from'].iloc[0]}): {roles}")
     cols = [("Frame.core_RMSD", "core RMSD"), ("Cu.d_CuA_CuB", "Cu–Cu"), ("L.d_OH_CuA", "OH–CuA"),
-            ("L.d_OH_CuB", "OH–CuB"), ("L.d_Cortho_Operox", "C ortho–O"), ("L.ring_tilt", "ring tilt")]
+            ("L.d_OH_CuB", "OH–CuB"), ("L.d_Cortho_Operox", "C ortho–O"), ("L.ring_tilt", "ring tilt"),
+            ("L.HisB2_stack", "π-stack HisB2")]
     cols = [c for c in cols if c[0] in df]
     L += ["\n## Key values per state\n", "| Enzyme | State | n | " + " | ".join(c[1] for c in cols) + " |",
           "|---|---|---|" + "---|" * len(cols)]
     for (sy, st), g in df.groupby(["system", "state"], sort=False):
-        L.append(f"| {sy} | {st} | {len(g)} | " + " | ".join(fmt_cell(g[c]) for c, _ in cols) + " |")
-    L.append("\nTrajectories: median [p10–p90]. Distances in Å, angles in degrees.")
+        L.append(f"| {sy} | {st} | {len(g)} | " + " | ".join((fmt_stack if c.endswith("_stack") else fmt_cell)(g[c]) for c, _ in cols) + " |")
+    L.append("\nTrajectories: median [p10–p90]; π-stack: % of frames. Distances in Å, angles in degrees.")
     L.append("\n## Landmarks (plotted point): h / r / φ\n")
     for (sy, st), g in df.groupby(["system", "state"], sort=False):
         parts = []
@@ -1440,7 +1600,8 @@ def load_tables(out):
     df, long_df = pd.read_csv(paths[0]), pd.read_csv(paths[1])
     if long_df["plot"].dtype != bool:
         long_df["plot"] = long_df["plot"].astype(str).str.strip().str.lower().isin(["true", "1"])
-    return df, long_df
+    gp = tdir / "pistack_geometry.csv"
+    return df, long_df, (pd.read_csv(gp) if gp.exists() else pd.DataFrame())
 
 
 def main():
@@ -1456,8 +1617,8 @@ def main():
     r_min_phi = float(cfg.get("r_min_phi", 2.5))
 
     if args.figures_only:
-        df, long_df = filter_tables(load_tables(out), args)
-        make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi)
+        df, long_df, geo_df = filter_tables(load_tables(out), args)
+        make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi, geo_df)
         print(f"Figures: {out / 'figures'}")
         return
 
@@ -1474,15 +1635,16 @@ def main():
     if not jobs:
         raise SystemExit("Nothing to process.")
 
-    rows, long_rows = [], []
+    rows, long_rows, geo_rows = [], [], []
     for system, state, kind, cat, src, site, entry in jobs:
         stride = int(entry.get("stride", 10 if kind == "trajectory" else 1))
         stop = entry.get("stop")
         print(f"[RUN] {system}/{state} ({kind}{f', stride {stride}' if kind == 'trajectory' else ''})")
-        r, lr = FrameAnalyzer(system, state, kind, cat, site, r_min_phi).run(
+        r, lr, gr = FrameAnalyzer(system, state, kind, cat, site, r_min_phi).run(
             src, int(entry.get("start", 0)), None if stop is None else int(stop), stride)
         rows += r
         long_rows += lr
+        geo_rows += gr
 
     df = pd.DataFrame(rows)
     desc_cols = [c for c in df.columns if c not in META_COLS]
@@ -1492,13 +1654,16 @@ def main():
     tdir.mkdir(parents=True, exist_ok=True)
     df.to_csv(tdir / "descriptors_per_frame.csv", index=False, float_format="%.4f")
     long_df.to_csv(tdir / "landmarks_long.csv", index=False, float_format="%.4f")
+    geo_df = pd.DataFrame(geo_rows)
+    if not geo_df.empty:
+        geo_df.to_csv(tdir / "pistack_geometry.csv", index=False, float_format="%.4f")
     pd.DataFrame(qc, columns=QC_COLS).to_csv(tdir / "residue_QC.csv", index=False)
     summarize(df, desc_cols).to_csv(tdir / "state_summary.csv", index=False, float_format="%.4f")
     pct = percentile_in_trajectory(df, desc_cols, key_columns(df, landmark_defs))
     if not pct.empty:
         pct.to_csv(tdir / "percentile_in_trajectory.csv", index=False, float_format="%.3f")
 
-    seam = make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi)
+    seam = make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi, geo_df)
     write_report(out / "SUMMARY.md", df, qc, skipped, warns, seam, pct if not pct.empty else None, landmark_defs)
     print(f"\nDone.\nTables:  {tdir}\nFigures: {out / 'figures'}\nSummary: {out / 'SUMMARY.md'}")
     if skipped:

@@ -292,13 +292,15 @@ examples/output_static/
 │   ├── landmarks_long.csv
 │   ├── state_summary.csv
 │   ├── percentile_in_trajectory.csv
-│   └── residue_QC.csv
+│   ├── residue_QC.csv
+│   └── pistack_geometry.csv
 └── figures/
     ├── F1_landmark_summary.png
     ├── F1_per_landmark/F1_01_Conserved_Glu.png ...
     ├── F2_unrolled_cylinder.png
     ├── ..._GaMD.png / F1_per_landmark_GaMD/
-    └── F3_GaMD_<enzyme>.png
+    ├── F3_GaMD_<enzyme>.png
+    └── F4_pistacking_HisB2.png / F4_pistacking_HisB2_GaMD.png
 ```
 
 ### Start with `SUMMARY.md`
@@ -335,6 +337,7 @@ All positions are in the common frame (Å, degrees):
 | `state_summary.csv` | state × descriptor | mean, SD, p10, median, p90 (circular statistics for φ) |
 | `percentile_in_trajectory.csv` | static state × descriptor | where each minimum/docking pose falls in its trajectory |
 | `residue_QC.csv` | state × role | residue actually used, offset and how it was obtained |
+| `pistack_geometry.csv` | point per frame | L-Tyr ring and HisB2 seen down the HisB2 normal (used by F4) |
 
 Descriptor names start with the group: `Frame.` (fit), `Cu.` and `Px.` (core), `<landmark>.` (pocket residues)
 and `L.` (substrate). For example `Conserved_Glu.TIP.h`, `Gatekeeper.dr` or `L.d_OH_CuA`.
@@ -352,6 +355,13 @@ and `L.` (substrate). For example `Conserved_Glu.TIP.h`, `Gatekeeper.dr` or `L.d
 - **_GaMD versions**: the same figures for trajectories; top views show the regions holding 50 % and 90 % of
   the frames and the median, F1_landmark_summary shows subsampled frames and the p5–p95 range.
 - **F3_GaMD_&lt;enzyme&gt;**: every landmark of one enzyme along its trajectory, with the static states on top.
+- **F4_pistacking_HisB2**: the L-Tyr ring seen perpendicular to HisB2, one panel per enzyme. The arrow is the
+  offset (sideways shift of the L-Tyr ring centre from the HisB2 centre) and the dotted circle its 2 Å limit.
+  π-stacking needs d ≤ 5.5 Å, offset ≤ 2 Å and an angle between the ring planes ≤ 30° (parallel) or ≥ 60°
+  (T-shaped); the same criteria as PLIP, computed by SOLARIS itself. Descriptors: `L.HisB2_angle`,
+  `L.HisB2_offset`, `L.HisB2_h` and `L.HisB2_stack` (1/0; its mean over a trajectory is the fraction of
+  frames stacked). The GaMD version shows the regions holding 50/90 % of the L-Tyr ring centres and a
+  representative frame (the one closest to the median); the percentages are unweighted.
 
 Each enzyme keeps the same colour and marker in every figure.
 

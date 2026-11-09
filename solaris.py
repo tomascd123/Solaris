@@ -517,6 +517,9 @@ def resolve_site(system, state, topo, sys_cfg, cfg, entry, landmark_defs):
     site.peroxide = res.peroxide(merged("peroxide", PEROXIDE_DEFAULT, cfg, sys_cfg, entry))
     site.warnings = res.warnings
     site.hisB2_resid = next((used for role, _, used, _ in res.qc if role == "HisB2"), None)
+    missing = [a for a in HIS_POLY if a not in site.his["HisB2"]]
+    if missing:
+        site.warnings.append(f"HisB2 lacks {' '.join(missing)}: no ring–HisB2 distance or π-stacking descriptors")
     site.qc = [(system, state, role, ref, used, rn, res.offset, res.offset_from) for role, ref, used, rn in res.qc]
     return site
 
@@ -557,6 +560,7 @@ class FrameAnalyzer:
         self.i_ne2 = {r: pos[s.his[r]["NE2"]] for r in HIS_ROLES}
         self.hisB2_names = [a for a in HIS_POLY if a in s.his["HisB2"]]
         self.i_hisB2_ring = loc([s.his["HisB2"][a] for a in self.hisB2_names])
+        self.hisB2_complete = len(self.hisB2_names) == len(HIS_POLY)  # a plane needs the whole imidazole
         rows, trows = [self.i_cuA, self.i_cuB], [0, 1]
         for r in HIS_ROLES:
             for a in HIS_RING:
@@ -673,9 +677,11 @@ class FrameAnalyzer:
             out["L.angle_CA_OH_vs_minus_z"] = angle_deg(g["OH"] - g["CA"], -z)
         if self.i_px is not None:
             out["L.d_Cortho_Operox"] = float(min(np.linalg.norm(g[c] - L[k]) for c in ("CE1", "CE2") for k in self.i_px))
-        out["L.d_ring_HisB2"] = float(np.linalg.norm(rc - L[self.i_hisB2_ring].mean(0)))
-        stack, geo = self._stacking(L, g, rc, nrm)
-        out.update(stack)
+        geo = None
+        if self.hisB2_complete:
+            out["L.d_ring_HisB2"] = float(np.linalg.norm(rc - L[self.i_hisB2_ring].mean(0)))
+            stack, geo = self._stacking(L, g, rc, nrm)
+            out.update(stack)
         if self.anchor and "C" in g:
             out["L.d_carboxylate_anchor"] = float(np.linalg.norm(g["C"] - centroids[self.anchor]["TIP"]))
         if self.gatekeeper:

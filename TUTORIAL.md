@@ -358,7 +358,8 @@ and `L.` (substrate). For example `Conserved_Glu.TIP.h`, `Gatekeeper.dr` or `L.d
 - **F4_pistacking_HisB2**: the L-Tyr ring seen perpendicular to HisB2, one panel per enzyme. The arrow is the
   offset (sideways shift of the L-Tyr ring centre from the HisB2 centre) and the dotted circle its 2 Å limit.
   π-stacking needs d ≤ 5.5 Å, offset ≤ 2 Å and an angle between the ring planes ≤ 30° (parallel) or ≥ 60°
-  (T-shaped); the same criteria as PLIP, computed by SOLARIS itself. Descriptors: `L.HisB2_angle`,
+  (T-shaped); the thresholds of PLIP, computed by SOLARIS itself (the offset is measured from the
+  HisB2 normal). The whole HisB2 imidazole is needed; otherwise these descriptors are skipped with a warning. Descriptors: `L.HisB2_angle`,
   `L.HisB2_offset`, `L.HisB2_h` and `L.HisB2_stack` (1/0; its mean over a trajectory is the fraction of
   frames stacked). The GaMD version shows the regions holding 50/90 % of the L-Tyr ring centres and a
   representative frame (the one closest to the median); the percentages are unweighted.

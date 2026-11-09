@@ -2,6 +2,10 @@
   "output_dir": "output_static",
   "dpi": 300,
   "r_min_phi": 2.5,
+  "r_color": [
+    0,
+    12
+  ],
   "points_per_trajectory": 400,
   "ligand": {
     "resname": "TY1",

@@ -2,7 +2,7 @@
 
 - Frame: Kabsch fit of the core (2 Cu + 6 His rings) onto the family template; z = pseudo-C2 axis
 - States: 27; structures/frames: 27
-- Cut of the φ axis (F1 summary): φ = 230°
+- Cut of the unrolled cylinder (F2): φ = 230°
 
 ## Dicopper core checks
 

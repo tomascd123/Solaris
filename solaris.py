@@ -119,6 +119,7 @@ TOP_HALF = 11.0
 SIDE_R, SIDE_H = (0.0, 12.0), (-3.0, 15.0)
 R_COLOR = (0.0, 12.0)
 N_POINTS = 400
+TAIL_PCT = 2.5  # a static structure is "in the tail" of its trajectory below this percentile or above 100 - it
 
 
 # ============================================================================ geometry
@@ -457,6 +458,8 @@ class SiteResolver:
     def ligands(self, lcfg):
         amap = {**LIGAND_DEFAULT["atoms"], **lcfg.get("atoms", {})}
         res = self.topo.residues_named(lcfg["resname"])
+        if not res:
+            self.warnings.append(f"no residue named {lcfg['resname']}: no L-Tyr descriptors")
         if len(res) > 1:
             self.warnings.append(f"{len(res)} residues {lcfg['resname']}: using the one closest to the Cu")
         cand = []
@@ -502,7 +505,7 @@ def merged(key, default, *cfgs):
 
 def resolve_site(system, state, topo, sys_cfg, cfg, entry, landmark_defs):
     res = SiteResolver(topo, sys_cfg["roles"], entry)
-    site = SimpleNamespace(elements=topo.elements, offset=res.offset, offset_from=res.offset_from)
+    site = SimpleNamespace(offset=res.offset, offset_from=res.offset_from)
     site.his = res.histidines()
     site.cu_pair = res.coppers()
     site.landmarks = res.landmarks(landmark_defs, sys_cfg.get("tip_atoms", {}), system)
@@ -515,9 +518,10 @@ def resolve_site(system, state, topo, sys_cfg, cfg, entry, landmark_defs):
 
 # ============================================================================ per-frame descriptors
 class FrameAnalyzer:
-    def __init__(self, system, state, kind, category, site):
+    def __init__(self, system, state, kind, category, site, r_min_phi=2.5):
         self.meta = {"system": system, "state": state, "kind": kind, "category": category}
         self.site = site
+        self.r_min_phi = r_min_phi
         self.ready = False
 
     def _prepare(self, X):
@@ -601,9 +605,10 @@ class FrameAnalyzer:
             out["Px.dihedral_CuA_O1_O2_CuB"] = abs(dihedral(cuA, o1, o2, cuB))
         return out
 
-    @staticmethod
-    def _point_row(label, point, plot, resname, resid, c, cuA, cuB):
+    def _point_row(self, label, point, plot, resname, resid, c, cuA, cuB):
         r, phi = cylindrical(c)
+        if r < self.r_min_phi:
+            phi = float("nan")
         return {"landmark": label, "point": point, "plot": plot, "resname": resname, "resid": resid,
                 "x": float(c[0]), "y": float(c[1]), "h": float(c[2]), "r": r, "phi": phi,
                 "dCuA": float(np.linalg.norm(c - cuA)), "dCuB": float(np.linalg.norm(c - cuB))}
@@ -710,7 +715,8 @@ def percentile_in_trajectory(df, desc_cols, key_cols=()):
                     v = float(gs[c].iloc[0])
                     pct = 100.0 * (np.mean(ref < v) + 0.5 * np.mean(ref == v))
                     out.append({"system": sy, "state": st, "trajectory": tst, "descriptor": c, "value": v,
-                                "percentile": pct, "key": c in key_cols, "outside_p5_p95": bool(pct < 5 or pct > 95)})
+                                "percentile": pct, "key": c in key_cols,
+                                "in_tail": bool(pct < TAIL_PCT or pct > 100 - TAIL_PCT)})
     return pd.DataFrame(out)
 
 
@@ -1027,13 +1033,15 @@ def fig_landmark_detail(long_df, landmark, systems, path, dpi, traj=False, n_poi
         x0, x1, y0, y1 = pts["x"].min(), pts["x"].max(), pts["y"].min(), pts["y"].max()
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     half = max(max(x1 - x0, y1 - y0) / 2 + 0.9, 1.6)
+    # the top view must contain the zoom box, otherwise the box (and points) are clipped
+    lim = max(TOP_HALF, abs(cx) + half, abs(cy) + half)
 
     W, H = 13.4, 5.9
     fig = plt.figure(figsize=(W, H))
     gs = fig.add_gridspec(1, 3, width_ratios=[1.0, 1.0, 0.72], left=0.05, right=0.985, bottom=1.15 / H,
                           top=1 - 0.75 / H, wspace=0.26)
     a0, a1, a2 = (fig.add_subplot(gs[0, i]) for i in range(3))
-    views = ((a0, (-TOP_HALF, TOP_HALF, -TOP_HALF, TOP_HALF), False, 110, 0.5),
+    views = ((a0, (-lim, lim, -lim, lim), False, 110, 0.5),
              (a1, (cx - half, cx + half, cy - half, cy + half), True, 70, 1.0))
     busy = [tuple(p[:2]) for p in TEMPLATE]
     for ax, (lx0, lx1, ly0, ly1), light, nbins, size in views:
@@ -1059,7 +1067,7 @@ def fig_landmark_detail(long_df, landmark, systems, path, dpi, traj=False, n_poi
     a0.set_xlabel("x (Å)  → CuA", fontsize=8, color=INK)
     a1.set_xlabel("x (Å)", fontsize=8, color=INK)
     a0.set_title("a  Top view", fontsize=9, loc="left", color=INK, fontweight="bold")
-    a1.set_title(f"b  Zoom (×{TOP_HALF / half:.1f})", fontsize=9, loc="left", color=INK, fontweight="bold")
+    a1.set_title(f"b  Zoom (×{lim / half:.1f})", fontsize=9, loc="left", color=INK, fontweight="bold")
     scale_bar(a1, cx, cy, half, busy)
 
     a2.axhline(0, color=GRID, lw=0.6, zorder=0)
@@ -1074,8 +1082,11 @@ def fig_landmark_detail(long_df, landmark, systems, path, dpi, traj=False, n_poi
     else:
         draw_ca_sticks(a2, long_df, landmark, here, systems)
         draw_states(a2, pts, "r", "h", systems, size=0.75, links=False)
-    a2.set_xlim(*SIDE_R)
-    a2.set_ylim(*SIDE_H)
+    is_lig = landmark.startswith("L-Tyr")
+    side = long_df[long_df["system"].isin(here)
+                   & (long_df["landmark"].isin(LIG_LANDMARKS) if is_lig else (long_df["landmark"] == landmark))]
+    a2.set_xlim(SIDE_R[0], max(SIDE_R[1], float(np.nanmax(side["r"])) + 0.8))
+    a2.set_ylim(min(SIDE_H[0], float(np.nanmin(side["h"])) - 0.8), max(SIDE_H[1], float(np.nanmax(side["h"])) + 0.8))
     a2.set_aspect("equal")
     a2.set_xlabel("r (Å)", fontsize=8, color=INK)
     a2.set_ylabel("h (Å)", fontsize=8, color=INK)
@@ -1208,7 +1219,8 @@ def fig_landmark_summary(long_df, landmark_order, path, dpi, r_min, seam=None, t
     plt.close(fig)
 
 
-def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False, n_points=N_POINTS, r_color=R_COLOR):
+def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False, n_points=N_POINTS, r_color=R_COLOR,
+                          seam=None):
     """phi vs h for every pocket landmark; marker = enzyme, colour = r."""
     d = long_df[long_df["plot"]]
     panels = [p for p in panels_for(d, landmark_order) if not p.startswith("L-Tyr")]
@@ -1218,8 +1230,8 @@ def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False,
     dd = d[d["landmark"].isin(panels)]
     if traj:
         dd = thin_frames(dd, n_points)
-    phis = dd.loc[dd["r"] >= r_min, "phi"].to_numpy(float)
-    seam = auto_seam(np.round(phis) % 360 if traj else phis)
+    if seam is None:
+        seam = auto_seam(dd.loc[dd["r"] >= r_min, "phi"].dropna())
     norm = Normalize(*r_color)
     ncol = min(3, len(panels))
     nrow = math.ceil(len(panels) / ncol)
@@ -1231,14 +1243,12 @@ def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False,
                 ax.scatter(unwrap(g["phi"], seam), g["h"], c=g["r"], cmap="viridis", norm=norm, s=16,
                            marker=marker_for(sy, systems), alpha=0.7, linewidths=0, zorder=3, rasterized=True)
                 continue
+            g = g[g["r"] >= r_min]
+            if g.empty:
+                continue
             sty = state_style(g["category"].iloc[0])
-            xs = unwrap(g["phi"], seam)
-            ax.scatter(xs, g["h"], c=g["r"], cmap="viridis", norm=norm, s=85, marker=marker_for(sy, systems),
-                       edgecolors=sty["edge"], linewidths=sty["lw"], zorder=4)
-            low = g["r"] < r_min
-            if low.any():
-                ax.scatter(xs[low.to_numpy()], g["h"][low], s=230, facecolors="none", edgecolors="0.45",
-                           linewidths=0.8, zorder=3)
+            ax.scatter(unwrap(g["phi"], seam), g["h"], c=g["r"], cmap="viridis", norm=norm, s=85,
+                       marker=marker_for(sy, systems), edgecolors=sty["edge"], linewidths=sty["lw"], zorder=4)
         ax.axhline(0, lw=0.6, color="0.7")
         for nm, ang in (("CuA", 0.0), ("CuB", 180.0)):
             xv = float(unwrap(ang, seam))
@@ -1269,8 +1279,7 @@ def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False,
         family_legend(fig, systems, set(), extra)
         fig.suptitle("Unrolled cylinder · GaMD", fontsize=11, fontweight="bold", y=0.98)
     else:
-        extra = [Line2D([0], [0], marker="o", ls="None", ms=12, mfc="none", mec="0.45", mew=0.8,
-                        label=f"r < {r_min:g} Å (φ unreliable)")] if has_low else []
+        extra = [Line2D([], [], ls="None", label=f"r < {r_min:g} Å not shown (φ undefined)")] if has_low else []
         family_legend(fig, systems, set(d["category"]), extra)
     fig.savefig(path, dpi=dpi, bbox_inches="tight")
     plt.close(fig)
@@ -1318,9 +1327,10 @@ def fig_traj_enzyme(system, long_df, landmark_order, path, dpi, systems, n_point
     axes[0, 0].set_ylabel("y (Å)", fontsize=8)
     axes[1, 0].set_ylabel("h (Å)", fontsize=8)
     cats = set(d.loc[d["kind"] != "trajectory", "category"])
+    step = frame_step(traj, n_points)
     h = [Patch(color=TRAJ_BLUES[1], label="GaMD 50 %"), Patch(color=TRAJ_BLUES[0], label="GaMD 90 %"),
          Line2D([0], [0], marker=mk, ls="None", ms=4, mfc=col, mec="none", alpha=0.6,
-                label=f"GaMD frame (1 every {frame_step(traj, n_points)})"),
+                label=f"GaMD frame (1 every {step})" if step > 1 else "GaMD frame"),
          Line2D([0], [0], marker=mk, ls="None", ms=8, mfc=col, mec="white", label="median")]
     h += [Line2D([0], [0], marker=mk, ls="None", ms=8, mfc=state_style(c)["fill"], mec="black", label=STATE_LABEL[c])
           for c in ("global", "local", "docking") if c in cats]
@@ -1336,16 +1346,20 @@ def make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi):
     figdir.mkdir(parents=True, exist_ok=True)
     n_pts = int(cfg.get("points_per_trajectory", N_POINTS))
     r_color = tuple(cfg.get("r_color", R_COLOR))
+    # one cut of the cylinder for static and GaMD figures, so that they can be compared
     seam = None
+    if not long_df.empty:
+        pocket = long_df[long_df["plot"] & ~long_df["landmark"].str.startswith("L-Tyr") & (long_df["r"] >= r_min_phi)]
+        if not pocket.empty:
+            seam = auto_seam(pocket["phi"].dropna())
     for kind, sfx in (("structure", ""), ("trajectory", "_GaMD")):
         part = long_df[long_df["kind"] == kind] if not long_df.empty else long_df
         if part.empty:
             continue
         traj = kind == "trajectory"
-        s_ = fig_unrolled_cylinder(part, landmark_order, figdir / f"F2_unrolled_cylinder{sfx}.png", dpi, r_min_phi,
-                                   traj=traj, n_points=n_pts, r_color=r_color)
-        seam = seam if traj and seam is not None else s_
-        fig_landmark_summary(part, landmark_order, figdir / f"F1_landmark_summary{sfx}.png", dpi, r_min_phi, s_,
+        fig_unrolled_cylinder(part, landmark_order, figdir / f"F2_unrolled_cylinder{sfx}.png", dpi, r_min_phi,
+                              traj=traj, n_points=n_pts, r_color=r_color, seam=seam)
+        fig_landmark_summary(part, landmark_order, figdir / f"F1_landmark_summary{sfx}.png", dpi, r_min_phi, seam,
                              traj=traj, n_points=n_pts)
         lm_dir = figdir / f"F1_per_landmark{sfx}"
         lm_dir.mkdir(exist_ok=True)
@@ -1384,7 +1398,7 @@ def fmt_cell(v):
     return f"{np.median(v):.2f} [{np.percentile(v, 10):.2f}–{np.percentile(v, 90):.2f}]"
 
 
-def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_order):
+def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs):
     L = ["# SOLARIS summary\n",
          "- Frame: Kabsch fit of the core (2 Cu + 6 His rings) onto the family template; z = pseudo-C2 axis",
          f"- States: {df.groupby(['system', 'state']).ngroups}; structures/frames: {len(df)}"]
@@ -1411,16 +1425,19 @@ def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_order):
     L.append("\n## Landmarks (plotted point): h / r / φ\n")
     for (sy, st), g in df.groupby(["system", "state"], sort=False):
         parts = []
-        for lab in landmark_order:
-            pt = next((p for p in ("TIP", "SC", "CA") if f"{lab}.{p}.h" in g and g[f"{lab}.{p}.h"].notna().any()), None)
-            if pt:
-                phi = circ_stats(g[f"{lab}.{pt}.phi"].dropna())[0]
-                parts.append(f"{lab} {g[f'{lab}.{pt}.h'].median():.1f}/{g[f'{lab}.{pt}.r'].median():.1f}/{phi:.0f}°")
+        for lab, ld in landmark_defs.items():
+            pt = ld.get("plot", "TIP")
+            if f"{lab}.{pt}.h" not in g or g[f"{lab}.{pt}.h"].isna().all():
+                continue
+            phi = g[f"{lab}.{pt}.phi"].dropna()
+            phi_s = f"{circ_stats(phi)[0]:.0f}°" if len(phi) else "—"
+            parts.append(f"{lab} {g[f'{lab}.{pt}.h'].median():.1f}/{g[f'{lab}.{pt}.r'].median():.1f}/{phi_s}")
         if parts:
             L.append(f"- {sy} / {st}: " + "; ".join(parts))
     if pct is not None and not pct.empty:
-        tail = pct[pct["key"] & ((pct["percentile"] < 2.5) | (pct["percentile"] > 97.5))]
-        L.append("\n## Static structures in the tails of their trajectory (key descriptors, percentile < 2.5 or > 97.5)\n")
+        tail = pct[pct["key"] & pct["in_tail"]]
+        L.append(f"\n## Static structures in the tails of their trajectory (key descriptors, percentile < {TAIL_PCT:g} "
+                 f"or > {100 - TAIL_PCT:g})\n")
         if tail.empty:
             L.append("- None: minima and docking poses fall within what the trajectory samples.")
         for (sy, st), g in tail.groupby(["system", "state"], sort=False):
@@ -1568,7 +1585,7 @@ def main():
         stride = int(entry.get("stride", 10 if kind == "trajectory" else 1))
         stop = entry.get("stop")
         print(f"[RUN] {system}/{state} ({kind}{f', stride {stride}' if kind == 'trajectory' else ''})")
-        r, lr = FrameAnalyzer(system, state, kind, cat, site).run(
+        r, lr = FrameAnalyzer(system, state, kind, cat, site, r_min_phi).run(
             src, int(entry.get("start", 0)), None if stop is None else int(stop), stride)
         rows += r
         long_rows += lr
@@ -1588,7 +1605,7 @@ def main():
         pct.to_csv(tdir / "percentile_in_trajectory.csv", index=False, float_format="%.3f")
 
     seam = make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi)
-    write_report(out / "SUMMARY.md", df, qc, skipped, warns, seam, pct if not pct.empty else None, landmark_order)
+    write_report(out / "SUMMARY.md", df, qc, skipped, warns, seam, pct if not pct.empty else None, landmark_defs)
     print(f"\nDone.\nTables:  {tdir}\nFigures: {out / 'figures'}\nSummary: {out / 'SUMMARY.md'}")
     if skipped:
         print(f"Skipped states: {len(skipped)} (see SUMMARY.md)")

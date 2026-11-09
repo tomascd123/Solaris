@@ -1162,18 +1162,14 @@ def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False,
     fig.subplots_adjust(left=0.06, right=0.86, bottom=0.09, top=0.9, wspace=0.3, hspace=0.5)
     cb = fig.colorbar(ScalarMappable(norm=norm, cmap="viridis"), cax=fig.add_axes([0.885, 0.25, 0.012, 0.5]))
     cb.set_label("r (Å)", fontsize=9)
-    has_low = (dd["r"] < r_min).any()
     if traj:
         step = frame_step(d[d["landmark"].isin(panels)], n_points)
         extra = [Line2D([0], [0], marker="o", ls="None", ms=4, mfc="#7f7f7f", mec="none", alpha=0.7,
                         label=f"GaMD frame (1 every {step})" if step > 1 else "GaMD frame")]
-        if has_low:
-            extra.append(Line2D([], [], ls="None", label=f"r < {r_min:g} Å not shown (φ undefined)"))
         family_legend(fig, systems, set(), extra)
         fig.suptitle("Unrolled cylinder · GaMD", fontsize=11, fontweight="bold", y=0.98)
     else:
-        extra = [Line2D([], [], ls="None", label=f"r < {r_min:g} Å not shown (φ undefined)")] if has_low else []
-        family_legend(fig, systems, set(d["category"]), extra)
+        family_legend(fig, systems, set(d["category"]))
     fig.savefig(path, dpi=dpi, bbox_inches="tight")
     plt.close(fig)
     return seam

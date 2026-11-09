@@ -280,7 +280,6 @@ JrTYR,global,HisB2,243.0,243,HD5,0,HD1-HD6
 JrTYR,global,HisB3,273.0,273,HD6,0,HD1-HD6
 JrTYR,global,Glu,235.0,235,GLU,0,HD1-HD6
 JrTYR,global,Asn,240.0,240,ASN,0,HD1-HD6
-JrTYR,global,anchor,244.0,244,LEU,0,HD1-HD6
 JrTYR,global,gatekeeper,260.0,260,PHE,0,HD1-HD6
 JrTYR,global,SerAla,263.0,263,ALA,0,HD1-HD6
 JrTYR,global,ligand,,405,TY1,0,HD1-HD6
@@ -292,7 +291,6 @@ JrTYR,local1,HisB2,243.0,243,HD5,0,HD1-HD6
 JrTYR,local1,HisB3,273.0,273,HD6,0,HD1-HD6
 JrTYR,local1,Glu,235.0,235,GLU,0,HD1-HD6
 JrTYR,local1,Asn,240.0,240,ASN,0,HD1-HD6
-JrTYR,local1,anchor,244.0,244,LEU,0,HD1-HD6
 JrTYR,local1,gatekeeper,260.0,260,PHE,0,HD1-HD6
 JrTYR,local1,SerAla,263.0,263,ALA,0,HD1-HD6
 JrTYR,local1,ligand,,405,TY1,0,HD1-HD6
@@ -304,7 +302,6 @@ JrTYR,local2,HisB2,243.0,243,HD5,0,HD1-HD6
 JrTYR,local2,HisB3,273.0,273,HD6,0,HD1-HD6
 JrTYR,local2,Glu,235.0,235,GLU,0,HD1-HD6
 JrTYR,local2,Asn,240.0,240,ASN,0,HD1-HD6
-JrTYR,local2,anchor,244.0,244,LEU,0,HD1-HD6
 JrTYR,local2,gatekeeper,260.0,260,PHE,0,HD1-HD6
 JrTYR,local2,SerAla,263.0,263,ALA,0,HD1-HD6
 JrTYR,local2,ligand,,405,TY1,0,HD1-HD6
@@ -316,7 +313,6 @@ JrTYR,docking,HisB2,243.0,243,HIS,0,none (resid_offset 0)
 JrTYR,docking,HisB3,273.0,273,HIS,0,none (resid_offset 0)
 JrTYR,docking,Glu,235.0,235,GLU,0,none (resid_offset 0)
 JrTYR,docking,Asn,240.0,240,ASN,0,none (resid_offset 0)
-JrTYR,docking,anchor,244.0,244,LEU,0,none (resid_offset 0)
 JrTYR,docking,gatekeeper,260.0,260,PHE,0,none (resid_offset 0)
 JrTYR,docking,SerAla,263.0,263,ALA,0,none (resid_offset 0)
 JrTYR,docking,ligand,,0,TY1,0,none (resid_offset 0)

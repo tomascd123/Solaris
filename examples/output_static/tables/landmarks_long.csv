@@ -410,9 +410,6 @@ Conserved_Glu,TIP,True,GLU,235,-0.3734,6.9003,0.8566,6.9104,93.0975,7.1777,7.032
 Conserved_Asn,CA,False,ASN,240,-5.9234,2.7555,4.3020,6.5330,155.0528,9.0643,6.7318,JrTYR,global,structure,global,0
 Conserved_Asn,SC,False,ASN,240,-3.9834,4.4044,4.5674,5.9385,132.1269,8.3975,6.8107,JrTYR,global,structure,global,0
 Conserved_Asn,TIP,True,ASN,240,-3.5570,4.5687,4.3875,5.7900,127.9029,8.1108,6.6599,JrTYR,global,structure,global,0
-Carboxylate_anchor,CA,False,LEU,244,-7.4610,-1.8265,8.2021,7.6813,193.7557,12.3288,10.3216,JrTYR,global,structure,global,0
-Carboxylate_anchor,SC,False,LEU,244,-6.5718,0.2840,9.6334,6.5780,177.5254,12.5846,10.9205,JrTYR,global,structure,global,0
-Carboxylate_anchor,TIP,True,LEU,244,-6.2179,0.5530,9.8534,6.2424,174.9179,12.5350,10.9724,JrTYR,global,structure,global,0
 Gatekeeper,CA,False,PHE,260,2.9971,-2.3526,6.4482,3.8101,321.8697,6.9237,8.3421,JrTYR,global,structure,global,0
 Gatekeeper,SC,True,PHE,260,3.0393,1.1220,6.9529,3.2398,20.2622,7.0766,8.5015,JrTYR,global,structure,global,0
 Gatekeeper,TIP,False,PHE,260,2.8829,1.5039,6.9772,3.2516,27.5496,7.1387,8.4949,JrTYR,global,structure,global,0
@@ -428,9 +425,6 @@ Conserved_Glu,TIP,True,GLU,235,-0.4774,7.5986,1.4568,7.6136,93.5951,7.9059,7.784
 Conserved_Asn,CA,False,ASN,240,-6.1052,2.9927,4.0530,6.7992,153.8866,9.1386,6.7667,JrTYR,local1,structure,local,0
 Conserved_Asn,SC,False,ASN,240,-4.3053,4.6888,4.4277,6.3656,132.5586,8.6468,7.0108,JrTYR,local1,structure,local,0
 Conserved_Asn,TIP,True,ASN,240,-3.8747,4.8633,4.3040,6.2182,128.5454,8.3926,6.8991,JrTYR,local1,structure,local,0
-Carboxylate_anchor,CA,False,LEU,244,-7.9318,-1.6132,7.8714,8.0942,191.4960,12.4185,10.3136,JrTYR,local1,structure,local,0
-Carboxylate_anchor,SC,False,LEU,244,-6.9750,0.4261,9.1314,6.9880,176.5042,12.4578,10.6955,JrTYR,local1,structure,local,0
-Carboxylate_anchor,TIP,True,LEU,244,-6.5890,0.6866,9.2824,6.6247,174.0507,12.3168,10.6551,JrTYR,local1,structure,local,0
 Gatekeeper,CA,False,PHE,260,2.6454,-3.0836,5.8436,4.0629,310.6262,6.6314,8.0419,JrTYR,local1,structure,local,0
 Gatekeeper,SC,True,PHE,260,5.0945,-1.3940,7.5079,5.2818,344.6974,8.3053,10.3324,JrTYR,local1,structure,local,0
 Gatekeeper,TIP,False,PHE,260,5.3666,-1.3252,7.8104,5.5278,346.1288,8.6781,10.7260,JrTYR,local1,structure,local,0
@@ -446,9 +440,6 @@ Conserved_Glu,TIP,True,GLU,235,-0.1082,7.2082,1.6506,7.2090,90.8600,7.5514,7.517
 Conserved_Asn,CA,False,ASN,240,-5.9452,3.0336,4.3874,6.6745,152.9665,9.2410,6.9309,JrTYR,local2,structure,local,0
 Conserved_Asn,SC,False,ASN,240,-3.9173,4.5399,4.6398,5.9963,130.7902,8.4990,6.9389,JrTYR,local2,structure,local,0
 Conserved_Asn,TIP,True,ASN,240,-3.4634,4.6681,4.4869,5.8126,126.5724,8.1962,6.7816,JrTYR,local2,structure,local,0
-Carboxylate_anchor,CA,False,LEU,244,-7.5651,-1.6754,7.6959,7.7484,192.4877,12.0901,9.9881,JrTYR,local2,structure,local,0
-Carboxylate_anchor,SC,False,LEU,244,-7.3764,-0.2994,10.0327,7.3825,182.3241,13.4551,11.6927,JrTYR,local2,structure,local,0
-Carboxylate_anchor,TIP,True,LEU,244,-7.3240,-0.2520,10.5301,7.3283,181.9705,13.7925,12.1016,JrTYR,local2,structure,local,0
 Gatekeeper,CA,False,PHE,260,3.0718,-3.0101,5.9287,4.3008,315.5806,6.7624,8.2564,JrTYR,local2,structure,local,0
 Gatekeeper,SC,True,PHE,260,3.5611,0.4606,6.2139,3.5907,7.3703,6.4551,8.2004,JrTYR,local2,structure,local,0
 Gatekeeper,TIP,False,PHE,260,3.4506,0.8597,6.2214,3.5561,13.9892,6.4690,8.1663,JrTYR,local2,structure,local,0
@@ -464,9 +455,6 @@ Conserved_Glu,TIP,True,GLU,235,0.3367,7.4714,0.9684,7.4790,87.4197,8.3735,8.2562
 Conserved_Asn,CA,False,ASN,240,-5.5891,2.7436,4.6012,6.2262,153.8540,9.6839,6.9914,JrTYR,docking,structure,docking,0
 Conserved_Asn,SC,False,ASN,240,-3.7018,4.4329,5.0142,5.7753,129.8647,9.3367,7.4093,JrTYR,docking,structure,docking,0
 Conserved_Asn,TIP,True,ASN,240,-3.2677,4.6057,4.8768,5.6472,125.3553,9.0952,7.3176,JrTYR,docking,structure,docking,0
-Carboxylate_anchor,CA,False,LEU,244,-7.3976,-2.4980,8.1122,7.8079,198.6588,12.8043,10.2588,JrTYR,docking,structure,docking,0
-Carboxylate_anchor,SC,False,LEU,244,-6.3991,-0.4222,9.4356,6.4131,183.7746,12.9190,10.6720,JrTYR,docking,structure,docking,0
-Carboxylate_anchor,TIP,True,LEU,244,-6.0142,-0.1568,9.5927,6.0163,181.4939,12.8008,10.6488,JrTYR,docking,structure,docking,0
 Gatekeeper,CA,False,PHE,260,3.0177,-2.8566,5.4270,4.1553,316.5707,6.2957,7.4805,JrTYR,docking,structure,docking,0
 Gatekeeper,SC,True,PHE,260,3.1097,0.6938,5.8678,3.1861,12.5766,6.4719,7.6010,JrTYR,docking,structure,docking,0
 Gatekeeper,TIP,False,PHE,260,2.9669,1.0856,5.9018,3.1593,20.0979,6.5728,7.6144,JrTYR,docking,structure,docking,0

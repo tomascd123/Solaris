@@ -18,6 +18,7 @@
 - HsTYR (docking): HisB3: resid 404 appears 2 times [('X', 'HIS'), ('X', 'PER')]; using HIS404
 - HsTYR (docking): no residue named TY1: no L-Tyr descriptors
 - VsTYR (docking): no residue named TY1: no L-Tyr descriptors
+- JrTYR (all states): Carboxylate_anchor: role 'anchor' not defined for JrTYR; skipped
 
 ## Numbering and residues used
 
@@ -44,10 +45,10 @@
 - **VsTYR / local1** (offset +0, HD1-HD6): HisA1=HD180, HisA2=HD286, HisA3=HD395, HisB1=HD4258, HisB2=HD5262, HisB3=HD6284, Glu=GLU254, Asn=ASN259, anchor=ASN263, gatekeeper=LEU272, SerAla=SER274, ligand=TY1405
 - **VsTYR / local2** (offset +0, HD1-HD6): HisA1=HD180, HisA2=HD286, HisA3=HD395, HisB1=HD4258, HisB2=HD5262, HisB3=HD6284, Glu=GLU254, Asn=ASN259, anchor=ASN263, gatekeeper=LEU272, SerAla=SER274, ligand=TY1405
 - **VsTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS80, HisA2=HIS86, HisA3=HIS95, HisB1=HIS258, HisB2=HIS262, HisB3=HIS284, Glu=GLU254, Asn=ASN259, anchor=ASN263, gatekeeper=LEU272, SerAla=SER274
-- **JrTYR / global** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6273, Glu=GLU235, Asn=ASN240, anchor=LEU244, gatekeeper=PHE260, SerAla=ALA263, ligand=TY1405
-- **JrTYR / local1** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6273, Glu=GLU235, Asn=ASN240, anchor=LEU244, gatekeeper=PHE260, SerAla=ALA263, ligand=TY1405
-- **JrTYR / local2** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6273, Glu=GLU235, Asn=ASN240, anchor=LEU244, gatekeeper=PHE260, SerAla=ALA263, ligand=TY1405
-- **JrTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS87, HisA2=HIS108, HisA3=HIS117, HisB1=HIS239, HisB2=HIS243, HisB3=HIS273, Glu=GLU235, Asn=ASN240, anchor=LEU244, gatekeeper=PHE260, SerAla=ALA263, ligand=TY10
+- **JrTYR / global** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6273, Glu=GLU235, Asn=ASN240, gatekeeper=PHE260, SerAla=ALA263, ligand=TY1405
+- **JrTYR / local1** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6273, Glu=GLU235, Asn=ASN240, gatekeeper=PHE260, SerAla=ALA263, ligand=TY1405
+- **JrTYR / local2** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6273, Glu=GLU235, Asn=ASN240, gatekeeper=PHE260, SerAla=ALA263, ligand=TY1405
+- **JrTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS87, HisA2=HIS108, HisA3=HIS117, HisB1=HIS239, HisB2=HIS243, HisB3=HIS273, Glu=GLU235, Asn=ASN240, gatekeeper=PHE260, SerAla=ALA263, ligand=TY10
 
 ## Key values per state
 
@@ -108,7 +109,7 @@ Trajectories: median [p10–p90]. Distances in Å, angles in degrees.
 - VsTYR / local1: Conserved_Glu 1.3/7.5/96°; Conserved_Asn 4.9/6.5/130°; Carboxylate_anchor 8.6/5.1/174°; Gatekeeper 5.3/5.6/346°; A/S_adj 2.6/5.3/272°
 - VsTYR / local2: Conserved_Glu 1.3/7.4/92°; Conserved_Asn 4.8/6.0/124°; Carboxylate_anchor 10.5/7.4/184°; Gatekeeper 5.4/5.2/342°; A/S_adj 2.3/4.9/269°
 - VsTYR / docking: Conserved_Glu 1.2/7.6/91°; Conserved_Asn 4.5/6.2/122°; Carboxylate_anchor 9.1/4.8/171°; Gatekeeper 5.7/5.9/345°; A/S_adj 2.6/4.7/272°
-- JrTYR / global: Conserved_Glu 0.9/6.9/93°; Conserved_Asn 4.4/5.8/128°; Carboxylate_anchor 9.9/6.2/175°; Gatekeeper 7.0/3.2/20°; A/S_adj 3.8/4.7/277°
-- JrTYR / local1: Conserved_Glu 1.5/7.6/94°; Conserved_Asn 4.3/6.2/129°; Carboxylate_anchor 9.3/6.6/174°; Gatekeeper 7.5/5.3/345°; A/S_adj 3.7/5.1/265°
-- JrTYR / local2: Conserved_Glu 1.7/7.2/91°; Conserved_Asn 4.5/5.8/127°; Carboxylate_anchor 10.5/7.3/182°; Gatekeeper 6.2/3.6/7°; A/S_adj 2.8/4.9/273°
-- JrTYR / docking: Conserved_Glu 1.0/7.5/87°; Conserved_Asn 4.9/5.6/125°; Carboxylate_anchor 9.6/6.0/181°; Gatekeeper 5.9/3.2/13°; A/S_adj 2.9/5.4/269°
+- JrTYR / global: Conserved_Glu 0.9/6.9/93°; Conserved_Asn 4.4/5.8/128°; Gatekeeper 7.0/3.2/20°; A/S_adj 3.8/4.7/277°
+- JrTYR / local1: Conserved_Glu 1.5/7.6/94°; Conserved_Asn 4.3/6.2/129°; Gatekeeper 7.5/5.3/345°; A/S_adj 3.7/5.1/265°
+- JrTYR / local2: Conserved_Glu 1.7/7.2/91°; Conserved_Asn 4.5/5.8/127°; Gatekeeper 6.2/3.6/7°; A/S_adj 2.8/4.9/273°
+- JrTYR / docking: Conserved_Glu 1.0/7.5/87°; Conserved_Asn 4.9/5.6/125°; Gatekeeper 5.9/3.2/13°; A/S_adj 2.9/5.4/269°

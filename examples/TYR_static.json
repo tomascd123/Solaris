@@ -248,7 +248,7 @@
         "HisB3": 273,
         "Glu": 235,
         "Asn": 240,
-        "anchor": 244,
+        "anchor": null,
         "gatekeeper": 260,
         "SerAla": 263
       },

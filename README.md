@@ -93,7 +93,7 @@ One JSON file (see `examples/`); paths are relative to it.
   residue type in all states.
 - **State names** set the category: `global*`, `local*`, `docking*`, and `gamd*`/`md*`/`traj*` for trajectories.
 - **Ligand and peroxide** residue and atom names can be set globally, per enzyme or per state (`ligand`, `peroxide`).
-- Other keys: `dpi`, `r_color` (colour scale of *r*), `points_per_trajectory` (frames drawn per trajectory),
+- Other keys: `dpi`, `r_color` (colour scale of *r* in F2), `points_per_trajectory` (frames drawn per trajectory),
   `tip_atoms` (per enzyme), `start`/`stop`/`stride` (per trajectory).
 
 ## Output
@@ -108,7 +108,7 @@ A reference output for the example structures is in `examples/output_static/`.
 | `tables/percentile_in_trajectory.csv` | percentile of each static structure within its trajectory |
 | `tables/residue_QC.csv` | residue used for each role in each state |
 | `figures/F1_landmark_summary.png` | *r*, *h* and φ of every landmark across the family |
-| `figures/F1_per_landmark/` | one figure per landmark: top view, zoom and side view |
+| `figures/F1_per_landmark/` | one top view (down the pseudo-C2 axis) per pocket landmark shared by ≥ 2 enzymes |
 | `figures/F2_unrolled_cylinder.png` | φ vs *h* per landmark, colour = *r* |
 | `figures/*_GaMD*` | the same figures for trajectories (50/90 % density and subsampled frames) |
 | `figures/F3_GaMD_<enzyme>.png` | all landmarks of one enzyme along its trajectory |

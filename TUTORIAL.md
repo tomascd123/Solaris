@@ -324,7 +324,7 @@ All positions are in the common frame (Å, degrees):
 - ***r***: distance from the axis (the substrate OH and ring sit at small *r*; pocket residues form the wall);
 - **φ**: azimuth around the axis, 0° towards CuA and 180° towards CuB.
 
-φ is undefined on the axis, so points with *r* < `r_min_phi` are left out of the φ panels and marked in F2.
+φ is undefined on the axis, so points with *r* < `r_min_phi` have no φ (NaN in the tables, left out of the φ panels).
 
 ### Tables
 
@@ -343,13 +343,14 @@ and `L.` (substrate). For example `Conserved_Glu.TIP.h`, `Gatekeeper.dr` or `L.d
 
 - **F1_landmark_summary**: *r*, *h* and φ of every landmark, one row per landmark and one sub-row per enzyme.
   This is the figure to compare the family at a glance.
-- **F1_per_landmark**: one figure per landmark with (a) top view of the whole site with the Cu and His rings,
-  (b) zoom with a scale bar, (c) side view (*r*, *h*) with a line from Cα to the plotted point. Overlaps in the
-  top view are projections, not contacts; the side view shows the actual height.
+- **F1_per_landmark**: one top view per pocket landmark (looking down the pseudo-C2 axis), with the Cu and His
+  rings of the template; local minima are linked to the global minimum. The view is framed automatically on the
+  site and the data. Overlaps are projections, not contacts: the height *h* is in F1_landmark_summary. Landmarks
+  present in a single enzyme and the substrate points (L-Tyr) are not drawn; their values are in the tables.
 - **F2_unrolled_cylinder**: the cylinder cut open (φ vs *h*), colour = *r*. The cut is placed automatically in
-  the widest empty sector.
+  the widest empty sector and is the same for static and GaMD figures.
 - **_GaMD versions**: the same figures for trajectories; top views show the regions holding 50 % and 90 % of
-  the frames, other panels show subsampled frames and the median.
+  the frames and the median, F1_landmark_summary shows subsampled frames and the p5–p95 range.
 - **F3_GaMD_&lt;enzyme&gt;**: every landmark of one enzyme along its trajectory, with the static states on top.
 
 Each enzyme keeps the same colour and marker in every figure.

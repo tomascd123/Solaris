@@ -117,7 +117,7 @@ RES3 = {"ALA": "Ala", "ARG": "Arg", "ASN": "Asn", "ASP": "Asp", "CYS": "Cys", "G
 R_COLOR = (0.0, 12.0)
 SITE_HALF = 5.5  # half-width (Å) of the top view needed to show the Cu and the six His rings
 N_POINTS = 400
-# pi-stacking of the L-Tyr ring on HisB2 (same criteria as PLIP): centroid distance, offset of the L-Tyr ring centre
+# pi-stacking of the L-Tyr ring on HisB2 (thresholds of PLIP): centroid distance, offset of the L-Tyr ring centre
 # from the HisB2 normal, and angle between the ring planes (parallel or T-shaped)
 STACK_D, STACK_OFFSET, STACK_PARALLEL, STACK_T = 5.5, 2.0, 30.0, 60.0
 HIS_POLY = ["CG", "ND1", "CE1", "NE2", "CD2"]          # ring atoms in drawing order
@@ -676,7 +676,8 @@ class FrameAnalyzer:
         if "CA" in g:
             out["L.angle_CA_OH_vs_minus_z"] = angle_deg(g["OH"] - g["CA"], -z)
         if self.i_px is not None:
-            out["L.d_Cortho_Operox"] = float(min(np.linalg.norm(g[c] - L[k]) for c in ("CE1", "CE2") for k in self.i_px))
+            out["L.d_Cortho_Operox"] = float(min(np.linalg.norm(g[c] - L[k])
+                                                 for c in ("CE1", "CE2") for k in self.i_px))
         geo = None
         if self.hisB2_complete:
             out["L.d_ring_HisB2"] = float(np.linalg.norm(rc - L[self.i_hisB2_ring].mean(0)))
@@ -900,9 +901,9 @@ def draw_circles(ax, radii=(5, 10)):
         ax.add_patch(plt.Circle((0, 0), rr, fill=False, lw=0.7, color="#cfcfcf", zorder=0.5))
 
 
-def draw_floor_top(ax, light=False):
+def draw_floor_top(ax):
     """Template His rings, Cu-NE2 bonds and Cu atoms seen from the top."""
-    fc, ec = ("#f1f1f1", "#c4c4c4") if light else (HIS_FC, HIS_EC)
+    fc, ec = HIS_FC, HIS_EC
     xl, yl = ax.get_xlim(), ax.get_ylim()
     mx, my = 0.04 * (xl[1] - xl[0]), 0.04 * (yl[1] - yl[0])
     for k, roles in ((0, HIS_ROLES[:3]), (1, HIS_ROLES[3:])):
@@ -933,27 +934,24 @@ def draw_reference_top(ax, lim):
         ax.text(x, y - 1.0, nm, fontsize=6.5, color=CU_COLOR, ha="center", va="top", zorder=2)
 
 
-def draw_states(ax, sub, xcol, ycol, systems, size=1.0, links=True):
+def draw_states(ax, sub, xcol, ycol, systems):
     """Global min. large filled, local min. small filled (linked to the global), docking hollow."""
-    marks = []
     for sy, g in sub.groupby("system", sort=False):
         col, mk = color_for(sy, systems), marker_for(sy, systems)
         glob = g[g["category"] == "global"]
-        if links and len(glob):
+        if len(glob):
             gx, gy = float(glob[xcol].iloc[0]), float(glob[ycol].iloc[0])
             for _, r in g[g["category"] != "global"].iterrows():
                 ax.plot([gx, r[xcol]], [gy, r[ycol]], color=col, lw=0.8, alpha=0.6, zorder=3, solid_capstyle="round")
         for _, r in g.iterrows():
             cat = r["category"]
             if cat == "global":
-                kw = dict(s=100 * size, color=col, edgecolors="white", linewidths=0.9, zorder=5)
+                kw = dict(s=100, color=col, edgecolors="white", linewidths=0.9, zorder=5)
             elif cat == "docking":
-                kw = dict(s=62 * size, facecolors="white", edgecolors=darker(col, 0.85), linewidths=1.5, zorder=4.5)
+                kw = dict(s=62, facecolors="white", edgecolors=darker(col, 0.85), linewidths=1.5, zorder=4.5)
             else:
-                kw = dict(s=34 * size, color=col, edgecolors="white", linewidths=0.6, zorder=4)
+                kw = dict(s=34, color=col, edgecolors="white", linewidths=0.6, zorder=4)
             ax.scatter([r[xcol]], [r[ycol]], marker=mk, **kw)
-            marks.append((float(r[xcol]), float(r[ycol])))
-    return marks
 
 
 def draw_frames(ax, g, xcol, ycol, system, systems, size=7, alpha=0.35, jitter=0.0, y0=None, rng=None):
@@ -1174,7 +1172,7 @@ def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False,
     d = long_df[long_df["plot"]]
     panels = [p for p in panels_for(d, landmark_order) if not p.startswith("L-Tyr")]
     if not panels:
-        return None
+        return
     systems = list(dict.fromkeys(d["system"]))
     dd = d[d["landmark"].isin(panels)]
     if traj:
@@ -1228,7 +1226,6 @@ def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False,
         family_legend(fig, systems, set(d["category"]))
     fig.savefig(path, dpi=dpi, bbox_inches="tight")
     plt.close(fig)
-    return seam
 
 
 def fig_traj_enzyme(system, long_df, landmark_order, path, dpi, systems, n_points=N_POINTS):
@@ -1312,8 +1309,9 @@ def fig_pistacking(geo, df, path, dpi, traj=False):
         ref = next((st for st in states if cats[st] == "global"), states[0])
         g0, m = shape(gs, ref), ds[ds["state"] == ref]
         his = np.array([g0[f"H:{a}"] for a in HIS_POLY if f"H:{a}" in g0])
-        body = gs.loc[(gs["atom"] != "L:centre") & gs["state"].isin(states), ["u", "v"]].abs().to_numpy(float)
-        lim = max(4.0, float(np.nanmax(body)) + 0.5)
+        body = gs.loc[gs["atom"] != "L:centre", ["u", "v"]].abs().to_numpy(float)
+        cen = gs.loc[gs["atom"] == "L:centre", ["u", "v"]].abs().to_numpy(float)
+        lim = max(4.0, float(np.nanmax(body)) + 0.5, float(np.nanpercentile(cen, 99)) + 0.5)
         ax.add_patch(plt.Circle((0, 0), STACK_OFFSET, fill=False, ls=(0, (2, 2)), lw=0.7, ec="0.75", zorder=1))
         ax.add_patch(Polygon(his, closed=True, fc=HIS_FC, ec="none", zorder=2))
         if traj:
@@ -1404,9 +1402,10 @@ def make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi, geo_df=N
                               traj=traj, n_points=n_pts, r_color=r_color, seam=seam)
         fig_landmark_summary(part, landmark_order, figdir / f"F1_landmark_summary{sfx}.png", dpi, r_min_phi, seam,
                              traj=traj, n_points=n_pts)
-        if geo_df is not None and not geo_df.empty:
-            fig_pistacking(geo_df[geo_df["kind"] == kind], df[df["kind"] == kind],
-                           figdir / f"F4_pistacking_HisB2{sfx}.png", dpi, traj=traj)
+        f4 = figdir / f"F4_pistacking_HisB2{sfx}.png"
+        f4.unlink(missing_ok=True)
+        if geo_df is not None and not geo_df.empty and "L.HisB2_stack" in df:
+            fig_pistacking(geo_df[geo_df["kind"] == kind], df[df["kind"] == kind], f4, dpi, traj=traj)
         lm_dir = figdir / f"F1_per_landmark{sfx}"
         lm_dir.mkdir(exist_ok=True)
         for old in lm_dir.glob("F1_*.png"):
@@ -1419,7 +1418,7 @@ def make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi, geo_df=N
             fig_landmark_detail(part, lab, part_sys, lm_dir / f"F1_{k:02d}_{file_name(display_name(lab))}.png", dpi,
                                 traj=traj, n_points=n_pts)
     systems = list(dict.fromkeys(df["system"]))
-    for sy in systems:
+    for sy in systems if not long_df.empty else ():
         if (long_df.loc[long_df["system"] == sy, "kind"] == "trajectory").any():
             fig_traj_enzyme(sy, long_df, landmark_order, figdir / f"F3_GaMD_{sy}.png", dpi, systems, n_pts)
     return seam
@@ -1480,7 +1479,8 @@ def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs):
     L += ["\n## Key values per state\n", "| Enzyme | State | n | " + " | ".join(c[1] for c in cols) + " |",
           "|---|---|---|" + "---|" * len(cols)]
     for (sy, st), g in df.groupby(["system", "state"], sort=False):
-        L.append(f"| {sy} | {st} | {len(g)} | " + " | ".join((fmt_stack if c.endswith("_stack") else fmt_cell)(g[c]) for c, _ in cols) + " |")
+        cells = [(fmt_stack if c.endswith("_stack") else fmt_cell)(g[c]) for c, _ in cols]
+        L.append(f"| {sy} | {st} | {len(g)} | " + " | ".join(cells) + " |")
     L.append("\nTrajectories: median [p10–p90]; π-stack: % of frames. Distances in Å, angles in degrees.")
     L.append("\n## Landmarks (plotted point): h / r / φ\n")
     for (sy, st), g in df.groupby(["system", "state"], sort=False):
@@ -1501,7 +1501,8 @@ def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs):
         if tail.empty:
             L.append("- None: minima and docking poses fall within what the trajectory samples.")
         for (sy, st), g in tail.groupby(["system", "state"], sort=False):
-            L.append(f"- {sy} / {st}: " + ", ".join(f"{d} (p{p:.0f})" for d, p in zip(g["descriptor"], g["percentile"])))
+            L.append(f"- {sy} / {st}: "
+                     + ", ".join(f"{d} (p{p:.0f})" for d, p in zip(g["descriptor"], g["percentile"])))
     Path(path).write_text("\n".join(L) + "\n", encoding="utf-8")
 
 
@@ -1661,11 +1662,13 @@ def main():
     df.to_csv(tdir / "descriptors_per_frame.csv", index=False, float_format="%.4f")
     long_df.to_csv(tdir / "landmarks_long.csv", index=False, float_format="%.4f")
     geo_df = pd.DataFrame(geo_rows)
+    (tdir / "pistack_geometry.csv").unlink(missing_ok=True)  # never keep the table of an earlier run
     if not geo_df.empty:
         geo_df.to_csv(tdir / "pistack_geometry.csv", index=False, float_format="%.4f")
     pd.DataFrame(qc, columns=QC_COLS).to_csv(tdir / "residue_QC.csv", index=False)
     summarize(df, desc_cols).to_csv(tdir / "state_summary.csv", index=False, float_format="%.4f")
     pct = percentile_in_trajectory(df, desc_cols, key_columns(df, landmark_defs))
+    (tdir / "percentile_in_trajectory.csv").unlink(missing_ok=True)
     if not pct.empty:
         pct.to_csv(tdir / "percentile_in_trajectory.csv", index=False, float_format="%.3f")
 

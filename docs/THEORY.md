@@ -67,7 +67,7 @@ matrix
 
 $$H = \sum_i (p_i - \bar p)(q_i - \bar q)^{\mathsf T} = U S V^{\mathsf T} \quad\text{(singular value decomposition)},$$
 
-$$d = \operatorname{sign}\det(V U^{\mathsf T}), \qquad R = V \operatorname{diag}(1, 1, d)\, U^{\mathsf T}, \qquad t = \bar q - R\,\bar p .$$
+$$d = \mathrm{sign}\,\det(V U^{\mathsf T}), \qquad R = V \mathrm{diag}(1, 1, d)\, U^{\mathsf T}, \qquad t = \bar q - R\,\bar p .$$
 
 The factor *d* forbids reflections. The whole structure is then transformed with the same *R* and *t*.
 
@@ -110,7 +110,7 @@ rotates in the simulation box or two crystal structures are deposited in differe
 
 Every point (*x*, *y*, *z*) in the SOLARIS frame is reported as
 
-$$h = z, \qquad r = \sqrt{x^2 + y^2}, \qquad \varphi = \operatorname{atan2}(y, x) \bmod 360^\circ .$$
+$$h = z, \qquad r = \sqrt{x^2 + y^2}, \qquad \varphi = \mathrm{atan2}(y, x) \bmod 360^\circ .$$
 
 - *h*: height above (+) or below (−) the plane of the two coppers, towards the substrate entrance.
 - *r*: distance from the pseudo-C2 axis.

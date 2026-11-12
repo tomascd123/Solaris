@@ -11,13 +11,10 @@
 
 ## Warnings
 
-- ScTYR (docking): no residue named TY1: no L-Tyr descriptors
-- VvTYR (docking): no residue named TY1: no L-Tyr descriptors
-- AbTYR (docking): no residue named TY1: no L-Tyr descriptors
-- BmTYR (docking): no residue named TY1: no L-Tyr descriptors
-- HsTYR (docking): HisB3: resid 404 appears 2 times [('X', 'HIS'), ('X', 'PER')]; using HIS404
-- HsTYR (docking): no residue named TY1: no L-Tyr descriptors
-- VsTYR (docking): no residue named TY1: no L-Tyr descriptors
+- AbTYR (docking): HisA1: resid 61 appears 2 times [('A', 'HIS'), ('E', 'GLY')]; using HIS61
+- AbTYR (docking): HisA2: resid 85 appears 2 times [('A', 'HIS'), ('E', 'SER')]; using HIS85
+- AbTYR (docking): HisA3: resid 94 appears 2 times [('A', 'HIS'), ('E', 'TRP')]; using HIS94
+- HsTYR (docking): HisB3: resid 404 appears 2 times [('A', 'HIS'), ('A', 'PER')]; using HIS404
 - JrTYR (all states): Carboxylate_anchor: role 'anchor' not defined for JrTYR; skipped
 
 ## Numbering and residues used
@@ -26,25 +23,25 @@
 - **ScTYR / local1** (offset +0, HD1-HD6): HisA1=HD138, HisA2=HD254, HisA3=HD363, HisB1=HD4190, HisB2=HD5194, HisB3=HD6216, Glu=GLU182, Asn=ASN191, anchor=ARG55, gatekeeper=GLY204, SerAla=SER206, ligand=TY1405
 - **ScTYR / local2** (offset +0, HD1-HD6): HisA1=HD138, HisA2=HD254, HisA3=HD363, HisB1=HD4190, HisB2=HD5194, HisB3=HD6216, Glu=GLU182, Asn=ASN191, anchor=ARG55, gatekeeper=GLY204, SerAla=SER206, ligand=TY1405
 - **ScTYR / local3** (offset +0, HD1-HD6): HisA1=HD138, HisA2=HD254, HisA3=HD363, HisB1=HD4190, HisB2=HD5194, HisB3=HD6216, Glu=GLU182, Asn=ASN191, anchor=ARG55, gatekeeper=GLY204, SerAla=SER206, ligand=TY1405
-- **ScTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS38, HisA2=HIS54, HisA3=HIS63, HisB1=HIS190, HisB2=HIS194, HisB3=HIS216, Glu=GLU182, Asn=ASN191, anchor=ARG55, gatekeeper=GLY204, SerAla=SER206
+- **ScTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS38, HisA2=HIS54, HisA3=HIS63, HisB1=HIS190, HisB2=HIS194, HisB3=HIS216, Glu=GLU182, Asn=ASN191, anchor=ARG55, gatekeeper=GLY204, SerAla=SER206, ligand=TY10
 - **VvTYR / global** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6272, Glu=GLU235, Asn=ASN240, anchor=LYS244, gatekeeper=PHE259, SerAla=ALA262, ligand=TY1405
 - **VvTYR / local1** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6272, Glu=GLU235, Asn=ASN240, anchor=LYS244, gatekeeper=PHE259, SerAla=ALA262, ligand=TY1405
 - **VvTYR / local2** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6272, Glu=GLU235, Asn=ASN240, anchor=LYS244, gatekeeper=PHE259, SerAla=ALA262, ligand=TY1405
-- **VvTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS87, HisA2=HIS108, HisA3=HIS117, HisB1=HIS239, HisB2=HIS243, HisB3=HIS272, Glu=GLU235, Asn=ASN240, anchor=LYS244, gatekeeper=PHE259, SerAla=ALA262
+- **VvTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS87, HisA2=HIS108, HisA3=HIS117, HisB1=HIS239, HisB2=HIS243, HisB3=HIS272, Glu=GLU235, Asn=ASN240, anchor=LYS244, gatekeeper=PHE259, SerAla=ALA262, ligand=TY10
 - **AbTYR / global** (offset +0, HD1-HD6): HisA1=HD161, HisA2=HD285, HisA3=HD394, HisB1=HD4259, HisB2=HD5263, HisB3=HD6296, Glu=GLU256, Asn=ASN260, anchor=ARG268, gatekeeper=VAL283, SerAla=ALA286, HisB2plus1=PHE264, ligand=TY1405
 - **AbTYR / local1** (offset +0, HD1-HD6): HisA1=HD161, HisA2=HD285, HisA3=HD394, HisB1=HD4259, HisB2=HD5263, HisB3=HD6296, Glu=GLU256, Asn=ASN260, anchor=ARG268, gatekeeper=VAL283, SerAla=ALA286, HisB2plus1=PHE264, ligand=TY1405
-- **AbTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS61, HisA2=HIS85, HisA3=HIS94, HisB1=HIS259, HisB2=HIS263, HisB3=HIS296, Glu=GLU256, Asn=ASN260, anchor=ARG268, gatekeeper=VAL283, SerAla=ALA286, HisB2plus1=PHE264
+- **AbTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS61, HisA2=HIS85, HisA3=HIS94, HisB1=HIS259, HisB2=HIS263, HisB3=HIS296, Glu=GLU256, Asn=ASN260, anchor=ARG268, gatekeeper=VAL283, SerAla=ALA286, HisB2plus1=PHE264, ligand=TY10
 - **BmTYR / global** (offset +0, HD1-HD6): HisA1=HD142, HisA2=HD260, HisA3=HD369, HisB1=HD4204, HisB2=HD5208, HisB3=HD6231, Glu=GLU195, Asn=ASN205, anchor=ARG209, gatekeeper=VAL218, SerAla=ALA221, ligand=TY1405
 - **BmTYR / local1** (offset +0, HD1-HD6): HisA1=HD142, HisA2=HD260, HisA3=HD369, HisB1=HD4204, HisB2=HD5208, HisB3=HD6231, Glu=GLU195, Asn=ASN205, anchor=ARG209, gatekeeper=VAL218, SerAla=ALA221, ligand=TY1405
 - **BmTYR / local2** (offset +0, HD1-HD6): HisA1=HD142, HisA2=HD260, HisA3=HD369, HisB1=HD4204, HisB2=HD5208, HisB3=HD6231, Glu=GLU195, Asn=ASN205, anchor=ARG209, gatekeeper=VAL218, SerAla=ALA221, ligand=TY1405
-- **BmTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS42, HisA2=HIS60, HisA3=HIS69, HisB1=HIS204, HisB2=HIS208, HisB3=HIS231, Glu=GLU195, Asn=ASN205, anchor=ARG209, gatekeeper=VAL218, SerAla=ALA221
+- **BmTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS42, HisA2=HIS60, HisA3=HIS69, HisB1=HIS204, HisB2=HIS208, HisB3=HIS231, Glu=GLU195, Asn=ASN205, anchor=ARG209, gatekeeper=VAL218, SerAla=ALA221, ligand=TY10
 - **HsTYR / global** (offset +0, HD1-HD6): HisA1=HD1192, HisA2=HD2215, HisA3=HD3224, HisB1=HD4377, HisB2=HD5381, HisB3=HD6404, Glu=GLU360, Asn=ASN378, anchor=ARG374, gatekeeper=THR391, SerAla=SER394, ligand=TY1474
 - **HsTYR / local1** (offset +0, HD1-HD6): HisA1=HD1192, HisA2=HD2215, HisA3=HD3224, HisB1=HD4377, HisB2=HD5381, HisB3=HD6404, Glu=GLU360, Asn=ASN378, anchor=ARG374, gatekeeper=THR391, SerAla=SER394, ligand=TY1474
-- **HsTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS192, HisA2=HIS215, HisA3=HIS224, HisB1=HIS377, HisB2=HIS381, HisB3=HIS404, Glu=GLU360, Asn=ASN378, anchor=ARG374, gatekeeper=THR391, SerAla=SER394
+- **HsTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS192, HisA2=HIS215, HisA3=HIS224, HisB1=HIS377, HisB2=HIS381, HisB3=HIS404, Glu=GLU360, Asn=ASN378, anchor=ARG374, gatekeeper=THR391, SerAla=SER394, ligand=TY10
 - **VsTYR / global** (offset +0, HD1-HD6): HisA1=HD180, HisA2=HD286, HisA3=HD395, HisB1=HD4258, HisB2=HD5262, HisB3=HD6284, Glu=GLU254, Asn=ASN259, anchor=ASN263, gatekeeper=LEU272, SerAla=SER274, ligand=TY1405
 - **VsTYR / local1** (offset +0, HD1-HD6): HisA1=HD180, HisA2=HD286, HisA3=HD395, HisB1=HD4258, HisB2=HD5262, HisB3=HD6284, Glu=GLU254, Asn=ASN259, anchor=ASN263, gatekeeper=LEU272, SerAla=SER274, ligand=TY1405
 - **VsTYR / local2** (offset +0, HD1-HD6): HisA1=HD180, HisA2=HD286, HisA3=HD395, HisB1=HD4258, HisB2=HD5262, HisB3=HD6284, Glu=GLU254, Asn=ASN259, anchor=ASN263, gatekeeper=LEU272, SerAla=SER274, ligand=TY1405
-- **VsTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS80, HisA2=HIS86, HisA3=HIS95, HisB1=HIS258, HisB2=HIS262, HisB3=HIS284, Glu=GLU254, Asn=ASN259, anchor=ASN263, gatekeeper=LEU272, SerAla=SER274
+- **VsTYR / docking** (offset +0, none (resid_offset 0)): HisA1=HIS80, HisA2=HIS86, HisA3=HIS95, HisB1=HIS258, HisB2=HIS262, HisB3=HIS284, Glu=GLU254, Asn=ASN259, anchor=ASN263, gatekeeper=LEU272, SerAla=SER274, ligand=TY10
 - **JrTYR / global** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6273, Glu=GLU235, Asn=ASN240, gatekeeper=PHE260, SerAla=ALA263, ligand=TY1405
 - **JrTYR / local1** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6273, Glu=GLU235, Asn=ASN240, gatekeeper=PHE260, SerAla=ALA263, ligand=TY1405
 - **JrTYR / local2** (offset +0, HD1-HD6): HisA1=HD187, HisA2=HD2108, HisA3=HD3117, HisB1=HD4239, HisB2=HD5243, HisB3=HD6273, Glu=GLU235, Asn=ASN240, gatekeeper=PHE260, SerAla=ALA263, ligand=TY1405
@@ -58,29 +55,29 @@
 | ScTYR | local1 | 1 | 0.46 | 3.55 | 4.37 | 3.96 | 4.35 | 56.65 | yes |
 | ScTYR | local2 | 1 | 0.38 | 3.70 | 3.88 | 3.78 | 4.37 | 49.82 | yes |
 | ScTYR | local3 | 1 | 0.39 | 3.52 | 4.09 | 3.95 | 4.37 | 50.43 | no |
-| ScTYR | docking | 1 | 0.45 | 3.47 | — | — | — | — | — |
+| ScTYR | docking | 1 | 0.45 | 3.47 | 4.27 | 3.77 | 3.67 | 74.91 | yes |
 | VvTYR | global | 1 | 0.26 | 3.66 | 3.72 | 3.99 | 3.61 | 71.05 | yes |
 | VvTYR | local1 | 1 | 0.35 | 3.64 | 4.22 | 3.72 | 3.66 | 73.29 | yes |
 | VvTYR | local2 | 1 | 0.28 | 3.63 | 3.82 | 3.91 | 3.98 | 87.60 | yes |
-| VvTYR | docking | 1 | 0.42 | 3.47 | — | — | — | — | — |
+| VvTYR | docking | 1 | 0.42 | 3.47 | 4.77 | 3.84 | 4.92 | 53.83 | no |
 | AbTYR | global | 1 | 0.25 | 3.67 | 4.00 | 4.10 | 3.94 | 65.65 | yes |
 | AbTYR | local1 | 1 | 0.25 | 3.53 | 3.88 | 3.91 | 3.59 | 63.99 | yes |
-| AbTYR | docking | 1 | 0.43 | 3.46 | — | — | — | — | — |
+| AbTYR | docking | 1 | 0.43 | 3.46 | 3.95 | 2.99 | 3.26 | 59.33 | yes |
 | BmTYR | global | 1 | 0.23 | 3.21 | 4.09 | 4.12 | 3.44 | 63.42 | yes |
 | BmTYR | local1 | 1 | 0.33 | 3.08 | 4.27 | 3.94 | 3.41 | 67.60 | yes |
 | BmTYR | local2 | 1 | 0.28 | 3.05 | 4.18 | 4.17 | 3.19 | 71.10 | no |
-| BmTYR | docking | 1 | 0.45 | 3.47 | — | — | — | — | — |
+| BmTYR | docking | 1 | 0.45 | 3.47 | 4.22 | 3.52 | 3.48 | 64.97 | yes |
 | HsTYR | global | 1 | 0.35 | 3.30 | 4.17 | 3.76 | 3.60 | 54.59 | yes |
 | HsTYR | local1 | 1 | 0.37 | 3.40 | 4.38 | 3.91 | 3.69 | 51.44 | yes |
-| HsTYR | docking | 1 | 0.31 | 3.58 | — | — | — | — | — |
+| HsTYR | docking | 1 | 0.31 | 3.58 | 4.03 | 3.35 | 3.81 | 64.14 | no |
 | VsTYR | global | 1 | 0.69 | 3.49 | 2.88 | 3.91 | 4.58 | 44.50 | yes |
 | VsTYR | local1 | 1 | 0.28 | 3.66 | 3.57 | 3.94 | 3.22 | 51.27 | yes |
 | VsTYR | local2 | 1 | 0.69 | 3.56 | 3.29 | 4.02 | 4.43 | 39.57 | yes |
-| VsTYR | docking | 1 | 0.52 | 3.62 | — | — | — | — | — |
+| VsTYR | docking | 1 | 0.52 | 3.62 | 3.70 | 3.85 | 3.49 | 65.38 | yes |
 | JrTYR | global | 1 | 0.29 | 3.25 | 3.74 | 4.04 | 3.44 | 62.27 | yes |
 | JrTYR | local1 | 1 | 0.34 | 3.31 | 3.84 | 4.23 | 3.66 | 62.64 | yes |
 | JrTYR | local2 | 1 | 0.26 | 3.27 | 3.91 | 4.35 | 3.39 | 54.29 | yes |
-| JrTYR | docking | 1 | 0.41 | 3.53 | 4.00 | 3.81 | 3.47 | 62.78 | yes |
+| JrTYR | docking | 1 | 0.41 | 3.53 | 4.00 | 3.81 | 3.47 | 62.77 | yes |
 
 Trajectories: median [p10–p90]; π-stack: % of frames. Distances in Å, angles in degrees.
 

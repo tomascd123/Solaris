@@ -58,6 +58,7 @@ ScTYR,docking,Asn,191.0,191,ASN,0,none (resid_offset 0)
 ScTYR,docking,anchor,55.0,55,ARG,0,none (resid_offset 0)
 ScTYR,docking,gatekeeper,204.0,204,GLY,0,none (resid_offset 0)
 ScTYR,docking,SerAla,206.0,206,SER,0,none (resid_offset 0)
+ScTYR,docking,ligand,,0,TY1,0,none (resid_offset 0)
 VvTYR,global,HisA1,87.0,87,HD1,0,HD1-HD6
 VvTYR,global,HisA2,108.0,108,HD2,0,HD1-HD6
 VvTYR,global,HisA3,117.0,117,HD3,0,HD1-HD6
@@ -105,6 +106,7 @@ VvTYR,docking,Asn,240.0,240,ASN,0,none (resid_offset 0)
 VvTYR,docking,anchor,244.0,244,LYS,0,none (resid_offset 0)
 VvTYR,docking,gatekeeper,259.0,259,PHE,0,none (resid_offset 0)
 VvTYR,docking,SerAla,262.0,262,ALA,0,none (resid_offset 0)
+VvTYR,docking,ligand,,0,TY1,0,none (resid_offset 0)
 AbTYR,global,HisA1,61.0,61,HD1,0,HD1-HD6
 AbTYR,global,HisA2,85.0,85,HD2,0,HD1-HD6
 AbTYR,global,HisA3,94.0,94,HD3,0,HD1-HD6
@@ -143,6 +145,7 @@ AbTYR,docking,anchor,268.0,268,ARG,0,none (resid_offset 0)
 AbTYR,docking,gatekeeper,283.0,283,VAL,0,none (resid_offset 0)
 AbTYR,docking,SerAla,286.0,286,ALA,0,none (resid_offset 0)
 AbTYR,docking,HisB2plus1,264.0,264,PHE,0,none (resid_offset 0)
+AbTYR,docking,ligand,,0,TY1,0,none (resid_offset 0)
 BmTYR,global,HisA1,42.0,42,HD1,0,HD1-HD6
 BmTYR,global,HisA2,60.0,60,HD2,0,HD1-HD6
 BmTYR,global,HisA3,69.0,69,HD3,0,HD1-HD6
@@ -190,6 +193,7 @@ BmTYR,docking,Asn,205.0,205,ASN,0,none (resid_offset 0)
 BmTYR,docking,anchor,209.0,209,ARG,0,none (resid_offset 0)
 BmTYR,docking,gatekeeper,218.0,218,VAL,0,none (resid_offset 0)
 BmTYR,docking,SerAla,221.0,221,ALA,0,none (resid_offset 0)
+BmTYR,docking,ligand,,0,TY1,0,none (resid_offset 0)
 HsTYR,global,HisA1,192.0,192,HD1,0,HD1-HD6
 HsTYR,global,HisA2,215.0,215,HD2,0,HD1-HD6
 HsTYR,global,HisA3,224.0,224,HD3,0,HD1-HD6
@@ -225,6 +229,7 @@ HsTYR,docking,Asn,378.0,378,ASN,0,none (resid_offset 0)
 HsTYR,docking,anchor,374.0,374,ARG,0,none (resid_offset 0)
 HsTYR,docking,gatekeeper,391.0,391,THR,0,none (resid_offset 0)
 HsTYR,docking,SerAla,394.0,394,SER,0,none (resid_offset 0)
+HsTYR,docking,ligand,,0,TY1,0,none (resid_offset 0)
 VsTYR,global,HisA1,80.0,80,HD1,0,HD1-HD6
 VsTYR,global,HisA2,86.0,86,HD2,0,HD1-HD6
 VsTYR,global,HisA3,95.0,95,HD3,0,HD1-HD6
@@ -272,6 +277,7 @@ VsTYR,docking,Asn,259.0,259,ASN,0,none (resid_offset 0)
 VsTYR,docking,anchor,263.0,263,ASN,0,none (resid_offset 0)
 VsTYR,docking,gatekeeper,272.0,272,LEU,0,none (resid_offset 0)
 VsTYR,docking,SerAla,274.0,274,SER,0,none (resid_offset 0)
+VsTYR,docking,ligand,,0,TY1,0,none (resid_offset 0)
 JrTYR,global,HisA1,87.0,87,HD1,0,HD1-HD6
 JrTYR,global,HisA2,108.0,108,HD2,0,HD1-HD6
 JrTYR,global,HisA3,117.0,117,HD3,0,HD1-HD6

@@ -89,7 +89,7 @@ SOLVENT = {"WAT", "HOH", "TIP3", "TIP4", "T3P", "T4P", "SOL", "SPC", "NA", "NA+"
 RESNAME_ALIASES = {"HID": "HIS", "HIE": "HIS", "HIP": "HIS", "HSD": "HIS", "HSE": "HIS", "HSP": "HIS",
                    "CYX": "CYS", "CYM": "CYS", "GLH": "GLU", "ASH": "ASP", "LYN": "LYS", "ARN": "ARG"}
 KEY_DESCRIPTORS = ["Cu.d_CuA_CuB", "Cu.max_d_Cu_NE2", "Px.d_O_O", "Px.Cu2O2_tilt",
-                   "L.d_OH_CuA", "L.d_OH_CuB", "L.d_Cortho_Operox", "L.ring_tilt",
+                   "L.d_OH_CuA", "L.d_OH_CuB", "L.d_OH_Operox", "L.d_Cortho_Operox", "L.ring_tilt",
                    "L.angle_CA_OH_vs_minus_z", "L.d_ring_HisB2", "L.d_carboxylate_anchor",
                    "L.d_ring_gatekeeper", "L.OH.h", "L.ring.h", "L.HisB2_angle", "L.HisB2_offset"]
 META_COLS = ["system", "state", "kind", "category", "frame"]
@@ -676,6 +676,7 @@ class FrameAnalyzer:
         if "CA" in g:
             out["L.angle_CA_OH_vs_minus_z"] = angle_deg(g["OH"] - g["CA"], -z)
         if self.i_px is not None:
+            out["L.d_OH_Operox"] = float(min(np.linalg.norm(g["OH"] - L[k]) for k in self.i_px))
             out["L.d_Cortho_Operox"] = float(min(np.linalg.norm(g[c] - L[k])
                                                  for c in ("CE1", "CE2") for k in self.i_px))
         geo = None
@@ -773,6 +774,47 @@ def percentile_in_trajectory(df, desc_cols, key_cols=()):
                     out.append({"system": sy, "state": st, "trajectory": tst, "descriptor": c, "value": v,
                                 "percentile": pct, "key": c in key_cols,
                                 "in_tail": bool(pct < TAIL_PCT or pct > 100 - TAIL_PCT)})
+    return pd.DataFrame(out)
+
+
+def rms_spread(P):
+    """RMS deviation (Å) of 3D points from their mean."""
+    return float(np.sqrt(((P - P.mean(0)) ** 2).sum(1).mean()))
+
+
+def landmark_dispersion(long_df):
+    """Fluctuation of the plotted point of every landmark within each state (trajectories)."""
+    out = []
+    d = long_df[long_df["plot"]]
+    for (sy, st, lab), g in d.groupby(["system", "state", "landmark"], sort=False):
+        P = g[["x", "y", "h"]].dropna().to_numpy(float)
+        if len(P) > 1:
+            out.append({"system": sy, "state": st, "kind": g["kind"].iloc[0], "landmark": lab, "n": len(P),
+                        "rms_fluct": rms_spread(P)})
+    return pd.DataFrame(out)
+
+
+def family_dispersion(long_df):
+    """Per landmark: spread within each enzyme (its minima, or its GaMD frames) and spread of the enzyme means
+    across the family; ratio = between / mean(within)."""
+    out = []
+    d = long_df[long_df["plot"] & long_df["category"].isin(["global", "local", "GaMD"])]
+    for (kind, lab), g in d.groupby(["kind", "landmark"], sort=False):
+        within, means = {}, []
+        for sy, gs in g.groupby("system", sort=False):
+            P = gs[["x", "y", "h"]].dropna().to_numpy(float)
+            if len(P):
+                means.append(P.mean(0))
+            if len(P) > 1:
+                within[sy] = rms_spread(P)
+        if len(means) < 2 or not within:
+            continue
+        between = rms_spread(np.array(means))
+        w = np.array(list(within.values()))
+        out.append({"kind": kind, "landmark": lab, "n_systems": len(means), "within_min": w.min(),
+                    "within_max": w.max(), "within_mean": w.mean(), "between": between,
+                    "ratio": between / w.mean() if w.mean() > 0 else np.nan,
+                    "within_by_system": "; ".join(f"{s}={v:.2f}" for s, v in within.items())})
     return pd.DataFrame(out)
 
 
@@ -1459,7 +1501,7 @@ def fmt_stack(v):
     return ("yes" if v.iloc[0] else "no") if len(v) == 1 else f"{100 * v.mean():.0f} %"
 
 
-def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs):
+def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs, fam=None):
     L = ["# SOLARIS summary\n",
          "- Frame: Kabsch fit of the core (2 Cu + 6 His rings) onto the family template; z = pseudo-C2 axis",
          f"- States: {df.groupby(['system', 'state']).ngroups}; structures/frames: {len(df)}"]
@@ -1476,7 +1518,7 @@ def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs):
         roles = ", ".join(f"{r}={rn}{u}" for r, u, rn in zip(g["role"], g["resid_used"], g["resname"]))
         L.append(f"- **{sy} / {st}** (offset {int(g['offset'].iloc[0]):+d}, {g['offset_from'].iloc[0]}): {roles}")
     cols = [("Frame.core_RMSD", "core RMSD"), ("Cu.d_CuA_CuB", "Cu–Cu"), ("L.d_OH_CuA", "OH–CuA"),
-            ("L.d_OH_CuB", "OH–CuB"), ("L.d_Cortho_Operox", "C ortho–O"), ("L.ring_tilt", "ring tilt"),
+            ("L.d_OH_CuB", "OH–CuB"), ("L.d_OH_Operox", "OH–O"), ("L.d_Cortho_Operox", "C ortho–O"), ("L.ring_tilt", "ring tilt"),
             ("L.HisB2_stack", "π-stack HisB2")]
     cols = [c for c in cols if c[0] in df]
     L += ["\n## Key values per state\n", "| Enzyme | State | n | " + " | ".join(c[1] for c in cols) + " |",
@@ -1497,6 +1539,13 @@ def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs):
             parts.append(f"{lab} {g[f'{lab}.{pt}.h'].median():.1f}/{g[f'{lab}.{pt}.r'].median():.1f}/{phi_s}")
         if parts:
             L.append(f"- {sy} / {st}: " + "; ".join(parts))
+    if fam is not None and not fam.empty:
+        L += ["\n## Landmark dispersion (RMS of the 3D position, Å)\n",
+              "Within: each enzyme around its own mean (minima, or GaMD frames). Between: enzyme means around the "
+              "family mean.\n", "| Data | Landmark | within (min–max) | between | between / within |", "|---|---|---|---|---|"]
+        for _, r in fam.iterrows():
+            L.append(f"| {'GaMD' if r['kind'] == 'trajectory' else 'minima'} | {r['landmark']} | "
+                     f"{r['within_min']:.2f}–{r['within_max']:.2f} | {r['between']:.2f} | {r['ratio']:.1f} |")
     if pct is not None and not pct.empty:
         tail = pct[pct["key"] & pct["in_tail"]]
         L.append(f"\n## Static structures in the tails of their trajectory (key descriptors, percentile < {TAIL_PCT:g} "
@@ -1674,9 +1723,15 @@ def main():
     (tdir / "percentile_in_trajectory.csv").unlink(missing_ok=True)
     if not pct.empty:
         pct.to_csv(tdir / "percentile_in_trajectory.csv", index=False, float_format="%.3f")
+    disp, fam = landmark_dispersion(long_df), family_dispersion(long_df)
+    for name, t in (("landmark_dispersion.csv", disp), ("family_dispersion.csv", fam)):
+        (tdir / name).unlink(missing_ok=True)
+        if not t.empty:
+            t.to_csv(tdir / name, index=False, float_format="%.3f")
 
     seam = make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi, geo_df)
-    write_report(out / "SUMMARY.md", df, qc, skipped, warns, seam, pct if not pct.empty else None, landmark_defs)
+    write_report(out / "SUMMARY.md", df, qc, skipped, warns, seam, pct if not pct.empty else None, landmark_defs,
+                 fam)
     print(f"\nDone.\nTables:  {tdir}\nFigures: {out / 'figures'}\nSummary: {out / 'SUMMARY.md'}")
     if skipped:
         print(f"Skipped states: {len(skipped)} (see SUMMARY.md)")

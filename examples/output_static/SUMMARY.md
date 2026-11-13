@@ -49,35 +49,35 @@
 
 ## Key values per state
 
-| Enzyme | State | n | core RMSD | Cu–Cu | OH–CuA | OH–CuB | C ortho–O | ring tilt | π-stack HisB2 |
-|---|---|---|---|---|---|---|---|---|---|
-| ScTYR | global | 1 | 0.34 | 3.65 | 4.02 | 4.13 | 4.16 | 56.95 | yes |
-| ScTYR | local1 | 1 | 0.46 | 3.55 | 4.37 | 3.96 | 4.35 | 56.65 | yes |
-| ScTYR | local2 | 1 | 0.38 | 3.70 | 3.88 | 3.78 | 4.37 | 49.82 | yes |
-| ScTYR | local3 | 1 | 0.39 | 3.52 | 4.09 | 3.95 | 4.37 | 50.43 | no |
-| ScTYR | docking | 1 | 0.45 | 3.47 | 4.27 | 3.77 | 3.67 | 74.91 | yes |
-| VvTYR | global | 1 | 0.26 | 3.66 | 3.72 | 3.99 | 3.61 | 71.05 | yes |
-| VvTYR | local1 | 1 | 0.35 | 3.64 | 4.22 | 3.72 | 3.66 | 73.29 | yes |
-| VvTYR | local2 | 1 | 0.28 | 3.63 | 3.82 | 3.91 | 3.98 | 87.60 | yes |
-| VvTYR | docking | 1 | 0.42 | 3.47 | 4.77 | 3.84 | 4.92 | 53.83 | no |
-| AbTYR | global | 1 | 0.25 | 3.67 | 4.00 | 4.10 | 3.94 | 65.65 | yes |
-| AbTYR | local1 | 1 | 0.25 | 3.53 | 3.88 | 3.91 | 3.59 | 63.99 | yes |
-| AbTYR | docking | 1 | 0.43 | 3.46 | 3.95 | 2.99 | 3.26 | 59.33 | yes |
-| BmTYR | global | 1 | 0.23 | 3.21 | 4.09 | 4.12 | 3.44 | 63.42 | yes |
-| BmTYR | local1 | 1 | 0.33 | 3.08 | 4.27 | 3.94 | 3.41 | 67.60 | yes |
-| BmTYR | local2 | 1 | 0.28 | 3.05 | 4.18 | 4.17 | 3.19 | 71.10 | no |
-| BmTYR | docking | 1 | 0.45 | 3.47 | 4.22 | 3.52 | 3.48 | 64.97 | yes |
-| HsTYR | global | 1 | 0.35 | 3.30 | 4.17 | 3.76 | 3.60 | 54.59 | yes |
-| HsTYR | local1 | 1 | 0.37 | 3.40 | 4.38 | 3.91 | 3.69 | 51.44 | yes |
-| HsTYR | docking | 1 | 0.31 | 3.58 | 4.03 | 3.35 | 3.81 | 64.14 | no |
-| VsTYR | global | 1 | 0.69 | 3.49 | 2.88 | 3.91 | 4.58 | 44.50 | yes |
-| VsTYR | local1 | 1 | 0.28 | 3.66 | 3.57 | 3.94 | 3.22 | 51.27 | yes |
-| VsTYR | local2 | 1 | 0.69 | 3.56 | 3.29 | 4.02 | 4.43 | 39.57 | yes |
-| VsTYR | docking | 1 | 0.52 | 3.62 | 3.70 | 3.85 | 3.49 | 65.38 | yes |
-| JrTYR | global | 1 | 0.29 | 3.25 | 3.74 | 4.04 | 3.44 | 62.27 | yes |
-| JrTYR | local1 | 1 | 0.34 | 3.31 | 3.84 | 4.23 | 3.66 | 62.64 | yes |
-| JrTYR | local2 | 1 | 0.26 | 3.27 | 3.91 | 4.35 | 3.39 | 54.29 | yes |
-| JrTYR | docking | 1 | 0.41 | 3.53 | 4.00 | 3.81 | 3.47 | 62.77 | yes |
+| Enzyme | State | n | core RMSD | Cu–Cu | OH–CuA | OH–CuB | OH–O | C ortho–O | ring tilt | π-stack HisB2 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| ScTYR | global | 1 | 0.34 | 3.65 | 4.02 | 4.13 | 3.36 | 4.16 | 56.95 | yes |
+| ScTYR | local1 | 1 | 0.46 | 3.55 | 4.37 | 3.96 | 3.38 | 4.35 | 56.65 | yes |
+| ScTYR | local2 | 1 | 0.38 | 3.70 | 3.88 | 3.78 | 2.91 | 4.37 | 49.82 | yes |
+| ScTYR | local3 | 1 | 0.39 | 3.52 | 4.09 | 3.95 | 3.27 | 4.37 | 50.43 | no |
+| ScTYR | docking | 1 | 0.45 | 3.47 | 4.27 | 3.77 | 2.75 | 3.67 | 74.91 | yes |
+| VvTYR | global | 1 | 0.26 | 3.66 | 3.72 | 3.99 | 2.92 | 3.61 | 71.05 | yes |
+| VvTYR | local1 | 1 | 0.35 | 3.64 | 4.22 | 3.72 | 2.85 | 3.66 | 73.29 | yes |
+| VvTYR | local2 | 1 | 0.28 | 3.63 | 3.82 | 3.91 | 3.03 | 3.98 | 87.60 | yes |
+| VvTYR | docking | 1 | 0.42 | 3.47 | 4.77 | 3.84 | 3.27 | 4.92 | 53.83 | no |
+| AbTYR | global | 1 | 0.25 | 3.67 | 4.00 | 4.10 | 3.10 | 3.94 | 65.65 | yes |
+| AbTYR | local1 | 1 | 0.25 | 3.53 | 3.88 | 3.91 | 2.93 | 3.59 | 63.99 | yes |
+| AbTYR | docking | 1 | 0.43 | 3.46 | 3.95 | 2.99 | 2.74 | 3.26 | 59.33 | yes |
+| BmTYR | global | 1 | 0.23 | 3.21 | 4.09 | 4.12 | 2.76 | 3.44 | 63.42 | yes |
+| BmTYR | local1 | 1 | 0.33 | 3.08 | 4.27 | 3.94 | 2.83 | 3.41 | 67.60 | yes |
+| BmTYR | local2 | 1 | 0.28 | 3.05 | 4.18 | 4.17 | 2.83 | 3.19 | 71.10 | no |
+| BmTYR | docking | 1 | 0.45 | 3.47 | 4.22 | 3.52 | 2.62 | 3.48 | 64.97 | yes |
+| HsTYR | global | 1 | 0.35 | 3.30 | 4.17 | 3.76 | 2.73 | 3.60 | 54.59 | yes |
+| HsTYR | local1 | 1 | 0.37 | 3.40 | 4.38 | 3.91 | 2.92 | 3.69 | 51.44 | yes |
+| HsTYR | docking | 1 | 0.31 | 3.58 | 4.03 | 3.35 | 2.56 | 3.81 | 64.14 | no |
+| VsTYR | global | 1 | 0.69 | 3.49 | 2.88 | 3.91 | 3.16 | 4.58 | 44.50 | yes |
+| VsTYR | local1 | 1 | 0.28 | 3.66 | 3.57 | 3.94 | 2.84 | 3.22 | 51.27 | yes |
+| VsTYR | local2 | 1 | 0.69 | 3.56 | 3.29 | 4.02 | 3.28 | 4.43 | 39.57 | yes |
+| VsTYR | docking | 1 | 0.52 | 3.62 | 3.70 | 3.85 | 2.55 | 3.49 | 65.38 | yes |
+| JrTYR | global | 1 | 0.29 | 3.25 | 3.74 | 4.04 | 2.62 | 3.44 | 62.27 | yes |
+| JrTYR | local1 | 1 | 0.34 | 3.31 | 3.84 | 4.23 | 2.87 | 3.66 | 62.64 | yes |
+| JrTYR | local2 | 1 | 0.26 | 3.27 | 3.91 | 4.35 | 2.89 | 3.39 | 54.29 | yes |
+| JrTYR | docking | 1 | 0.41 | 3.53 | 4.00 | 3.81 | 2.73 | 3.47 | 62.77 | yes |
 
 Trajectories: median [p10–p90]; π-stack: % of frames. Distances in Å, angles in degrees.
 
@@ -110,3 +110,18 @@ Trajectories: median [p10–p90]; π-stack: % of frames. Distances in Å, angles
 - JrTYR / local1: Conserved_Glu 1.5/7.6/94°; Conserved_Asn 4.3/6.2/129°; Gatekeeper 7.5/5.3/345°; A/S_adj 3.7/5.1/265°
 - JrTYR / local2: Conserved_Glu 1.7/7.2/91°; Conserved_Asn 4.5/5.8/127°; Gatekeeper 6.2/3.6/7°; A/S_adj 2.8/4.9/273°
 - JrTYR / docking: Conserved_Glu 1.0/7.5/87°; Conserved_Asn 4.9/5.6/125°; Gatekeeper 5.9/3.2/13°; A/S_adj 2.9/5.4/269°
+
+## Landmark dispersion (RMS of the 3D position, Å)
+
+Within: each enzyme around its own mean (minima, or GaMD frames). Between: enzyme means around the family mean.
+
+| Data | Landmark | within (min–max) | between | between / within |
+|---|---|---|---|---|
+| minima | Conserved_Glu | 0.18–0.47 | 0.53 | 1.8 |
+| minima | Conserved_Asn | 0.18–0.45 | 0.50 | 1.6 |
+| minima | Carboxylate_anchor | 0.66–1.70 | 5.65 | 4.9 |
+| minima | Gatekeeper | 0.27–1.48 | 1.92 | 3.0 |
+| minima | A/S_adj | 0.20–0.64 | 0.57 | 1.4 |
+| minima | L-Tyr OH | 0.09–0.79 | 0.52 | 1.7 |
+| minima | L-Tyr ring | 0.02–0.29 | 0.50 | 2.4 |
+| minima | L-Tyr CA | 0.24–0.99 | 0.81 | 1.5 |

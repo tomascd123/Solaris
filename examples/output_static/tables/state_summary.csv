@@ -119,6 +119,7 @@ ScTYR,global,global,structure,L.ring_tilt,1,56.9479,,56.9479,56.9479,56.9479
 ScTYR,global,global,structure,L.ring_normal_vs_CuCu,1,33.2248,,33.2248,33.2248,33.2248
 ScTYR,global,global,structure,L.angle_COH_vs_minus_z,1,41.0409,,41.0409,41.0409,41.0409
 ScTYR,global,global,structure,L.angle_CA_OH_vs_minus_z,1,42.0141,,42.0141,42.0141,42.0141
+ScTYR,global,global,structure,L.d_OH_Operox,1,3.3597,,3.3597,3.3597,3.3597
 ScTYR,global,global,structure,L.d_Cortho_Operox,1,4.1572,,4.1572,4.1572,4.1572
 ScTYR,global,global,structure,L.d_ring_HisB2,1,3.9783,,3.9783,3.9783,3.9783
 ScTYR,global,global,structure,L.HisB2_angle,1,22.8338,,22.8338,22.8338,22.8338
@@ -247,6 +248,7 @@ ScTYR,local1,local,structure,L.ring_tilt,1,56.6494,,56.6494,56.6494,56.6494
 ScTYR,local1,local,structure,L.ring_normal_vs_CuCu,1,34.7005,,34.7005,34.7005,34.7005
 ScTYR,local1,local,structure,L.angle_COH_vs_minus_z,1,48.6864,,48.6864,48.6864,48.6864
 ScTYR,local1,local,structure,L.angle_CA_OH_vs_minus_z,1,43.0481,,43.0481,43.0481,43.0481
+ScTYR,local1,local,structure,L.d_OH_Operox,1,3.3773,,3.3773,3.3773,3.3773
 ScTYR,local1,local,structure,L.d_Cortho_Operox,1,4.3540,,4.3540,4.3540,4.3540
 ScTYR,local1,local,structure,L.d_ring_HisB2,1,3.8361,,3.8361,3.8361,3.8361
 ScTYR,local1,local,structure,L.HisB2_angle,1,16.9942,,16.9942,16.9942,16.9942
@@ -375,6 +377,7 @@ ScTYR,local2,local,structure,L.ring_tilt,1,49.8160,,49.8160,49.8160,49.8160
 ScTYR,local2,local,structure,L.ring_normal_vs_CuCu,1,40.8811,,40.8811,40.8811,40.8811
 ScTYR,local2,local,structure,L.angle_COH_vs_minus_z,1,40.5524,,40.5524,40.5524,40.5524
 ScTYR,local2,local,structure,L.angle_CA_OH_vs_minus_z,1,37.4986,,37.4986,37.4986,37.4986
+ScTYR,local2,local,structure,L.d_OH_Operox,1,2.9076,,2.9076,2.9076,2.9076
 ScTYR,local2,local,structure,L.d_Cortho_Operox,1,4.3687,,4.3687,4.3687,4.3687
 ScTYR,local2,local,structure,L.d_ring_HisB2,1,3.9514,,3.9514,3.9514,3.9514
 ScTYR,local2,local,structure,L.HisB2_angle,1,13.1677,,13.1677,13.1677,13.1677
@@ -503,6 +506,7 @@ ScTYR,local3,local,structure,L.ring_tilt,1,50.4304,,50.4304,50.4304,50.4304
 ScTYR,local3,local,structure,L.ring_normal_vs_CuCu,1,39.6227,,39.6227,39.6227,39.6227
 ScTYR,local3,local,structure,L.angle_COH_vs_minus_z,1,42.7390,,42.7390,42.7390,42.7390
 ScTYR,local3,local,structure,L.angle_CA_OH_vs_minus_z,1,43.4735,,43.4735,43.4735,43.4735
+ScTYR,local3,local,structure,L.d_OH_Operox,1,3.2706,,3.2706,3.2706,3.2706
 ScTYR,local3,local,structure,L.d_Cortho_Operox,1,4.3744,,4.3744,4.3744,4.3744
 ScTYR,local3,local,structure,L.d_ring_HisB2,1,4.0482,,4.0482,4.0482,4.0482
 ScTYR,local3,local,structure,L.HisB2_angle,1,30.3672,,30.3672,30.3672,30.3672
@@ -630,6 +634,7 @@ ScTYR,docking,docking,structure,L.ring_tilt,1,74.9110,,74.9110,74.9110,74.9110
 ScTYR,docking,docking,structure,L.ring_normal_vs_CuCu,1,15.9084,,15.9084,15.9084,15.9084
 ScTYR,docking,docking,structure,L.angle_COH_vs_minus_z,1,40.1012,,40.1012,40.1012,40.1012
 ScTYR,docking,docking,structure,L.angle_CA_OH_vs_minus_z,1,29.4449,,29.4449,29.4449,29.4449
+ScTYR,docking,docking,structure,L.d_OH_Operox,1,2.7503,,2.7503,2.7503,2.7503
 ScTYR,docking,docking,structure,L.d_Cortho_Operox,1,3.6749,,3.6749,3.6749,3.6749
 ScTYR,docking,docking,structure,L.d_ring_HisB2,1,4.3487,,4.3487,4.3487,4.3487
 ScTYR,docking,docking,structure,L.HisB2_angle,1,27.8189,,27.8189,27.8189,27.8189
@@ -758,6 +763,7 @@ VvTYR,global,global,structure,L.ring_tilt,1,71.0465,,71.0465,71.0465,71.0465
 VvTYR,global,global,structure,L.ring_normal_vs_CuCu,1,40.6671,,40.6671,40.6671,40.6671
 VvTYR,global,global,structure,L.angle_COH_vs_minus_z,1,52.2803,,52.2803,52.2803,52.2803
 VvTYR,global,global,structure,L.angle_CA_OH_vs_minus_z,1,49.2489,,49.2489,49.2489,49.2489
+VvTYR,global,global,structure,L.d_OH_Operox,1,2.9201,,2.9201,2.9201,2.9201
 VvTYR,global,global,structure,L.d_Cortho_Operox,1,3.6105,,3.6105,3.6105,3.6105
 VvTYR,global,global,structure,L.d_ring_HisB2,1,3.9271,,3.9271,3.9271,3.9271
 VvTYR,global,global,structure,L.HisB2_angle,1,15.3534,,15.3534,15.3534,15.3534
@@ -884,6 +890,7 @@ VvTYR,local1,local,structure,L.ring_tilt,1,73.2934,,73.2934,73.2934,73.2934
 VvTYR,local1,local,structure,L.ring_normal_vs_CuCu,1,25.9187,,25.9187,25.9187,25.9187
 VvTYR,local1,local,structure,L.angle_COH_vs_minus_z,1,46.7208,,46.7208,46.7208,46.7208
 VvTYR,local1,local,structure,L.angle_CA_OH_vs_minus_z,1,36.6144,,36.6144,36.6144,36.6144
+VvTYR,local1,local,structure,L.d_OH_Operox,1,2.8526,,2.8526,2.8526,2.8526
 VvTYR,local1,local,structure,L.d_Cortho_Operox,1,3.6574,,3.6574,3.6574,3.6574
 VvTYR,local1,local,structure,L.d_ring_HisB2,1,4.3979,,4.3979,4.3979,4.3979
 VvTYR,local1,local,structure,L.HisB2_angle,1,12.7406,,12.7406,12.7406,12.7406
@@ -1012,6 +1019,7 @@ VvTYR,local2,local,structure,L.ring_tilt,1,87.5955,,87.5955,87.5955,87.5955
 VvTYR,local2,local,structure,L.ring_normal_vs_CuCu,1,32.4901,,32.4901,32.4901,32.4901
 VvTYR,local2,local,structure,L.angle_COH_vs_minus_z,1,43.5025,,43.5025,43.5025,43.5025
 VvTYR,local2,local,structure,L.angle_CA_OH_vs_minus_z,1,45.9568,,45.9568,45.9568,45.9568
+VvTYR,local2,local,structure,L.d_OH_Operox,1,3.0319,,3.0319,3.0319,3.0319
 VvTYR,local2,local,structure,L.d_Cortho_Operox,1,3.9790,,3.9790,3.9790,3.9790
 VvTYR,local2,local,structure,L.d_ring_HisB2,1,4.1955,,4.1955,4.1955,4.1955
 VvTYR,local2,local,structure,L.HisB2_angle,1,26.6730,,26.6730,26.6730,26.6730
@@ -1141,6 +1149,7 @@ VvTYR,docking,docking,structure,L.ring_tilt,1,53.8273,,53.8273,53.8273,53.8273
 VvTYR,docking,docking,structure,L.ring_normal_vs_CuCu,1,38.5565,,38.5565,38.5565,38.5565
 VvTYR,docking,docking,structure,L.angle_COH_vs_minus_z,1,43.1406,,43.1406,43.1406,43.1406
 VvTYR,docking,docking,structure,L.angle_CA_OH_vs_minus_z,1,32.5779,,32.5779,32.5779,32.5779
+VvTYR,docking,docking,structure,L.d_OH_Operox,1,3.2737,,3.2737,3.2737,3.2737
 VvTYR,docking,docking,structure,L.d_Cortho_Operox,1,4.9216,,4.9216,4.9216,4.9216
 VvTYR,docking,docking,structure,L.d_ring_HisB2,1,4.2734,,4.2734,4.2734,4.2734
 VvTYR,docking,docking,structure,L.HisB2_angle,1,2.7330,,2.7330,2.7330,2.7330
@@ -1269,6 +1278,7 @@ AbTYR,global,global,structure,L.ring_tilt,1,65.6528,,65.6528,65.6528,65.6528
 AbTYR,global,global,structure,L.ring_normal_vs_CuCu,1,30.7228,,30.7228,30.7228,30.7228
 AbTYR,global,global,structure,L.angle_COH_vs_minus_z,1,47.5373,,47.5373,47.5373,47.5373
 AbTYR,global,global,structure,L.angle_CA_OH_vs_minus_z,1,42.7681,,42.7681,42.7681,42.7681
+AbTYR,global,global,structure,L.d_OH_Operox,1,3.0987,,3.0987,3.0987,3.0987
 AbTYR,global,global,structure,L.d_Cortho_Operox,1,3.9382,,3.9382,3.9382,3.9382
 AbTYR,global,global,structure,L.d_ring_HisB2,1,3.5450,,3.5450,3.5450,3.5450
 AbTYR,global,global,structure,L.HisB2_angle,1,17.2406,,17.2406,17.2406,17.2406
@@ -1416,6 +1426,7 @@ AbTYR,local1,local,structure,L.ring_tilt,1,63.9930,,63.9930,63.9930,63.9930
 AbTYR,local1,local,structure,L.ring_normal_vs_CuCu,1,27.3036,,27.3036,27.3036,27.3036
 AbTYR,local1,local,structure,L.angle_COH_vs_minus_z,1,55.6113,,55.6113,55.6113,55.6113
 AbTYR,local1,local,structure,L.angle_CA_OH_vs_minus_z,1,47.2875,,47.2875,47.2875,47.2875
+AbTYR,local1,local,structure,L.d_OH_Operox,1,2.9269,,2.9269,2.9269,2.9269
 AbTYR,local1,local,structure,L.d_Cortho_Operox,1,3.5906,,3.5906,3.5906,3.5906
 AbTYR,local1,local,structure,L.d_ring_HisB2,1,3.7189,,3.7189,3.7189,3.7189
 AbTYR,local1,local,structure,L.HisB2_angle,1,14.6188,,14.6188,14.6188,14.6188
@@ -1563,6 +1574,7 @@ AbTYR,docking,docking,structure,L.ring_tilt,1,59.3281,,59.3281,59.3281,59.3281
 AbTYR,docking,docking,structure,L.ring_normal_vs_CuCu,1,31.4570,,31.4570,31.4570,31.4570
 AbTYR,docking,docking,structure,L.angle_COH_vs_minus_z,1,41.5853,,41.5853,41.5853,41.5853
 AbTYR,docking,docking,structure,L.angle_CA_OH_vs_minus_z,1,38.0622,,38.0622,38.0622,38.0622
+AbTYR,docking,docking,structure,L.d_OH_Operox,1,2.7430,,2.7430,2.7430,2.7430
 AbTYR,docking,docking,structure,L.d_Cortho_Operox,1,3.2566,,3.2566,3.2566,3.2566
 AbTYR,docking,docking,structure,L.d_ring_HisB2,1,3.7248,,3.7248,3.7248,3.7248
 AbTYR,docking,docking,structure,L.HisB2_angle,1,9.0415,,9.0415,9.0415,9.0415
@@ -1708,6 +1720,7 @@ BmTYR,global,global,structure,L.ring_tilt,1,63.4159,,63.4159,63.4159,63.4159
 BmTYR,global,global,structure,L.ring_normal_vs_CuCu,1,30.7714,,30.7714,30.7714,30.7714
 BmTYR,global,global,structure,L.angle_COH_vs_minus_z,1,52.5620,,52.5620,52.5620,52.5620
 BmTYR,global,global,structure,L.angle_CA_OH_vs_minus_z,1,53.7300,,53.7300,53.7300,53.7300
+BmTYR,global,global,structure,L.d_OH_Operox,1,2.7640,,2.7640,2.7640,2.7640
 BmTYR,global,global,structure,L.d_Cortho_Operox,1,3.4391,,3.4391,3.4391,3.4391
 BmTYR,global,global,structure,L.d_ring_HisB2,1,3.9055,,3.9055,3.9055,3.9055
 BmTYR,global,global,structure,L.HisB2_angle,1,4.6577,,4.6577,4.6577,4.6577
@@ -1834,6 +1847,7 @@ BmTYR,local1,local,structure,L.ring_tilt,1,67.5959,,67.5959,67.5959,67.5959
 BmTYR,local1,local,structure,L.ring_normal_vs_CuCu,1,26.7739,,26.7739,26.7739,26.7739
 BmTYR,local1,local,structure,L.angle_COH_vs_minus_z,1,56.6907,,56.6907,56.6907,56.6907
 BmTYR,local1,local,structure,L.angle_CA_OH_vs_minus_z,1,55.9120,,55.9120,55.9120,55.9120
+BmTYR,local1,local,structure,L.d_OH_Operox,1,2.8259,,2.8259,2.8259,2.8259
 BmTYR,local1,local,structure,L.d_Cortho_Operox,1,3.4108,,3.4108,3.4108,3.4108
 BmTYR,local1,local,structure,L.d_ring_HisB2,1,4.1442,,4.1442,4.1442,4.1442
 BmTYR,local1,local,structure,L.HisB2_angle,1,19.3186,,19.3186,19.3186,19.3186
@@ -1962,6 +1976,7 @@ BmTYR,local2,local,structure,L.ring_tilt,1,71.1002,,71.1002,71.1002,71.1002
 BmTYR,local2,local,structure,L.ring_normal_vs_CuCu,1,21.9755,,21.9755,21.9755,21.9755
 BmTYR,local2,local,structure,L.angle_COH_vs_minus_z,1,55.0212,,55.0212,55.0212,55.0212
 BmTYR,local2,local,structure,L.angle_CA_OH_vs_minus_z,1,52.9716,,52.9716,52.9716,52.9716
+BmTYR,local2,local,structure,L.d_OH_Operox,1,2.8303,,2.8303,2.8303,2.8303
 BmTYR,local2,local,structure,L.d_Cortho_Operox,1,3.1912,,3.1912,3.1912,3.1912
 BmTYR,local2,local,structure,L.d_ring_HisB2,1,4.2632,,4.2632,4.2632,4.2632
 BmTYR,local2,local,structure,L.HisB2_angle,1,13.3820,,13.3820,13.3820,13.3820
@@ -2090,6 +2105,7 @@ BmTYR,docking,docking,structure,L.ring_tilt,1,64.9666,,64.9666,64.9666,64.9666
 BmTYR,docking,docking,structure,L.ring_normal_vs_CuCu,1,25.0972,,25.0972,25.0972,25.0972
 BmTYR,docking,docking,structure,L.angle_COH_vs_minus_z,1,44.2171,,44.2171,44.2171,44.2171
 BmTYR,docking,docking,structure,L.angle_CA_OH_vs_minus_z,1,34.2982,,34.2982,34.2982,34.2982
+BmTYR,docking,docking,structure,L.d_OH_Operox,1,2.6164,,2.6164,2.6164,2.6164
 BmTYR,docking,docking,structure,L.d_Cortho_Operox,1,3.4816,,3.4816,3.4816,3.4816
 BmTYR,docking,docking,structure,L.d_ring_HisB2,1,3.9127,,3.9127,3.9127,3.9127
 BmTYR,docking,docking,structure,L.HisB2_angle,1,19.7479,,19.7479,19.7479,19.7479
@@ -2216,6 +2232,7 @@ HsTYR,global,global,structure,L.ring_tilt,1,54.5893,,54.5893,54.5893,54.5893
 HsTYR,global,global,structure,L.ring_normal_vs_CuCu,1,37.9208,,37.9208,37.9208,37.9208
 HsTYR,global,global,structure,L.angle_COH_vs_minus_z,1,55.9929,,55.9929,55.9929,55.9929
 HsTYR,global,global,structure,L.angle_CA_OH_vs_minus_z,1,52.2782,,52.2782,52.2782,52.2782
+HsTYR,global,global,structure,L.d_OH_Operox,1,2.7329,,2.7329,2.7329,2.7329
 HsTYR,global,global,structure,L.d_Cortho_Operox,1,3.6012,,3.6012,3.6012,3.6012
 HsTYR,global,global,structure,L.d_ring_HisB2,1,3.7375,,3.7375,3.7375,3.7375
 HsTYR,global,global,structure,L.HisB2_angle,1,18.3955,,18.3955,18.3955,18.3955
@@ -2341,6 +2358,7 @@ HsTYR,local1,local,structure,L.ring_tilt,1,51.4409,,51.4409,51.4409,51.4409
 HsTYR,local1,local,structure,L.ring_normal_vs_CuCu,1,38.6327,,38.6327,38.6327,38.6327
 HsTYR,local1,local,structure,L.angle_COH_vs_minus_z,1,57.9853,,57.9853,57.9853,57.9853
 HsTYR,local1,local,structure,L.angle_CA_OH_vs_minus_z,1,48.6175,,48.6175,48.6175,48.6175
+HsTYR,local1,local,structure,L.d_OH_Operox,1,2.9223,,2.9223,2.9223,2.9223
 HsTYR,local1,local,structure,L.d_Cortho_Operox,1,3.6888,,3.6888,3.6888,3.6888
 HsTYR,local1,local,structure,L.d_ring_HisB2,1,3.7806,,3.7806,3.7806,3.7806
 HsTYR,local1,local,structure,L.HisB2_angle,1,20.6694,,20.6694,20.6694,20.6694
@@ -2469,6 +2487,7 @@ HsTYR,docking,docking,structure,L.ring_tilt,1,64.1423,,64.1423,64.1423,64.1423
 HsTYR,docking,docking,structure,L.ring_normal_vs_CuCu,1,35.0867,,35.0867,35.0867,35.0867
 HsTYR,docking,docking,structure,L.angle_COH_vs_minus_z,1,37.2232,,37.2232,37.2232,37.2232
 HsTYR,docking,docking,structure,L.angle_CA_OH_vs_minus_z,1,44.7972,,44.7972,44.7972,44.7972
+HsTYR,docking,docking,structure,L.d_OH_Operox,1,2.5561,,2.5561,2.5561,2.5561
 HsTYR,docking,docking,structure,L.d_Cortho_Operox,1,3.8068,,3.8068,3.8068,3.8068
 HsTYR,docking,docking,structure,L.d_ring_HisB2,1,4.5086,,4.5086,4.5086,4.5086
 HsTYR,docking,docking,structure,L.HisB2_angle,1,32.2838,,32.2838,32.2838,32.2838
@@ -2597,6 +2616,7 @@ VsTYR,global,global,structure,L.ring_tilt,1,44.4952,,44.4952,44.4952,44.4952
 VsTYR,global,global,structure,L.ring_normal_vs_CuCu,1,46.7082,,46.7082,46.7082,46.7082
 VsTYR,global,global,structure,L.angle_COH_vs_minus_z,1,37.3685,,37.3685,37.3685,37.3685
 VsTYR,global,global,structure,L.angle_CA_OH_vs_minus_z,1,31.9133,,31.9133,31.9133,31.9133
+VsTYR,global,global,structure,L.d_OH_Operox,1,3.1594,,3.1594,3.1594,3.1594
 VsTYR,global,global,structure,L.d_Cortho_Operox,1,4.5828,,4.5828,4.5828,4.5828
 VsTYR,global,global,structure,L.d_ring_HisB2,1,4.0783,,4.0783,4.0783,4.0783
 VsTYR,global,global,structure,L.HisB2_angle,1,19.0497,,19.0497,19.0497,19.0497
@@ -2725,6 +2745,7 @@ VsTYR,local1,local,structure,L.ring_tilt,1,51.2659,,51.2659,51.2659,51.2659
 VsTYR,local1,local,structure,L.ring_normal_vs_CuCu,1,38.7350,,38.7350,38.7350,38.7350
 VsTYR,local1,local,structure,L.angle_COH_vs_minus_z,1,52.5157,,52.5157,52.5157,52.5157
 VsTYR,local1,local,structure,L.angle_CA_OH_vs_minus_z,1,42.2907,,42.2907,42.2907,42.2907
+VsTYR,local1,local,structure,L.d_OH_Operox,1,2.8394,,2.8394,2.8394,2.8394
 VsTYR,local1,local,structure,L.d_Cortho_Operox,1,3.2240,,3.2240,3.2240,3.2240
 VsTYR,local1,local,structure,L.d_ring_HisB2,1,3.9980,,3.9980,3.9980,3.9980
 VsTYR,local1,local,structure,L.HisB2_angle,1,22.9540,,22.9540,22.9540,22.9540
@@ -2853,6 +2874,7 @@ VsTYR,local2,local,structure,L.ring_tilt,1,39.5727,,39.5727,39.5727,39.5727
 VsTYR,local2,local,structure,L.ring_normal_vs_CuCu,1,50.4278,,50.4278,50.4278,50.4278
 VsTYR,local2,local,structure,L.angle_COH_vs_minus_z,1,53.0913,,53.0913,53.0913,53.0913
 VsTYR,local2,local,structure,L.angle_CA_OH_vs_minus_z,1,40.6174,,40.6174,40.6174,40.6174
+VsTYR,local2,local,structure,L.d_OH_Operox,1,3.2773,,3.2773,3.2773,3.2773
 VsTYR,local2,local,structure,L.d_Cortho_Operox,1,4.4304,,4.4304,4.4304,4.4304
 VsTYR,local2,local,structure,L.d_ring_HisB2,1,3.7871,,3.7871,3.7871,3.7871
 VsTYR,local2,local,structure,L.HisB2_angle,1,23.1774,,23.1774,23.1774,23.1774
@@ -2981,6 +3003,7 @@ VsTYR,docking,docking,structure,L.ring_tilt,1,65.3832,,65.3832,65.3832,65.3832
 VsTYR,docking,docking,structure,L.ring_normal_vs_CuCu,1,29.0450,,29.0450,29.0450,29.0450
 VsTYR,docking,docking,structure,L.angle_COH_vs_minus_z,1,46.5473,,46.5473,46.5473,46.5473
 VsTYR,docking,docking,structure,L.angle_CA_OH_vs_minus_z,1,37.1668,,37.1668,37.1668,37.1668
+VsTYR,docking,docking,structure,L.d_OH_Operox,1,2.5524,,2.5524,2.5524,2.5524
 VsTYR,docking,docking,structure,L.d_Cortho_Operox,1,3.4851,,3.4851,3.4851,3.4851
 VsTYR,docking,docking,structure,L.d_ring_HisB2,1,3.7944,,3.7944,3.7944,3.7944
 VsTYR,docking,docking,structure,L.HisB2_angle,1,4.7797,,4.7797,4.7797,4.7797
@@ -3090,6 +3113,7 @@ JrTYR,global,global,structure,L.ring_tilt,1,62.2694,,62.2694,62.2694,62.2694
 JrTYR,global,global,structure,L.ring_normal_vs_CuCu,1,30.9384,,30.9384,30.9384,30.9384
 JrTYR,global,global,structure,L.angle_COH_vs_minus_z,1,41.6251,,41.6251,41.6251,41.6251
 JrTYR,global,global,structure,L.angle_CA_OH_vs_minus_z,1,43.7510,,43.7510,43.7510,43.7510
+JrTYR,global,global,structure,L.d_OH_Operox,1,2.6200,,2.6200,2.6200,2.6200
 JrTYR,global,global,structure,L.d_Cortho_Operox,1,3.4356,,3.4356,3.4356,3.4356
 JrTYR,global,global,structure,L.d_ring_HisB2,1,4.1193,,4.1193,4.1193,4.1193
 JrTYR,global,global,structure,L.HisB2_angle,1,12.8824,,12.8824,12.8824,12.8824
@@ -3198,6 +3222,7 @@ JrTYR,local1,local,structure,L.ring_tilt,1,62.6393,,62.6393,62.6393,62.6393
 JrTYR,local1,local,structure,L.ring_normal_vs_CuCu,1,41.0780,,41.0780,41.0780,41.0780
 JrTYR,local1,local,structure,L.angle_COH_vs_minus_z,1,50.0673,,50.0673,50.0673,50.0673
 JrTYR,local1,local,structure,L.angle_CA_OH_vs_minus_z,1,50.6033,,50.6033,50.6033,50.6033
+JrTYR,local1,local,structure,L.d_OH_Operox,1,2.8708,,2.8708,2.8708,2.8708
 JrTYR,local1,local,structure,L.d_Cortho_Operox,1,3.6634,,3.6634,3.6634,3.6634
 JrTYR,local1,local,structure,L.d_ring_HisB2,1,3.8351,,3.8351,3.8351,3.8351
 JrTYR,local1,local,structure,L.HisB2_angle,1,13.5153,,13.5153,13.5153,13.5153
@@ -3306,6 +3331,7 @@ JrTYR,local2,local,structure,L.ring_tilt,1,54.2915,,54.2915,54.2915,54.2915
 JrTYR,local2,local,structure,L.ring_normal_vs_CuCu,1,39.6226,,39.6226,39.6226,39.6226
 JrTYR,local2,local,structure,L.angle_COH_vs_minus_z,1,52.4720,,52.4720,52.4720,52.4720
 JrTYR,local2,local,structure,L.angle_CA_OH_vs_minus_z,1,47.7342,,47.7342,47.7342,47.7342
+JrTYR,local2,local,structure,L.d_OH_Operox,1,2.8931,,2.8931,2.8931,2.8931
 JrTYR,local2,local,structure,L.d_Cortho_Operox,1,3.3920,,3.3920,3.3920,3.3920
 JrTYR,local2,local,structure,L.d_ring_HisB2,1,3.7866,,3.7866,3.7866,3.7866
 JrTYR,local2,local,structure,L.HisB2_angle,1,22.5976,,22.5976,22.5976,22.5976
@@ -3413,6 +3439,7 @@ JrTYR,docking,docking,structure,L.ring_tilt,1,62.7710,,62.7710,62.7710,62.7710
 JrTYR,docking,docking,structure,L.ring_normal_vs_CuCu,1,32.7884,,32.7884,32.7884,32.7884
 JrTYR,docking,docking,structure,L.angle_COH_vs_minus_z,1,51.4401,,51.4401,51.4401,51.4401
 JrTYR,docking,docking,structure,L.angle_CA_OH_vs_minus_z,1,38.5595,,38.5595,38.5595,38.5595
+JrTYR,docking,docking,structure,L.d_OH_Operox,1,2.7312,,2.7312,2.7312,2.7312
 JrTYR,docking,docking,structure,L.d_Cortho_Operox,1,3.4746,,3.4746,3.4746,3.4746
 JrTYR,docking,docking,structure,L.d_ring_HisB2,1,3.5863,,3.5863,3.5863,3.5863
 JrTYR,docking,docking,structure,L.HisB2_angle,1,12.0163,,12.0163,12.0163,12.0163

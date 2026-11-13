@@ -318,7 +318,7 @@ class MDASource:
         stop = self.n_frames if stop is None else min(int(stop), self.n_frames)
         for ts in self.u.trajectory[int(start):stop:max(1, int(stride))]:
             box = None if ts.dimensions is None else np.asarray(ts.dimensions, float)
-            yield int(ts.frame), ts.positions.astype(float), box
+            yield int(ts.frame), ts.positions, box
 
 
 def open_source(base, entry, is_traj):
@@ -425,7 +425,8 @@ class SiteResolver:
 
     def coppers(self):
         t = self.topo
-        cu = sorted({i for i in range(t.n) if t.elements[i] == "CU" or re.fullmatch(r"CU\d?", t.names[i])})
+        is_cu = (t.elements == "CU") | np.isin(t.names, ["CU"] + [f"CU{k}" for k in range(10)])
+        cu = np.flatnonzero(is_cu).tolist()
         if len(cu) != 2:
             raise ValueError(f"expected 2 Cu, found {len(cu)}")
         return cu
@@ -650,8 +651,7 @@ class FrameAnalyzer:
                 rows.append(row)
                 for k in ("x", "y", "h", "r", "phi"):
                     out[f"{lab}.{p}.{k}"] = row[k]
-            out[f"{lab}.TIP.dCuA"] = float(np.linalg.norm(c["TIP"] - cuA))
-            out[f"{lab}.TIP.dCuB"] = float(np.linalg.norm(c["TIP"] - cuB))
+            out[f"{lab}.TIP.dCuA"], out[f"{lab}.TIP.dCuB"] = row["dCuA"], row["dCuB"]
             out[f"{lab}.dr"] = out[f"{lab}.TIP.r"] - out[f"{lab}.CA.r"]
             out[f"{lab}.dh"] = out[f"{lab}.TIP.h"] - out[f"{lab}.CA.h"]
             centroids[lab] = c
@@ -728,12 +728,13 @@ def circ_stats(deg):
 def summarize(df, desc_cols):
     out = []
     for (sy, st), g in df.groupby(["system", "state"], sort=False):
-        for c in desc_cols:
-            v = g[c].dropna().to_numpy(float)
+        meta = {"system": sy, "state": st, "category": g["category"].iloc[0], "kind": g["kind"].iloc[0]}
+        A = g[desc_cols].to_numpy(float)
+        for j, c in enumerate(desc_cols):
+            v = A[:, j][~np.isnan(A[:, j])]
             if not len(v):
                 continue
-            row = {"system": sy, "state": st, "category": g["category"].iloc[0], "kind": g["kind"].iloc[0],
-                   "descriptor": c, "n": len(v)}
+            row = {**meta, "descriptor": c, "n": len(v)}
             if is_angle(c):
                 mu, sd = circ_stats(v)
                 row.update(mean=mu, sd=sd if len(v) > 1 else np.nan, p10=np.nan, median=np.nan, p90=np.nan)
@@ -805,7 +806,7 @@ def marker_for(system, systems):
     return _pick(system, systems, TYR_MARKERS, EXTRA_MARKERS, "o")
 
 
-def color_for(system, systems=()):
+def color_for(system, systems):
     return _pick(system, systems, TYR_COLORS, EXTRA_COLORS, "#7f7f7f")
 
 
@@ -893,7 +894,7 @@ def style_clean(ax):
 
 
 def his_ring_xy(role):
-    return np.array([TEMPLATE[TEMPLATE_ROW[(role, a)]] for a in ("CG", "ND1", "CE1", "NE2", "CD2")])
+    return np.array([TEMPLATE[TEMPLATE_ROW[(role, a)]] for a in HIS_POLY])
 
 
 def draw_circles(ax, radii=(5, 10)):
@@ -1004,9 +1005,13 @@ def state_handles():
             Line2D([0], [0], marker="o", ls="None", ms=7, mfc="white", mec="#555555", mew=1.4, label="docking")]
 
 
+def frame_label(step):
+    return f"GaMD frame (1 every {step})" if step > 1 else "GaMD frame"
+
+
 def traj_handles(step, density=False, frames=True):
     h = [Line2D([0], [0], marker="o", ls="None", ms=3.5, mfc="#7f7f7f", mec="none", alpha=0.6,
-                label=f"GaMD frame (1 every {step})" if step > 1 else "GaMD frame")] if frames else []
+                label=frame_label(step))] if frames else []
     h += [Line2D([0], [0], marker="o", ls="None", ms=8.5, mfc="#7f7f7f", mec="white", mew=0.8, label="median")]
     if density:
         h += [Patch(fc=lighten("#7f7f7f", 0.35), ec="none", label="50 % of frames"),
@@ -1185,12 +1190,11 @@ def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False,
     fig, axes = plt.subplots(nrow, ncol, figsize=(5.4 * ncol, 4.2 * nrow), squeeze=False)
     for ax, lab in zip(axes.flat, panels):
         for (sy, _), g in dd[dd["landmark"] == lab].groupby(["system", "state"], sort=False):
+            g = g[g["r"] >= r_min]
             if traj:
-                g = g[g["r"] >= r_min]
                 ax.scatter(unwrap(g["phi"], seam), g["h"], c=g["r"], cmap="viridis", norm=norm, s=16,
                            marker=marker_for(sy, systems), alpha=0.7, linewidths=0, zorder=3, rasterized=True)
                 continue
-            g = g[g["r"] >= r_min]
             if g.empty:
                 continue
             sty = state_style(g["category"].iloc[0])
@@ -1219,7 +1223,7 @@ def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False,
     if traj:
         step = frame_step(d[d["landmark"].isin(panels)], n_points)
         extra = [Line2D([0], [0], marker="o", ls="None", ms=4, mfc="#7f7f7f", mec="none", alpha=0.7,
-                        label=f"GaMD frame (1 every {step})" if step > 1 else "GaMD frame")]
+                        label=frame_label(step))]
         family_legend(fig, systems, set(), extra)
         fig.suptitle("Unrolled cylinder · GaMD", fontsize=11, fontweight="bold", y=0.98)
     else:
@@ -1272,7 +1276,7 @@ def fig_traj_enzyme(system, long_df, landmark_order, path, dpi, systems, n_point
     step = frame_step(traj, n_points)
     h = [Patch(color=TRAJ_BLUES[1], label="GaMD 50 %"), Patch(color=TRAJ_BLUES[0], label="GaMD 90 %"),
          Line2D([0], [0], marker=mk, ls="None", ms=4, mfc=col, mec="none", alpha=0.6,
-                label=f"GaMD frame (1 every {step})" if step > 1 else "GaMD frame"),
+                label=frame_label(step)),
          Line2D([0], [0], marker=mk, ls="None", ms=8, mfc=col, mec="white", label="median")]
     h += [Line2D([0], [0], marker=mk, ls="None", ms=8, mfc=state_style(c)["fill"], mec="black", label=STATE_LABEL[c])
           for c in ("global", "local", "docking") if c in cats]
@@ -1387,7 +1391,6 @@ def make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi, geo_df=N
     figdir.mkdir(parents=True, exist_ok=True)
     n_pts = int(cfg.get("points_per_trajectory", N_POINTS))
     r_color = tuple(cfg.get("r_color", R_COLOR))
-    # one cut of the phi axis for static and GaMD figures, so that they can be compared
     seam = None
     if not long_df.empty:
         pocket = long_df[long_df["plot"] & ~long_df["landmark"].str.startswith("L-Tyr") & (long_df["r"] >= r_min_phi)]
@@ -1418,8 +1421,8 @@ def make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi, geo_df=N
             fig_landmark_detail(part, lab, part_sys, lm_dir / f"F1_{k:02d}_{file_name(display_name(lab))}.png", dpi,
                                 traj=traj, n_points=n_pts)
     systems = list(dict.fromkeys(df["system"]))
-    for sy in systems if not long_df.empty else ():
-        if (long_df.loc[long_df["system"] == sy, "kind"] == "trajectory").any():
+    if not long_df.empty:
+        for sy in long_df.loc[long_df["kind"] == "trajectory", "system"].unique():
             fig_traj_enzyme(sy, long_df, landmark_order, figdir / f"F3_GaMD_{sy}.png", dpi, systems, n_pts)
     return seam
 

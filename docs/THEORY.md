@@ -176,7 +176,8 @@ closest to the Cu–Cu midpoint in the first frame is used.
 | `L.d_ring_HisB2` and `L.HisB2_*` | See section 7 | π-stacking with HisB2 |
 
 Ring normals are computed as the direction of least variance of the ring atoms: the right singular vector with the
-smallest singular value of the centred coordinates.
+smallest singular value of the centred coordinates. The π-stacking descriptors use the PLIP normal instead
+(section 7).
 
 ## 6. The Cu2O2 core
 
@@ -192,19 +193,21 @@ smallest singular value of the centred coordinates.
 
 ### 7.1 Geometry
 
-With *c*<sub>T</sub> the centroid of the L-Tyr ring, *c*<sub>H</sub> the centroid of the HisB2 imidazole,
-*n*<sub>T</sub> and *n*<sub>H</sub> their normals (section 5), and *n*<sub>H</sub> oriented towards the substrate
-side (*v* · *n*<sub>H</sub> ≥ 0 with *v* = *c*<sub>T</sub> − *c*<sub>H</sub>):
+With *c*<sub>T</sub> the centroid of the L-Tyr ring and *c*<sub>H</sub> the centroid of the HisB2 imidazole, the
+ring normals are computed as in PLIP (Salentin et al., 2015): with the ring atoms listed in cyclic order
+(CG, CD1, CE1, CZ, CE2, CD2 for L-Tyr; CG, ND1, CE1, NE2, CD2 for His), the normal is the cross product
+(*a*<sub>2</sub> − *a*<sub>0</sub>) × (*a*<sub>0</sub> − *a*<sub>4</sub>), normalised. *n*<sub>H</sub> is oriented
+towards the substrate side (*v* · *n*<sub>H</sub> ≥ 0 with *v* = *c*<sub>T</sub> − *c*<sub>H</sub>):
 
 | Descriptor | Definition |
 |---|---|
 | `L.d_ring_HisB2` (*d*) | ‖*v*‖, distance between the ring centroids |
 | `L.HisB2_h` (*h*<sub>⊥</sub>) | *v* · *n*<sub>H</sub>, height of the L-Tyr ring centre above the HisB2 plane |
-| `L.HisB2_offset` | ‖*v* − *h*<sub>⊥</sub> *n*<sub>H</sub>‖, sideways shift of the L-Tyr ring centre from the HisB2 normal |
+| `L.HisB2_offset` | min(‖*v* − (*v* · *n*<sub>H</sub>) *n*<sub>H</sub>‖, ‖*v* − (*v* · *n*<sub>T</sub>) *n*<sub>T</sub>‖), the smaller sideways shift of one ring centre from the normal of the other ring |
 | `L.HisB2_angle` (θ) | Angle between *n*<sub>T</sub> and *n*<sub>H</sub>, folded to 0–90° |
 
-The offset is the length of the arrow drawn in figure F4. An offset of 0 means that the L-Tyr ring is exactly
-above the HisB2 ring (face-to-face); 1–2 Å is the parallel-displaced geometry, the most common and most stable
+The first term of the offset is the arrow drawn in figure F4; the offset is that length or shorter. An offset of 0
+means that one ring is exactly above the other (face-to-face); 1–2 Å is the parallel-displaced geometry, the most common and most stable
 arrangement of stacked aromatic rings (Hunter and Sanders, 1990); beyond about 2 Å the rings no longer overlap
 (the radius of an aromatic ring is about 1.4 Å).
 
@@ -214,10 +217,9 @@ arrangement of stacked aromatic rings (Hunter and Sanders, 1990); beyond about 2
 
 $$d \le 5.5\ \text{Å}, \qquad \text{offset} \le 2.0\ \text{Å}, \qquad \theta \le 30^\circ\ (\text{parallel}) \ \text{or}\ \theta \ge 60^\circ\ (\text{T-shaped}),$$
 
-and 0 otherwise. The thresholds are those used by PLIP (Salentin et al., 2015). PLIP measures the offset as the
-smaller of the projections onto the two ring planes; SOLARIS measures it from the HisB2 normal, so that the value
-is the arrow drawn in F4. On the example structures both definitions give the same classification for every
-state. The whole HisB2 imidazole is required; if atoms are missing, the
+and 0 otherwise. Normals, offset and thresholds are those of PLIP (Salentin et al., 2015). States close to a
+threshold (an offset near 2 Å, an angle near 30°) can change class with the way the ring normal is computed;
+check the values, not only the flag. The whole HisB2 imidazole is required; if atoms are missing, the
 π-stacking descriptors and `L.d_ring_HisB2` are not computed and SUMMARY reports it.
 
 Over a trajectory, the mean of `L.HisB2_stack` is the fraction of frames with stacking.
@@ -226,7 +228,7 @@ Over a trajectory, the mean of `L.HisB2_stack` is the fraction of frames with st
 
 F4 shows the rings looking down *n*<sub>H</sub>: origin at *c*<sub>H</sub>, first axis *u* = the HisB2 NE2 (the
 nitrogen bound to CuB) projected on the HisB2 plane, second axis *n*<sub>H</sub> × *u*. All points are projected on
-this plane, so the offset is a true length in the figure. For a trajectory, the regions holding 50 % and 90 % of
+this plane, so the shift of the L-Tyr centre (the arrow) is a true length in the figure. For a trajectory, the regions holding 50 % and 90 % of
 the L-Tyr ring centres are drawn, together with a representative frame: the one whose ring centre is closest to
 the median centre.
 
@@ -267,6 +269,13 @@ A static structure is in the tail of its trajectory when *P* < 2.5 or *P* > 97.5
 0/1 stacking flag are not ranked. This answers whether a minimum or a docking pose is a conformation that the
 simulation actually visits.
 
+**Landmark dispersion.** With RMS(*P*) = √(mean ‖*p* − *p̄*‖²) over the 3D positions of the plotted point,
+`landmark_dispersion.csv` gives the RMS fluctuation of each landmark within each state. `family_dispersion.csv`
+compares, per landmark, the spread within enzymes (their minima, or their GaMD frames) with the spread between
+enzymes: *within* is pooled, √(Σ<sub>s</sub> *n*<sub>s</sub> RMS<sub>s</sub>² / Σ<sub>s</sub> *n*<sub>s</sub>),
+i.e. every point around the mean of its own enzyme; *between* is the RMS of the enzyme means around the family
+mean; the ratio is between / pooled within.
+
 ## 10. Quality checks
 
 | Check | Threshold | Reported as |
@@ -285,11 +294,10 @@ The residue actually used for each role in each state, with the offset and how i
 
 | Figure | What it shows | Encoding |
 |---|---|---|
-| F1_landmark_summary | *r*, *h* and φ of every landmark (plotted point), one sub-row per enzyme | Colour and marker = enzyme; large filled = global minimum, small = local minima, hollow = docking; GaMD: median, p5–p95 and subsampled frames |
-| F1_per_landmark | Each pocket landmark seen down the *z* axis, over the template Cu and His | Local minima are linked to the global minimum; GaMD: 50/90 % regions and median |
-| F2_unrolled_cylinder | The cylinder cut open: φ against *h*, colour = *r* | The cut is placed in the widest empty sector of φ and shared by the static and GaMD figures |
-| F3_GaMD_&lt;enzyme&gt; | All landmarks of one enzyme along its trajectory, with the static states on top | Top view and (*r*, *h*) view |
-| F4_pistacking_HisB2 | The L-Tyr ring on HisB2, seen perpendicular to HisB2 (section 7.3) | Arrow = offset; dotted circle = 2 Å limit |
+| F1_landmark_summary | *r*, *h* and φ of every landmark (plotted point) in the static structures, one sub-row per enzyme | Colour and marker = enzyme; large filled = global minimum, small = local minima, hollow = docking |
+| F2_unrolled_cylinder | The cylinder cut open: φ against *h*, colour = *r*, static structures | Common *h* axis in all panels; the cut is placed in the widest empty sector of φ |
+| F3_GaMD_&lt;enzyme&gt; | The landmarks of one enzyme along its trajectory (all, or those in `F3_landmarks`), with the static states on top | Top view and (*r*, *h*) view |
+| F4_pistacking_HisB2 | The L-Tyr ring on HisB2, seen perpendicular to HisB2 (section 7.3) | Arrow = shift of the L-Tyr centre in the HisB2 plane; dotted circle = 2 Å offset limit |
 
 **50 % and 90 % regions.** The points are binned in a 2D histogram, smoothed with a Gaussian kernel (σ = 1.4 bins),
 and the smallest regions that hold 50 % and 90 % of the points are drawn (highest-density regions). With fewer than

@@ -25,7 +25,6 @@ import pandas as pd
 
 import matplotlib
 matplotlib.use("Agg")
-import matplotlib.patheffects as patheffects
 import matplotlib.pyplot as plt
 from matplotlib.cm import ScalarMappable
 from matplotlib.colors import Normalize
@@ -110,12 +109,10 @@ STATE_STYLE = {"global": dict(edge="black", lw=1.8, fill="black"),
                "local": dict(edge="white", lw=1.8, fill="white"),
                "docking": dict(edge="0.35", lw=1.8, fill="#e66101")}
 STATE_LABEL = {"global": "global min.", "local": "local min.", "docking": "docking", "other": "other"}
-STATE_RANK = {"global": 0, "local": 1, "docking": 2, "other": 3}
 RES3 = {"ALA": "Ala", "ARG": "Arg", "ASN": "Asn", "ASP": "Asp", "CYS": "Cys", "GLN": "Gln", "GLU": "Glu",
         "GLY": "Gly", "HIS": "His", "ILE": "Ile", "LEU": "Leu", "LYS": "Lys", "MET": "Met", "PHE": "Phe",
         "PRO": "Pro", "SER": "Ser", "THR": "Thr", "TRP": "Trp", "TYR": "Tyr", "VAL": "Val"}
 R_COLOR = (0.0, 12.0)
-SITE_HALF = 5.5  # half-width (Å) of the top view needed to show the Cu and the six His rings
 N_POINTS = 400
 # pi-stacking of the L-Tyr ring on HisB2 (thresholds of PLIP): centroid distance, offset of the L-Tyr ring centre
 # from the HisB2 normal, and angle between the ring planes (parallel or T-shaped)
@@ -149,6 +146,12 @@ def axis_tilt(u, axis):
 
 def plane_normal(P):
     return np.linalg.svd(P - P.mean(0))[2][2]
+
+
+def ring_normal(R):
+    """Ring normal as in PLIP: cross product through atoms 0, 2 and 4 of a ring listed in cyclic order."""
+    n = np.cross(R[2] - R[0], R[0] - R[4])
+    return n / np.linalg.norm(n)
 
 
 def dihedral(p0, p1, p2, p3):
@@ -682,7 +685,7 @@ class FrameAnalyzer:
         geo = None
         if self.hisB2_complete:
             out["L.d_ring_HisB2"] = float(np.linalg.norm(rc - L[self.i_hisB2_ring].mean(0)))
-            stack, geo = self._stacking(L, g, rc, nrm)
+            stack, geo = self._stacking(L, g, rc)
             out.update(stack)
         if self.anchor and "C" in g:
             out["L.d_carboxylate_anchor"] = float(np.linalg.norm(g["C"] - centroids[self.anchor]["TIP"]))
@@ -690,17 +693,19 @@ class FrameAnalyzer:
             out["L.d_ring_gatekeeper"] = float(np.linalg.norm(rc - centroids[self.gatekeeper]["SC"]))
         return out, rows, geo
 
-    def _stacking(self, L, g, rc, nrm):
-        """pi-stacking of the L-Tyr ring on HisB2, and the geometry seen down the HisB2 normal
-        (origin at the HisB2 ring centre, u towards its NE2, the N bound to CuB)."""
+    def _stacking(self, L, g, rc):
+        """pi-stacking of the L-Tyr ring on HisB2 as in PLIP (ring normals through atoms 0, 2, 4 of each ring in
+        cyclic order; offset = the smaller projection of one ring centre onto the other ring plane), and the
+        geometry seen down the HisB2 normal (origin at the HisB2 ring centre, u towards its NE2, the N bound to CuB)."""
         H = L[self.i_hisB2_ring]
-        ch, nh = H.mean(0), plane_normal(H)
+        ch, nh = H.mean(0), ring_normal(H)
+        nt = ring_normal(np.vstack([g[a] for a in TYR_POLY]))
         v = rc - ch
         if np.dot(v, nh) < 0:
             nh = -nh
         h = float(np.dot(v, nh))
-        offset = float(np.linalg.norm(v - h * nh))
-        angle = axis_tilt(nrm, nh)
+        offset = min(float(np.linalg.norm(v - h * nh)), float(np.linalg.norm(v - np.dot(v, nt) * nt)))
+        angle = axis_tilt(nt, nh)
         stack = (np.linalg.norm(v) <= STACK_D and offset <= STACK_OFFSET
                  and (angle <= STACK_PARALLEL or angle >= STACK_T))
         out = {"L.HisB2_angle": angle, "L.HisB2_offset": offset, "L.HisB2_h": h, "L.HisB2_stack": float(stack)}
@@ -796,24 +801,25 @@ def landmark_dispersion(long_df):
 
 def family_dispersion(long_df):
     """Per landmark: spread within each enzyme (its minima, or its GaMD frames) and spread of the enzyme means
-    across the family; ratio = between / mean(within)."""
+    across the family; ratio = between / pooled within (RMS of every point around the mean of its own enzyme)."""
     out = []
     d = long_df[long_df["plot"] & long_df["category"].isin(["global", "local", "GaMD"])]
     for (kind, lab), g in d.groupby(["kind", "landmark"], sort=False):
-        within, means = {}, []
+        within, means, ss, n = {}, [], 0.0, 0
         for sy, gs in g.groupby("system", sort=False):
             P = gs[["x", "y", "h"]].dropna().to_numpy(float)
             if len(P):
                 means.append(P.mean(0))
             if len(P) > 1:
                 within[sy] = rms_spread(P)
+                ss, n = ss + len(P) * within[sy] ** 2, n + len(P)
         if len(means) < 2 or not within:
             continue
-        between = rms_spread(np.array(means))
+        between, pooled = rms_spread(np.array(means)), math.sqrt(ss / n)
         w = np.array(list(within.values()))
         out.append({"kind": kind, "landmark": lab, "n_systems": len(means), "within_min": w.min(),
-                    "within_max": w.max(), "within_mean": w.mean(), "between": between,
-                    "ratio": between / w.mean() if w.mean() > 0 else np.nan,
+                    "within_max": w.max(), "within_pooled": pooled, "between": between,
+                    "ratio": between / pooled if pooled > 0 else np.nan,
                     "within_by_system": "; ".join(f"{s}={v:.2f}" for s, v in within.items())})
     return pd.DataFrame(out)
 
@@ -862,10 +868,6 @@ def darker(col, f=0.78):
     return (r * f, g * f, b * f)
 
 
-def halo():
-    return [patheffects.withStroke(linewidth=2.2, foreground="white")]
-
-
 def state_style(category):
     return STATE_STYLE.get(category, dict(edge="0.6", lw=1.2, fill="0.8"))
 
@@ -879,10 +881,6 @@ def res_label(resname, resid):
 
 def display_name(label):
     return str(label).replace("_", " ")
-
-
-def file_name(label):
-    return re.sub(r"[^A-Za-z0-9]+", "_", label).strip("_")
 
 
 def panels_for(long_df, landmark_order):
@@ -935,35 +933,6 @@ def style_clean(ax):
         ax.spines[s].set_color("#9a9a9a")
 
 
-def his_ring_xy(role):
-    return np.array([TEMPLATE[TEMPLATE_ROW[(role, a)]] for a in HIS_POLY])
-
-
-def draw_circles(ax, radii=(5, 10)):
-    for rr in radii:
-        ax.add_patch(plt.Circle((0, 0), rr, fill=False, lw=0.7, color="#cfcfcf", zorder=0.5))
-
-
-def draw_floor_top(ax):
-    """Template His rings, Cu-NE2 bonds and Cu atoms seen from the top."""
-    fc, ec = HIS_FC, HIS_EC
-    xl, yl = ax.get_xlim(), ax.get_ylim()
-    mx, my = 0.04 * (xl[1] - xl[0]), 0.04 * (yl[1] - yl[0])
-    for k, roles in ((0, HIS_ROLES[:3]), (1, HIS_ROLES[3:])):
-        x, y, _ = TEMPLATE[k]
-        for role in roles:
-            ne = TEMPLATE[TEMPLATE_ROW[(role, "NE2")]]
-            ax.plot([x, ne[0]], [y, ne[1]], color=ec, lw=0.6, zorder=1)
-    for role in HIS_ROLES:
-        ax.add_patch(Polygon(his_ring_xy(role)[:, :2], closed=True, fc=fc, ec=ec, lw=0.6, zorder=1.2))
-    for nm, k in (("CuA", 0), ("CuB", 1)):
-        x, y, _ = TEMPLATE[k]
-        ax.scatter([x], [y], s=55, color=CU_COLOR, edgecolors="white", linewidths=0.8, zorder=2)
-        if xl[0] + mx < x < xl[1] - mx and yl[0] + my < y - 0.7 < yl[1] - my:
-            ax.text(x, y - 0.7, nm, fontsize=6.5, color=darker(CU_COLOR), ha="center", va="top", zorder=2.1,
-                    path_effects=halo())
-
-
 def draw_reference_top(ax, lim):
     for rr in (5, 10):
         if rr < lim * 1.45:
@@ -977,32 +946,8 @@ def draw_reference_top(ax, lim):
         ax.text(x, y - 1.0, nm, fontsize=6.5, color=CU_COLOR, ha="center", va="top", zorder=2)
 
 
-def draw_states(ax, sub, xcol, ycol, systems):
-    """Global min. large filled, local min. small filled (linked to the global), docking hollow."""
-    for sy, g in sub.groupby("system", sort=False):
-        col, mk = color_for(sy, systems), marker_for(sy, systems)
-        glob = g[g["category"] == "global"]
-        if len(glob):
-            gx, gy = float(glob[xcol].iloc[0]), float(glob[ycol].iloc[0])
-            for _, r in g[g["category"] != "global"].iterrows():
-                ax.plot([gx, r[xcol]], [gy, r[ycol]], color=col, lw=0.8, alpha=0.6, zorder=3, solid_capstyle="round")
-        for _, r in g.iterrows():
-            cat = r["category"]
-            if cat == "global":
-                kw = dict(s=100, color=col, edgecolors="white", linewidths=0.9, zorder=5)
-            elif cat == "docking":
-                kw = dict(s=62, facecolors="white", edgecolors=darker(col, 0.85), linewidths=1.5, zorder=4.5)
-            else:
-                kw = dict(s=34, color=col, edgecolors="white", linewidths=0.6, zorder=4)
-            ax.scatter([r[xcol]], [r[ycol]], marker=mk, **kw)
-
-
-def draw_frames(ax, g, xcol, ycol, system, systems, size=7, alpha=0.35, jitter=0.0, y0=None, rng=None):
-    xs = g[xcol].to_numpy(float)
-    ys = np.full(len(g), y0, float) if y0 is not None else g[ycol].to_numpy(float)
-    if jitter:
-        ys = ys + (rng or np.random.default_rng(0)).uniform(-jitter, jitter, len(ys))
-    ax.scatter(xs, ys, s=size, marker=marker_for(system, systems), color=color_for(system, systems),
+def draw_frames(ax, g, xcol, ycol, system, systems, size=7, alpha=0.35):
+    ax.scatter(g[xcol].to_numpy(float), g[ycol].to_numpy(float), s=size, marker=marker_for(system, systems), color=color_for(system, systems),
                alpha=alpha, lw=0, zorder=3, rasterized=True)
 
 
@@ -1051,78 +996,18 @@ def frame_label(step):
     return f"GaMD frame (1 every {step})" if step > 1 else "GaMD frame"
 
 
-def traj_handles(step, density=False, frames=True):
-    h = [Line2D([0], [0], marker="o", ls="None", ms=3.5, mfc="#7f7f7f", mec="none", alpha=0.6,
-                label=frame_label(step))] if frames else []
-    h += [Line2D([0], [0], marker="o", ls="None", ms=8.5, mfc="#7f7f7f", mec="white", mew=0.8, label="median")]
-    if density:
-        h += [Patch(fc=lighten("#7f7f7f", 0.35), ec="none", label="50 % of frames"),
-              Patch(fc=lighten("#7f7f7f", 0.72), ec="none", label="90 % of frames")]
-    return h
-
-
-def enzyme_handles(df, systems):
-    out = []
-    for sy in [s for s in systems if s in set(df["system"])]:
-        g = df[df["system"] == sy]
-        out.append(Line2D([0], [0], marker=marker_for(sy, systems), ls="None", ms=7.5, mfc=color_for(sy, systems),
-                          mec="white", mew=0.6, label=f"{sy} ({res_label(g['resname'].iloc[0], g['resid'].iloc[0])})"))
-    return out
-
-
-def family_legend(fig, systems, cats, extra=()):
+def family_legend(fig, systems, cats):
     h = [Line2D([0], [0], marker=marker_for(s, systems), ls="None", ms=8, mfc="white", mec="black", label=s)
          for s in systems]
     h += [Line2D([0], [0], marker="o", ls="None", ms=8, mfc="0.75", mec=state_style(c)["edge"], mew=2.0,
                  label=STATE_LABEL[c]) for c in ("global", "local", "docking", "other") if c in cats]
-    fig.legend(handles=h + list(extra), loc="upper left", bbox_to_anchor=(0.93, 0.92), frameon=True, fontsize=8,
+    fig.legend(handles=h, loc="upper left", bbox_to_anchor=(0.93, 0.92), frameon=True, fontsize=8,
                title="TYR / state", title_fontsize=9)
 
 
 # ============================================================================ figures
-def fig_landmark_detail(long_df, landmark, systems, path, dpi, traj=False, n_points=N_POINTS):
-    """One landmark seen down the pseudo-C2 axis, framed on the dicopper site and on the data."""
-    pts = long_df[(long_df["landmark"] == landmark) & long_df["plot"]].dropna(subset=["x", "y"]).copy()
-    if pts.empty:
-        return
-    here = [s for s in systems if s in set(pts["system"])]
-    xy = pts[["x", "y"]].abs().to_numpy(float)
-    lim = max(SITE_HALF, (float(np.nanpercentile(xy, 99)) if traj else float(np.nanmax(xy))) + 1.2)
-
-    fig, ax = plt.subplots(figsize=(6.6, 7.4))
-    fig.subplots_adjust(left=0.11, right=0.97, top=0.92, bottom=0.19)
-    ax.set_xlim(-lim, lim)
-    ax.set_ylim(-lim, lim)
-    draw_circles(ax)
-    draw_floor_top(ax)
-    if traj:
-        for sy in here:
-            g = pts[pts["system"] == sy]
-            col, mk = color_for(sy, systems), marker_for(sy, systems)
-            density_fill(ax, g["x"], g["y"], [[-lim, lim], [-lim, lim]], nb=90, color=col, zorder=3)
-            ax.scatter([g["x"].median()], [g["y"].median()], s=60, marker=mk, color=col, edgecolors="white",
-                       linewidths=0.8, zorder=5)
-    else:
-        pts["_rank"] = pts["category"].map(STATE_RANK).fillna(3)
-        draw_states(ax, pts.sort_values(["system", "_rank"]), "x", "y", systems)
-    ax.set_aspect("equal")
-    ax.set_xlabel("x (Å)  → CuA", fontsize=8, color=INK)
-    ax.set_ylabel("y (Å)", fontsize=8, color=INK)
-    ax.set_title(display_name(landmark) + (" · GaMD" if traj else ""), loc="left", fontsize=12, fontweight="bold",
-                 color=INK)
-    style_clean(ax)
-    his = Patch(fc=HIS_FC, ec=HIS_EC, lw=0.6, label="His")
-    second = (traj_handles(frame_step(pts, n_points), density=True, frames=False) if traj else state_handles()) + [his]
-    enz = enzyme_handles(pts, systems)
-    kw = dict(loc="lower center", fontsize=7.5, frameon=False, handletextpad=0.3, columnspacing=1.2)
-    fig.legend(handles=enz, bbox_to_anchor=(0.54, 0.075), ncol=min(4, len(enz)), **kw)
-    fig.legend(handles=second, bbox_to_anchor=(0.54, 0.01), ncol=len(second), **kw)
-    fig.savefig(path, dpi=dpi)
-    plt.close(fig)
-
-
-def fig_landmark_summary(long_df, landmark_order, path, dpi, r_min, seam=None, traj=False, n_points=N_POINTS):
-    """r, h and phi of every landmark: one row per landmark, one sub-row per enzyme."""
+def fig_landmark_summary(long_df, landmark_order, path, dpi, r_min, seam=None):
+    """r, h and phi of every landmark in the static structures: one row per landmark, one sub-row per enzyme."""
     d = long_df[long_df["plot"] & (long_df["landmark"] != "L-Tyr CA")].copy()
     if d.empty:
         return
@@ -1145,7 +1030,6 @@ def fig_landmark_summary(long_df, landmark_order, path, dpi, r_min, seam=None, t
     fig, axes = plt.subplots(1, 3, figsize=(11.5, H), sharey=True,
                              gridspec_kw=dict(width_ratios=[1, 1.1, 1.5], wspace=0.08))
     cols = [("r", "r (Å)", (0, None)), ("h", "h (Å)", (None, None)), ("phi_u", "φ (°)", (seam, seam + 360))]
-    rng = np.random.default_rng(0)
     for ax, (col, xl, lim) in zip(axes, cols):
         for k, (_, top, bot) in enumerate(groups):
             if k % 2 == 0:
@@ -1157,13 +1041,6 @@ def fig_landmark_summary(long_df, landmark_order, path, dpi, r_min, seam=None, t
                 continue
             c_, mk = color_for(sy, systems), marker_for(sy, systems)
             vals = g[col].to_numpy(float)
-            if traj:
-                lo, med, hi = np.nanpercentile(vals, [5, 50, 95])
-                ax.plot([lo, hi], [yy, yy], color=darker(c_, 0.85), lw=1.1, zorder=4, solid_capstyle="round")
-                draw_frames(ax, thin_frames(g, n_points), col, None, sy, systems, size=6, alpha=0.3,
-                            jitter=0.3, y0=yy, rng=rng)
-                ax.scatter([med], [yy], s=48, marker=mk, color=c_, edgecolors="white", linewidths=0.7, zorder=5)
-                continue
             if len(vals) > 1:
                 ax.plot([np.nanmin(vals), np.nanmax(vals)], [yy, yy], color=c_, lw=1.0, alpha=0.6, zorder=2,
                         solid_capstyle="round")
@@ -1201,42 +1078,33 @@ def fig_landmark_summary(long_df, landmark_order, path, dpi, r_min, seam=None, t
                          xytext=(-44, 0), textcoords="offset points", ha="right", va="center", fontsize=8,
                          fontweight="bold", color=INK)
     hs = [Line2D([0], [0], marker=marker_for(s, systems), ls="None", ms=6.5, mfc=color_for(s, systems), mec="white",
-                 label=s) for s in systems]
-    hs += (traj_handles(frame_step(d, n_points)) + [Line2D([0], [0], color="#555555", lw=1.1, label="p5–p95")]
-           if traj else state_handles())
+                 label=s) for s in systems] + state_handles()
     fig.legend(handles=hs, loc="lower center", ncol=len(hs), bbox_to_anchor=(0.595, 0.0), fontsize=7,
                frameon=False, handletextpad=0.3, columnspacing=1.0)
-    fig.suptitle("Landmark positions" + (" · GaMD" if traj else ""), fontsize=11, fontweight="bold",
-                 color=INK, x=0.02, ha="left", y=0.995)
+    fig.suptitle("Landmark positions", fontsize=11, fontweight="bold", color=INK, x=0.02, ha="left", y=0.995)
     fig.subplots_adjust(left=0.2, right=0.99, top=1 - 0.95 / H, bottom=0.45 / H)
     fig.savefig(path, dpi=dpi)
     plt.close(fig)
 
 
-def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False, n_points=N_POINTS, r_color=R_COLOR,
-                          seam=None):
-    """phi vs h for every pocket landmark; marker = enzyme, colour = r."""
+def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, r_color=R_COLOR, seam=None):
+    """phi vs h for every pocket landmark in the static structures; marker = enzyme, colour = r. All panels share
+    the h axis, so a conserved residue looks as tight as it is next to a variable one."""
     d = long_df[long_df["plot"]]
     panels = [p for p in panels_for(d, landmark_order) if not p.startswith("L-Tyr")]
     if not panels:
         return
     systems = list(dict.fromkeys(d["system"]))
     dd = d[d["landmark"].isin(panels)]
-    if traj:
-        dd = thin_frames(dd, n_points)
     if seam is None:
         seam = auto_seam(dd.loc[dd["r"] >= r_min, "phi"].dropna())
     norm = Normalize(*r_color)
     ncol = min(3, len(panels))
     nrow = math.ceil(len(panels) / ncol)
-    fig, axes = plt.subplots(nrow, ncol, figsize=(5.4 * ncol, 4.2 * nrow), squeeze=False)
+    fig, axes = plt.subplots(nrow, ncol, figsize=(5.4 * ncol, 4.2 * nrow), squeeze=False, sharey=True)
     for ax, lab in zip(axes.flat, panels):
         for (sy, _), g in dd[dd["landmark"] == lab].groupby(["system", "state"], sort=False):
             g = g[g["r"] >= r_min]
-            if traj:
-                ax.scatter(unwrap(g["phi"], seam), g["h"], c=g["r"], cmap="viridis", norm=norm, s=16,
-                           marker=marker_for(sy, systems), alpha=0.7, linewidths=0, zorder=3, rasterized=True)
-                continue
             if g.empty:
                 continue
             sty = state_style(g["category"].iloc[0])
@@ -1254,34 +1122,34 @@ def fig_unrolled_cylinder(long_df, landmark_order, path, dpi, r_min, traj=False,
         ax.set_xticklabels([f"{t % 360:.0f}" for t in ticks], fontsize=7)
         ax.set_xlabel("φ (°)", fontsize=8)
         ax.set_title(display_name(lab), fontsize=11, fontweight="bold")
-        ax.set_ylabel("h (Å)", fontsize=8)
-        ax.tick_params(axis="y", labelsize=7)
+        ax.tick_params(axis="y", labelsize=7, labelleft=True)
         style_plain(ax)
+    for ax in axes[:, 0]:
+        ax.set_ylabel("h (Å)", fontsize=8)
     for ax in axes.flat[len(panels):]:
         ax.axis("off")
     fig.subplots_adjust(left=0.06, right=0.86, bottom=0.09, top=0.9, wspace=0.3, hspace=0.5)
     cb = fig.colorbar(ScalarMappable(norm=norm, cmap="viridis"), cax=fig.add_axes([0.885, 0.25, 0.012, 0.5]))
     cb.set_label("r (Å)", fontsize=9)
-    if traj:
-        step = frame_step(d[d["landmark"].isin(panels)], n_points)
-        extra = [Line2D([0], [0], marker="o", ls="None", ms=4, mfc="#7f7f7f", mec="none", alpha=0.7,
-                        label=frame_label(step))]
-        family_legend(fig, systems, set(), extra)
-        fig.suptitle("Unrolled cylinder · GaMD", fontsize=11, fontweight="bold", y=0.98)
-    else:
-        family_legend(fig, systems, set(d["category"]))
+    family_legend(fig, systems, set(d["category"]))
     fig.savefig(path, dpi=dpi, bbox_inches="tight")
     plt.close(fig)
 
 
-def fig_traj_enzyme(system, long_df, landmark_order, path, dpi, systems, n_points=N_POINTS):
-    """All landmarks of one enzyme along its trajectory, with the static structures on top."""
+def fig_traj_enzyme(system, long_df, landmark_order, path, dpi, systems, n_points=N_POINTS, only=None):
+    """Landmarks of one enzyme along its trajectory, with the static structures on top: all of them, or those
+    listed in `only` (in that order)."""
     d = long_df[(long_df["system"] == system) & long_df["plot"]]
     traj = d[d["kind"] == "trajectory"]
     if traj.empty:
         return
     thin = thin_frames(traj, n_points)
     panels = panels_for(d, landmark_order)
+    if only:
+        panels = [p for p in only if p in panels]
+        d = d[d["landmark"].isin(panels)]
+        if not panels:
+            return
     lim = max(6.0, float(np.nanpercentile(np.abs(d[["x", "y"]].to_numpy()), 99.5)) + 1.5)
     hmin, hmax = float(np.nanpercentile(d["h"], 0.5)) - 1, float(np.nanpercentile(d["h"], 99.5)) + 1
     rmax = float(np.nanpercentile(d["r"], 99.5)) + 1
@@ -1438,34 +1306,36 @@ def make_figures(out, cfg, df, long_df, landmark_order, dpi, r_min_phi, geo_df=N
         pocket = long_df[long_df["plot"] & ~long_df["landmark"].str.startswith("L-Tyr") & (long_df["r"] >= r_min_phi)]
         if not pocket.empty:
             seam = auto_seam(pocket["phi"].dropna())
+    # figures of earlier versions, no longer drawn
+    for old in ("F1_landmark_summary_GaMD.png", "F2_unrolled_cylinder_GaMD.png"):
+        (figdir / old).unlink(missing_ok=True)
+    for old in ("F1_per_landmark", "F1_per_landmark_GaMD"):
+        if (figdir / old).is_dir():
+            for f in (figdir / old).glob("F1_*.png"):
+                f.unlink()
+            if not any((figdir / old).iterdir()):
+                (figdir / old).rmdir()
+    static = long_df[long_df["kind"] == "structure"] if not long_df.empty else long_df
+    if not static.empty:
+        fig_unrolled_cylinder(static, landmark_order, figdir / "F2_unrolled_cylinder.png", dpi, r_min_phi,
+                              r_color=r_color, seam=seam)
+        fig_landmark_summary(static, landmark_order, figdir / "F1_landmark_summary.png", dpi, r_min_phi, seam)
     for kind, sfx in (("structure", ""), ("trajectory", "_GaMD")):
-        part = long_df[long_df["kind"] == kind] if not long_df.empty else long_df
-        if part.empty:
-            continue
-        traj = kind == "trajectory"
-        fig_unrolled_cylinder(part, landmark_order, figdir / f"F2_unrolled_cylinder{sfx}.png", dpi, r_min_phi,
-                              traj=traj, n_points=n_pts, r_color=r_color, seam=seam)
-        fig_landmark_summary(part, landmark_order, figdir / f"F1_landmark_summary{sfx}.png", dpi, r_min_phi, seam,
-                             traj=traj, n_points=n_pts)
         f4 = figdir / f"F4_pistacking_HisB2{sfx}.png"
         f4.unlink(missing_ok=True)
-        if geo_df is not None and not geo_df.empty and "L.HisB2_stack" in df:
-            fig_pistacking(geo_df[geo_df["kind"] == kind], df[df["kind"] == kind], f4, dpi, traj=traj)
-        lm_dir = figdir / f"F1_per_landmark{sfx}"
-        lm_dir.mkdir(exist_ok=True)
-        for old in lm_dir.glob("F1_*.png"):
-            old.unlink()
-        part_sys = list(dict.fromkeys(part["system"]))
-        need = min(2, len(part_sys))  # a landmark present in a single enzyme cannot be compared
-        detail = [lab for lab in panels_for(part[part["plot"]], landmark_order)
-                  if not lab.startswith("L-Tyr") and part.loc[part["landmark"] == lab, "system"].nunique() >= need]
-        for k, lab in enumerate(detail, start=1):
-            fig_landmark_detail(part, lab, part_sys, lm_dir / f"F1_{k:02d}_{file_name(display_name(lab))}.png", dpi,
-                                traj=traj, n_points=n_pts)
+        if geo_df is not None and not geo_df.empty and "L.HisB2_stack" in df and (geo_df["kind"] == kind).any():
+            fig_pistacking(geo_df[geo_df["kind"] == kind], df[df["kind"] == kind], f4, dpi,
+                           traj=kind == "trajectory")
+    f3_only = cfg.get("F3_landmarks")
+    if f3_only:
+        known = set(landmark_order) | {"L-Tyr OH", "L-Tyr ring"}
+        unknown = [lab for lab in f3_only if lab not in known]
+        if unknown:
+            print(f"[WARN] F3_landmarks: {', '.join(unknown)} not among the landmarks ({', '.join(sorted(known))})")
     systems = list(dict.fromkeys(df["system"]))
     if not long_df.empty:
         for sy in long_df.loc[long_df["kind"] == "trajectory", "system"].unique():
-            fig_traj_enzyme(sy, long_df, landmark_order, figdir / f"F3_GaMD_{sy}.png", dpi, systems, n_pts)
+            fig_traj_enzyme(sy, long_df, landmark_order, figdir / f"F3_GaMD_{sy}.png", dpi, systems, n_pts, f3_only)
     return seam
 
 
@@ -1541,11 +1411,14 @@ def write_report(path, df, qc, skipped, warnings, seam, pct, landmark_defs, fam=
             L.append(f"- {sy} / {st}: " + "; ".join(parts))
     if fam is not None and not fam.empty:
         L += ["\n## Landmark dispersion (RMS of the 3D position, Å)\n",
-              "Within: each enzyme around its own mean (minima, or GaMD frames). Between: enzyme means around the "
-              "family mean.\n", "| Data | Landmark | within (min–max) | between | between / within |", "|---|---|---|---|---|"]
+              "Within: each enzyme around its own mean (minima, or GaMD frames); pooled = all points around the "
+              "mean of their enzyme. Between: enzyme means around the family mean.\n",
+              "| Data | Landmark | within (min–max) | within (pooled) | between | between / pooled within |",
+              "|---|---|---|---|---|---|"]
         for _, r in fam.iterrows():
             L.append(f"| {'GaMD' if r['kind'] == 'trajectory' else 'minima'} | {r['landmark']} | "
-                     f"{r['within_min']:.2f}–{r['within_max']:.2f} | {r['between']:.2f} | {r['ratio']:.1f} |")
+                     f"{r['within_min']:.2f}–{r['within_max']:.2f} | {r['within_pooled']:.2f} | {r['between']:.2f} | "
+                     f"{r['ratio']:.1f} |")
     if pct is not None and not pct.empty:
         tail = pct[pct["key"] & pct["in_tail"]]
         L.append(f"\n## Static structures in the tails of their trajectory (key descriptors, percentile < {TAIL_PCT:g} "

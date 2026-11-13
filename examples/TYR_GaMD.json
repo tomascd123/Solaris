@@ -7,6 +7,11 @@
     12
   ],
   "points_per_trajectory": 400,
+  "F3_landmarks": [
+    "Carboxylate_anchor",
+    "Gatekeeper",
+    "L-Tyr ring"
+  ],
   "ligand": {
     "resname": "TY1",
     "atoms": {

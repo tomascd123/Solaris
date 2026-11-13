@@ -54,10 +54,10 @@
 | ScTYR | global | 1 | 0.34 | 3.65 | 4.02 | 4.13 | 3.36 | 4.16 | 56.95 | yes |
 | ScTYR | local1 | 1 | 0.46 | 3.55 | 4.37 | 3.96 | 3.38 | 4.35 | 56.65 | yes |
 | ScTYR | local2 | 1 | 0.38 | 3.70 | 3.88 | 3.78 | 2.91 | 4.37 | 49.82 | yes |
-| ScTYR | local3 | 1 | 0.39 | 3.52 | 4.09 | 3.95 | 3.27 | 4.37 | 50.43 | no |
+| ScTYR | local3 | 1 | 0.39 | 3.52 | 4.09 | 3.95 | 3.27 | 4.37 | 50.43 | yes |
 | ScTYR | docking | 1 | 0.45 | 3.47 | 4.27 | 3.77 | 2.75 | 3.67 | 74.91 | yes |
 | VvTYR | global | 1 | 0.26 | 3.66 | 3.72 | 3.99 | 2.92 | 3.61 | 71.05 | yes |
-| VvTYR | local1 | 1 | 0.35 | 3.64 | 4.22 | 3.72 | 2.85 | 3.66 | 73.29 | yes |
+| VvTYR | local1 | 1 | 0.35 | 3.64 | 4.22 | 3.72 | 2.85 | 3.66 | 73.29 | no |
 | VvTYR | local2 | 1 | 0.28 | 3.63 | 3.82 | 3.91 | 3.03 | 3.98 | 87.60 | yes |
 | VvTYR | docking | 1 | 0.42 | 3.47 | 4.77 | 3.84 | 3.27 | 4.92 | 53.83 | no |
 | AbTYR | global | 1 | 0.25 | 3.67 | 4.00 | 4.10 | 3.10 | 3.94 | 65.65 | yes |
@@ -113,15 +113,15 @@ Trajectories: median [p10–p90]; π-stack: % of frames. Distances in Å, angles
 
 ## Landmark dispersion (RMS of the 3D position, Å)
 
-Within: each enzyme around its own mean (minima, or GaMD frames). Between: enzyme means around the family mean.
+Within: each enzyme around its own mean (minima, or GaMD frames); pooled = all points around the mean of their enzyme. Between: enzyme means around the family mean.
 
-| Data | Landmark | within (min–max) | between | between / within |
-|---|---|---|---|---|
-| minima | Conserved_Glu | 0.18–0.47 | 0.53 | 1.8 |
-| minima | Conserved_Asn | 0.18–0.45 | 0.50 | 1.6 |
-| minima | Carboxylate_anchor | 0.66–1.70 | 5.65 | 4.9 |
-| minima | Gatekeeper | 0.27–1.48 | 1.92 | 3.0 |
-| minima | A/S_adj | 0.20–0.64 | 0.57 | 1.4 |
-| minima | L-Tyr OH | 0.09–0.79 | 0.52 | 1.7 |
-| minima | L-Tyr ring | 0.02–0.29 | 0.50 | 2.4 |
-| minima | L-Tyr CA | 0.24–0.99 | 0.81 | 1.5 |
+| Data | Landmark | within (min–max) | within (pooled) | between | between / pooled within |
+|---|---|---|---|---|---|
+| minima | Conserved_Glu | 0.18–0.47 | 0.32 | 0.53 | 1.6 |
+| minima | Conserved_Asn | 0.18–0.45 | 0.33 | 0.50 | 1.5 |
+| minima | Carboxylate_anchor | 0.66–1.70 | 1.29 | 5.65 | 4.4 |
+| minima | Gatekeeper | 0.27–1.48 | 0.74 | 1.92 | 2.6 |
+| minima | A/S_adj | 0.20–0.64 | 0.42 | 0.57 | 1.4 |
+| minima | L-Tyr OH | 0.09–0.79 | 0.38 | 0.52 | 1.3 |
+| minima | L-Tyr ring | 0.02–0.29 | 0.23 | 0.50 | 2.1 |
+| minima | L-Tyr CA | 0.24–0.99 | 0.61 | 0.81 | 1.3 |

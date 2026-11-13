@@ -204,6 +204,7 @@ Standard PDB names (CA, CZ, OH…) are also recognised.
 | `r_min_phi` | 2.5 | points closer than this to the axis (Å) are not drawn in φ |
 | `r_color` | [0, 12] | colour scale of *r* in F2, fixed so runs are comparable |
 | `points_per_trajectory` | 400 | frames drawn per trajectory (all frames are used in the tables) |
+| `F3_landmarks` | all | landmarks drawn in F3, in this order; pocket labels plus `"L-Tyr OH"` and `"L-Tyr ring"` |
 | `dpi` | 300 | figure resolution |
 
 ## 4. Check residues and numbering
@@ -296,9 +297,7 @@ examples/output_static/
 │   └── pistack_geometry.csv
 └── figures/
     ├── F1_landmark_summary.png
-    ├── F1_per_landmark/F1_01_Conserved_Glu.png ...
     ├── F2_unrolled_cylinder.png
-    ├── ..._GaMD.png / F1_per_landmark_GaMD/
     ├── F3_GaMD_<enzyme>.png
     └── F4_pistacking_HisB2.png / F4_pistacking_HisB2_GaMD.png
 ```
@@ -344,22 +343,20 @@ and `L.` (substrate). For example `Conserved_Glu.TIP.h`, `Gatekeeper.dr` or `L.d
 
 ### Figures
 
-- **F1_landmark_summary**: *r*, *h* and φ of every landmark, one row per landmark and one sub-row per enzyme.
-  This is the figure to compare the family at a glance.
-- **F1_per_landmark**: one top view per pocket landmark (looking down the pseudo-C2 axis), with the Cu and His
-  rings of the template; local minima are linked to the global minimum. The view is framed automatically on the
-  site and the data. Overlaps are projections, not contacts: the height *h* is in F1_landmark_summary. Landmarks
-  present in a single enzyme and the substrate points (L-Tyr) are not drawn; their values are in the tables.
-- **F2_unrolled_cylinder**: the cylinder cut open (φ vs *h*), colour = *r*. The cut is placed automatically in
-  the widest empty sector and is the same for static and GaMD figures.
-- **_GaMD versions**: the same figures for trajectories; top views show the regions holding 50 % and 90 % of
-  the frames and the median, F1_landmark_summary shows subsampled frames and the p5–p95 range.
-- **F3_GaMD_&lt;enzyme&gt;**: every landmark of one enzyme along its trajectory, with the static states on top.
+- **F1_landmark_summary**: *r*, *h* and φ of every landmark in the static structures, one row per landmark and
+  one sub-row per enzyme. Every value of the family in one figure.
+- **F2_unrolled_cylinder**: the cylinder cut open (φ vs *h*), colour = *r*, static structures. All panels share
+  the *h* axis, so a conserved residue looks as tight as it is next to a variable one. The cut is placed
+  automatically in the widest empty sector.
+- **F3_GaMD_&lt;enzyme&gt;**: the landmarks of one enzyme along its trajectory (regions holding 50 % and 90 % of
+  the frames, subsampled frames and median), with the static states on top. `F3_landmarks` chooses which
+  landmarks are drawn; all by default. The fluctuation of each landmark is in `landmark_dispersion.csv`.
 - **F4_pistacking_HisB2**: the L-Tyr ring seen perpendicular to HisB2, one panel per enzyme. The arrow is the
-  offset (sideways shift of the L-Tyr ring centre from the HisB2 centre) and the dotted circle its 2 Å limit.
+  shift of the L-Tyr ring centre in the HisB2 plane and the dotted circle the 2 Å offset limit.
   π-stacking needs d ≤ 5.5 Å, offset ≤ 2 Å and an angle between the ring planes ≤ 30° (parallel) or ≥ 60°
-  (T-shaped); the thresholds of PLIP, computed by SOLARIS itself (the offset is measured from the
-  HisB2 normal). The whole HisB2 imidazole is needed; otherwise these descriptors are skipped with a warning. Descriptors: `L.HisB2_angle`,
+  (T-shaped); ring normals, offset and thresholds as in PLIP, computed by SOLARIS itself (the offset is the
+  smaller of the two projections of one ring centre onto the other ring plane, so it can be shorter than the
+  arrow). The whole HisB2 imidazole is needed; otherwise these descriptors are skipped with a warning. Descriptors: `L.HisB2_angle`,
   `L.HisB2_offset`, `L.HisB2_h` and `L.HisB2_stack` (1/0; its mean over a trajectory is the fraction of
   frames stacked). The GaMD version shows the regions holding 50/90 % of the L-Tyr ring centres and a
   representative frame (the one closest to the median); the percentages are unweighted.
